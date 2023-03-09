@@ -41,9 +41,11 @@ section {
 	padding-top: 5px;
 }
 
-.mb-4 {
+.card-container {
 	padding: 1px;
-	margin: 0 !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	margin-bottom: 2px !important;
 }
 
 .card {
@@ -61,17 +63,33 @@ section {
 
 .image-overlay {
     position: absolute;
-    top: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #464646;
+    top: 0;
+    min-width: 100%;
+    background-color: #4646464b;
+}
+
+.image-overlay2 {
+    position: absolute;
+    bottom: 0;
+    min-width: 100%;
+    background-color: #0000002f;
+}
+
+.card-text:last-child {
+	margin: 0 0 10px 5px;
 }
 
 .author {
-    color: white;
+    color: rgb(189, 189, 189);
     margin: 4px;
-    text-transform: uppercase;
+	text-transform: uppercase;
 }
+
+@media only screen and (max-width: 1440px) {
+	.card-text:last-child {
+		font-size: x-small;
+	}
+  }
 
 /* services */
 

@@ -39,7 +39,7 @@
       <div class="row justify-content-left">
 
         {% for post in post_list %}
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
+        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4 card-container">
           <div class="d-flex justify-content-center">
             <div class="card h-100">
               <div class="image-container">
@@ -52,11 +52,12 @@
               <div class="image-overlay">
                 <p class="author">Author: {{ post.author }}</p>
               </div>
-              <hr />
+              <div class="image-overlay2">
               <a href="#" class="post-link">
                 <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
                   {{ post.number_of_likes }}</p>
               </a>
+            </div>
             </div>
           </div>
         </div>
