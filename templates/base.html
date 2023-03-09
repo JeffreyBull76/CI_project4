@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="h-100">
+
+<head>
+  <title>Promptiverse</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://kit.fontawesome.com/9cb253b564.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> enable this when static is added -->
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<body class="bg-dark">
+  <header>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">Promptiverse</a>
+      <div class="ml-auto">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Account</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  </header>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Fluid jumbotron</h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+  </div>
+
+  <main>
+    <section id="services">
+      <div class="container">
+        <div class="row service-row">
+          <div class="col-lg-12 text-center">
+            <h2 class="text-uppercase section-heading">About</h2>
+            <h3 class="text-muted section-subheading">Welcome to our AI art gallery, where creators showcase their
+              AI-generated artwor</h3>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-md-4"><span class="fa-stack fa-3x service-icons"><i
+                class="fa fa-circle fa-stack-2x text-primary"></i><i
+                class="fa fa-solid fa-palette fa-stack-1x fa-inverse"></i></span>
+            <h4 class="section-heading">Post</h4>
+            <p class="text-muted">. Our community is dedicated to exploring
+              the creative possibilities of machine learning algorithms, and we encourage artists of all levels to join
+              us.</p>
+          </div>
+          <div class="col-md-4"><span class="fa-stack fa-3x service-icons"><i
+                class="fa fa-circle fa-stack-2x text-primary"></i><i
+                class="fa fa-solid fa-comment fa-stack-1x fa-inverse"></i></span>
+            <h4 class="section-heading">Comment</h4>
+            <p class="text-muted">Each post features an image, title, prompt, negative prompt, and method, providing a
+              glimpse into the creative process
+              behind the art. Members can like, unlike, and comment on each other's posts, providing feedback and
+              inspiration to one another.</p>
+          </div>
+          <div class="col-md-4"><span class="fa-stack fa-3x service-icons"><i
+                class="fa fa-circle fa-stack-2x text-primary"></i><i
+                class="fa fa-laptop fa-stack-1x fa-inverse"></i></span>
+            <h4 class="section-heading">Expand</h4>
+            <p class="text-muted">Your mind, to join our community, simply click the 'Account' button and sign up for an
+              account. Please note that access to the site
+              is prohibited without signing up. We look forward to seeing your AI art!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="wrapper">
+    <div class="push"></div>
+  </div>
+</body>
+<footer class="footer bg-dark text-white d-flex align-items-center">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <p class="text-left">Footer</p>
+      </div>
+      <div class="col-6">
+        <div class="social-links text-right">
+          <img src="https://via.placeholder.com/30x30" alt="Social Media Link 1">
+          <img src="https://via.placeholder.com/30x30" alt="Social Media Link 2">
+          <img src="https://via.placeholder.com/30x30" alt="Social Media Link 3">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Script -->
+<script>
+  setTimeout(function () {
+    let messages = document.getElementById('msg');
+    let alert = new bootstrap.Alert(messages);
+    alert.close();
+  }, 2500);
+</script>
+
+</html>

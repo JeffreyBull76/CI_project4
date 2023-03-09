@@ -1,0 +1,95 @@
+/* footer styles */
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	min-height: 30%;
+	margin-bottom: -100px;
+}
+
+.footer,
+.push {
+	height: 100px;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
+section {
+	margin: 0;
+	padding: 0;
+}
+
+.nav-link {
+	color: white;
+	align-self: flex-end;
+}
+
+/* cards */
+
+.gallery-pad {
+	padding-top: 5px;
+}
+
+.mb-4 {
+	padding: 1px;
+	margin: 0 !important;
+}
+
+.card {
+	max-width: 300px;
+	border: none;
+}
+
+.card-title, .card-text {
+	color: gray;
+}
+
+.card-body {
+	background-color: #000;
+}
+
+/* services */
+
+.service-row {
+	padding: 40px;
+}
+
+.service-icons {
+	padding: 15px;
+}
+
+.section-heading {
+	padding-top: 35px;
+}
+
+.text-muted {
+	padding-top: 25px;
+}
+
+.text-primary {
+	color: darkgoldenrod !important;
+}
+
+.fa-circle {
+	color: #000;
+}
+
+/* Jumbotron */
+
+.jumbotron {
+	background-image: url("../testimages/TestHero.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 700px;
+}
