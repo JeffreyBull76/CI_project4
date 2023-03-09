@@ -7,7 +7,7 @@ body {
 }
 
 .wrapper {
-	min-height: 30%;
+	min-height: 40%;
 	margin-bottom: -100px;
 }
 
@@ -57,6 +57,20 @@ section {
 
 .card-body {
 	background-color: rgb(56, 56, 58);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 5%;
+    min-width: 30%;
+    left: -2px;
+    background-color: #464646;
+}
+
+.author {
+    color: white;
+    margin: 4px;
+    text-transform: uppercase;
 }
 
 /* services */

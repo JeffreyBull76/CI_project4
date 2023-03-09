@@ -1,21 +1,6 @@
-{% load static %}
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html class="h-100">
-
-<head>
-  <title>Promptiverse</title>
-
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> enable this when static is added -->
-  <link rel="stylesheet" href="../static/css/style.css">
-
-</head>
-
-<body class="bg-dark">
+  {% block header %}
   <header>
 
     <nav class="navbar bg-dark navbar-dark">
@@ -45,184 +30,37 @@
     </nav>
 
   </header>
+  {% endblock header %}
+
+  {% block main %}
   <main class="gallery-pad">
-    
+
     <div class="container-fluid">
       <div class="row justify-content-left">
 
+        {% for post in post_list %}
         <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
           <div class="d-flex justify-content-center">
             <div class="card h-100">
+              <div class="image-container">
+              {% if "placeholder" in post.featured_image.url %}
               <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <a href="#" class="btn btn-warning">Read More</a>
+              {% else %}
+              <img class="card-img-top" src=" {{ post.featured_image.url }}">
+              {% endif %}
+            </div>
+              <div class="image-overlay">
+                <p class="author">Author: {{ post.author }}</p>
               </div>
+              <hr />
+              <a href="#" class="post-link">
+                <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
+                  {{ post.number_of_likes }}</p>
+              </a>
             </div>
           </div>
         </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-4">
-          <div class="d-flex justify-content-center">
-            <div class="card h-100">
-              <img src="../static/testimages/TestCard.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+        {% endfor %}
 
   </main>
-  <div class="wrapper">
-    <div class="push"></div>
-  </div>
-  <footer class="footer bg-dark text-white d-flex align-items-center">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-6">
-          <p class="text-left">Footer</p>
-        </div>
-        <div class="col-6">
-          <div class="social-links text-right">
-            <img src="https://via.placeholder.com/30x30" alt="Social Media Link 1">
-            <img src="https://via.placeholder.com/30x30" alt="Social Media Link 2">
-            <img src="https://via.placeholder.com/30x30" alt="Social Media Link 3">
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Script -->
-  <script>
-    setTimeout(function () {
-      let messages = document.getElementById('msg');
-      let alert = new bootstrap.Alert(messages);
-      alert.close();
-    }, 2500);
-  </script>
-</body>
-
-</html>
+  {% endblock %}

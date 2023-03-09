@@ -17,6 +17,10 @@
 </head>
 
 <body class="bg-dark">
+  {% if user.is_authenticated %}
+  {% block header %}
+  {% endblock header %}
+  {% else %}
   <header>
 
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -31,14 +35,19 @@
     </nav>
 
   </header>
+  {% endif %}
 
+  {% if user.is_authenticated %}
+  {% block main %}
+  {% endblock main %}
+  {% else %}
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Fluid jumbotron</h1>
       <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
     </div>
   </div>
-
+  
   <main>
     <section id="services">
       <div class="container">
@@ -80,34 +89,36 @@
     </section>
 
   </main>
+  {% endif %}
 
   <div class="wrapper">
     <div class="push"></div>
   </div>
-</body>
-<footer class="footer bg-dark text-white d-flex align-items-center">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-6">
-        <p class="text-left">Footer</p>
-      </div>
-      <div class="col-6">
-        <div class="social-links text-right">
-          <img src="https://via.placeholder.com/30x30" alt="Social Media Link 1">
-          <img src="https://via.placeholder.com/30x30" alt="Social Media Link 2">
-          <img src="https://via.placeholder.com/30x30" alt="Social Media Link 3">
+  <footer class="footer bg-dark text-white d-flex align-items-center">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <p class="text-left">Footer</p>
+        </div>
+        <div class="col-6">
+          <div class="social-links text-right">
+            <img src="https://via.placeholder.com/30x30" alt="Social Media Link 1">
+            <img src="https://via.placeholder.com/30x30" alt="Social Media Link 2">
+            <img src="https://via.placeholder.com/30x30" alt="Social Media Link 3">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
-<!-- Script -->
-<script>
-  setTimeout(function () {
-    let messages = document.getElementById('msg');
-    let alert = new bootstrap.Alert(messages);
-    alert.close();
-  }, 2500);
-</script>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    setTimeout(function () {
+      let messages = document.getElementById('msg');
+      let alert = new bootstrap.Alert(messages);
+      alert.close();
+    }, 2500);
+  </script>
+</body>
 
 </html>
