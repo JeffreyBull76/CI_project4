@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block main %}
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="post-image">
+          <img src="https://via.placeholder.com/512x512" alt="Post Image" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+        <h2>Right Column</h2>
+        <p>This is the content of the right column. It should hug the right edge of the screen.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <!-- comments -->
+        <div>
+          <p>Comment 1</p>
+        </div>
+        <div>
+          <p>Comment 2</p>
+        </div>
+        <div>
+          <p>Comment 3</p>
+        </div>
+        <div>
+          <p>Comment 4</p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+        <h2>Post a comment</h2>
+        <p>A comment form goes here</p>
+      </div>
+    </div>
+  </div>
+  {% endblock main %}

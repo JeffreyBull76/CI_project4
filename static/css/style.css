@@ -89,6 +89,9 @@ section {
 	.card-text:last-child {
 		font-size: x-small;
 	}
+	.author {
+		font-size: small;
+	}
   }
 
 /* services */

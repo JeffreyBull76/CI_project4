@@ -16,30 +16,15 @@
 
 </head>
 
+{% include 'nav.html' %}
+
 <body class="bg-dark">
-  {% if user.is_authenticated %}
-  {% block header %}
-  {% endblock header %}
-  {% else %}
-  <header>
-
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-      <a class="navbar-brand" href="#">Promptiverse</a>
-      <div class="ml-auto">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Account</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-  </header>
-  {% endif %}
 
   {% if user.is_authenticated %}
+
   {% block main %}
   {% endblock main %}
+
   {% else %}
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -119,6 +104,9 @@
       alert.close();
     }, 2500);
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
