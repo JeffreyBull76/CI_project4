@@ -12,7 +12,7 @@
         {% endif %}
       </div>
 
-      <!-- <div class="col-1">
+      <div class="col-1">
         <strong>
           {% if user.is_authenticated %}
           <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
@@ -30,11 +30,10 @@
           {% endif %}
           <span class="text-secondary">{{ post.number_of_likes }} </span>
         </strong>
-      </div> -->
+      </div>
       <div class="col-1">
         {% with comments.count as total_comments %}
         <strong class="text-secondary"><i class="far fa-comments"></i>
-          <!-- Our total_comments variable goes before the closing strong tag -->
           {{ total_comments }}</strong>
         {% endwith %}
       </div>

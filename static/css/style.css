@@ -75,6 +75,11 @@ section {
     background-color: #0000002f;
 }
 
+.image-overlay2 a {
+	color: inherit !important;
+	text-decoration: none !important;
+}
+
 .card-text:last-child {
 	margin: 0 0 10px 5px;
 }
@@ -84,6 +89,12 @@ section {
     margin: 4px;
 	text-transform: uppercase;
 }
+
+.gallery-likes {
+	position: absolute;
+	right: 0;
+	margin-right: 5px;
+  }
 
 @media only screen and (max-width: 1440px) {
 	.card-text:last-child {
