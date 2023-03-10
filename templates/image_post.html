@@ -1,43 +1,77 @@
 {% extends "index.html" %}
 
 {% block main %}
-  <div class="container-fluid">
-    <div class="row flex-nowrap">
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="post-image">
-          <img src="https://via.placeholder.com/512x512" alt="Post Image" class="img-fluid">
-        </div>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="post-image">
+        {% if "placeholder" in post.featured_image.url %}
+        <img src="https://via.placeholder.com/512x512" alt="Post Image" class="img-fluid">
+        {% else %}
+        <img src=" {{ post.featured_image.url }}" class="img-fluid">
+        {% endif %}
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 text-right">
-        <h2>Right Column</h2>
-        <p>This is the content of the right column. It should hug the right edge of the screen.</p>
+
+      <!-- <div class="col-1">
+        <strong>
+          {% if user.is_authenticated %}
+          <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+            {% csrf_token %}
+            {% if liked %}
+            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                class="fas fa-heart"></i></button>
+            {% else %}
+            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                class="far fa-heart"></i></button>
+            {% endif %}
+          </form>
+          {% else %}
+          <span class="text-secondary"><i class="far fa-heart"></i></span>
+          {% endif %}
+          <span class="text-secondary">{{ post.number_of_likes }} </span>
+        </strong>
+      </div> -->
+      <div class="col-1">
+        {% with comments.count as total_comments %}
+        <strong class="text-secondary"><i class="far fa-comments"></i>
+          <!-- Our total_comments variable goes before the closing strong tag -->
+          {{ total_comments }}</strong>
+        {% endwith %}
       </div>
+
+
+
+    <!-- Post details -->
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+      <h1 class="post-title">{{ post.title }}</h1>
+      <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
+      <hr>
+      <p>{{ post.prompt | safe }}</p>
+      <p>{{ post.negprompt | safe }}</p>
+      <p>{{ post.method | safe }}</p>
     </div>
   </div>
+</div>
 
-  <hr>
+<hr>
 
-  <div class="container-fluid">
-    <div class="row flex-nowrap">
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <!-- comments -->
-        <div>
-          <p>Comment 1</p>
-        </div>
-        <div>
-          <p>Comment 2</p>
-        </div>
-        <div>
-          <p>Comment 3</p>
-        </div>
-        <div>
-          <p>Comment 4</p>
-        </div>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <!-- comments -->
+      {% for comment in comments %}
+      <div>
+        <h3>{{ comment.name }}</h3>
+        <h4>{{ comment.created_on }}</h4>
+        <p>{{ comment.body | linebreaks }}</p>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 text-right">
-        <h2>Post a comment</h2>
-        <p>A comment form goes here</p>
-      </div>
+      {% endfor %}
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+      <h2>Post a comment</h2>
+      <p>A comment form goes here</p>
     </div>
   </div>
-  {% endblock main %}
+</div>
+{% endblock main %}
