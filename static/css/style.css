@@ -1,18 +1,24 @@
 /* Header and nav */
-
 .nav-link {
 	display: inline;
 }
 
-
-/* footer styles */
+/* default styles */
 
 html,
 body {
 	margin: 0;
 	padding: 0;
+	background-color: rgb(41, 41, 41);
+	color: #dfdfdf;
 }
 
+hr {
+	background-color: #b1b1b1;
+	margin-bottom: 20px;
+}
+
+/* footer styles */
 .wrapper {
 	min-height: 40%;
 	margin-bottom: -100px;
@@ -145,4 +151,11 @@ section {
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 700px;
+}
+
+/* Account forms */
+
+.acnt-forms {
+	color: inherit !important;
+	text-decoration: underline;
 }

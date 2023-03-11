@@ -2,7 +2,7 @@
 
 {% block main %}
 <div class="container-fluid">
-  <div class="row flex-nowrap">
+  <div class="row d-flex">
     <div class="col-lg-6 col-md-6 col-sm-12">
       <div class="post-image">
         {% if "placeholder" in post.featured_image.url %}
@@ -40,7 +40,7 @@
 
 
 
-    <!-- Post details -->
+      <!-- Post details -->
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 text-right">
       <h1 class="post-title">{{ post.title }}</h1>
@@ -56,7 +56,7 @@
 <hr>
 
 <div class="container-fluid">
-  <div class="row flex-nowrap">
+  <div class="row d-flex">
     <div class="col-lg-6 col-md-6 col-sm-12">
       <!-- comments -->
       {% for comment in comments %}
@@ -67,9 +67,11 @@
       </div>
       {% endfor %}
     </div>
+
     <div class="col-lg-6 col-md-6 col-sm-12 text-right">
-      <h2>Post a comment</h2>
-      <p>A comment form goes here</p>
+      <div class="card-body">
+
+      </div>
     </div>
   </div>
 </div>
