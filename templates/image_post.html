@@ -1,6 +1,9 @@
 {% extends "index.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block main %}
+<!-- main image column -->
 <div class="container-fluid">
   <div class="row d-flex">
     <div class="col-lg-6 col-md-6 col-sm-12">
@@ -40,7 +43,7 @@
 
 
 
-      <!-- Post details -->
+      <!-- Post details column -->
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 text-right">
       <h1 class="post-title">{{ post.title }}</h1>
@@ -57,9 +60,9 @@
 
 <div class="container-fluid">
   <div class="row d-flex">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <!-- comments -->
-      {% for comment in comments %}
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <!-- comments section -->
+      {% for comment in comments reversed %}
       <div>
         <h3>{{ comment.name }}</h3>
         <h4>{{ comment.created_on }}</h4>
@@ -68,11 +71,24 @@
       {% endfor %}
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+    <div class="col-lg-4 col-md-4 col-sm-12 text-right">
       <div class="card-body">
+        <!-- comment section form -->
+
+        {% if user.is_authenticated %}
+        <h3>Leave a comment:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form | crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-warning">Submit</button>
+        </form>
+        {% endif %}
 
       </div>
+
     </div>
   </div>
+</div>
 </div>
 {% endblock main %}
