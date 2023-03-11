@@ -1,3 +1,10 @@
+/* Header and nav */
+
+.nav-link {
+	display: inline;
+}
+
+
 /* footer styles */
 
 html,
