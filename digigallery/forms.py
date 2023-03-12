@@ -10,28 +10,6 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 
-# class SubmitForm(forms.ModelForm):
-#     class Meta:
-#         model = Post
-#         fields = ('title', 'prompt', 'negprompt', 'method', 'author', 'slug')
-
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['author'].initial = self.request.user.pk
-
-#     def clean_slug(self):
-#         slug = slugify(self.cleaned_data['title'])
-#         count = 1
-#         while Post.objects.filter(slug=slug).exists():
-#             slug = f'{slug}-{count}'
-#             count += 1
-#         return slug
-
-#     def save(self, commit=True):
-#         self.instance.slug = self.cleaned_data['slug']
-#         return super().save(commit=commit)
-
-
 class SubmitForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -40,13 +18,6 @@ class SubmitForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.author = kwargs.pop('author', None)
         super(SubmitForm, self).__init__(*args, **kwargs)
-
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     title = cleaned_data.get('title')
-    #     if title:
-    #         cleaned_data['slug'] = slugify(title)
-    #     return cleaned_data
 
     def clean(self):
         cleaned_data = super().clean()
