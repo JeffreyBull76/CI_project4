@@ -2,6 +2,8 @@ from .models import Comment, Post
 from django import forms
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
+import cloudinary
+import cloudinary.uploader
 
 
 class CommentForm(forms.ModelForm):
@@ -13,7 +15,9 @@ class CommentForm(forms.ModelForm):
 class SubmitForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'prompt', 'negprompt', 'method',)
+        fields = ['title', 'prompt', 'negprompt', 'method', 'featured_image']
+
+    featured_image = forms.ImageField(required=False)
 
     def __init__(self, *args, **kwargs):
         self.author = kwargs.pop('author', None)

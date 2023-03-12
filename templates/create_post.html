@@ -8,18 +8,21 @@
         <div class="col-md-4">
             <h4>Submit new post:</h4>
             <p>Posting as: {{ user.username }}</p>
-            <form method="post">
-                {{ submit_form | crispy }}
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {% if submit_form.errors %}
-                    <div class="alert alert-danger">
-                        {% for field_errors in submit_form.errors %}
-                            {% for error in field_errors %}
-                                {{ error }}
-                            {% endfor %}
-                        {% endfor %}
-                    </div>
+                {{ submit_form|crispy }}
+
+                {% if submit_form.featured_image.errors %}
+                    {% for error in submit_form.featured_image.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
                 {% endif %}
+
+                <div class="form-group">
+                    <label for="{{ submit_form.featured_image.id_for_label }}">Featured Image</label>
+                    {{ submit_form.featured_image }}
+                </div>
+
                 <button type="submit" class="btn btn-signup btn-lg">Submit</button>
             </form>
         </div>

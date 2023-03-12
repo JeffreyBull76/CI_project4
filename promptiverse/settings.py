@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import cloudinary_storage
 import os
 import dj_database_url
 if os.path.isfile('env.py'):
@@ -41,9 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'cloudinary_storage',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -155,3 +159,17 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLOUDINARY_CONFIG = {
+    'CLOUD_NAME': 'dg3v2epqy',
+    'API_KEY': '537655497713984',
+    'API_SECRET': 'y1yMPRYaJZrUj7hmshHpNp43qUg',
+    'UNSIGNED_UPLOAD_PRESET': 'CIProject4',
+}
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dg3v2epqy',
+    'API_KEY': '537655497713984',
+    'API_SECRET': 'y1yMPRYaJZrUj7hmshHpNp43qUg',
+    'UNSIGNED_UPLOAD_PRESET': 'CIProject4',
+}

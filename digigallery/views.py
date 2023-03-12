@@ -76,10 +76,8 @@ class PostLike(View):
 
 
 class Submission(View):
-
     def get(self, request, *args, **kwargs):
         queryset = Post.objects
-
         return render(
             request,
             'create_post.html',
@@ -90,9 +88,12 @@ class Submission(View):
 
     def post(self, request, *args, **kwargs):
         queryset = Post.objects
-        submit_form = SubmitForm(data=request.POST, author=request.user)
+        submit_form = SubmitForm(request.POST, request.FILES, author=request.user)  # noqa
+
         if submit_form.is_valid():
-            submit_form.save()
+            new_post = submit_form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
             return redirect('home')
         else:
             return render(
