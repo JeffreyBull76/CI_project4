@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h4>Submit new post:</h4>
+            <p>Posting as: {{ user.username }}</p>
+            <form method="post">
+                {{ submit_form | crispy }}
+                {% csrf_token %}
+                {% if submit_form.errors %}
+                    <div class="alert alert-danger">
+                        {% for field_errors in submit_form.errors %}
+                            {% for error in field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock main %}
