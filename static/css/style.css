@@ -127,6 +127,10 @@ section {
     background-color: #4646464b;
 }
 
+#acc-pst-det {
+	color: #f0ad4e;
+}
+
 .image-overlay2 {
     position: absolute;
     bottom: 0;
@@ -134,16 +138,20 @@ section {
     background-color: #ffffff00;
 }
 
+.image-overlay2 i {
+    padding: 0 7px 0 7px;
+}
+
 .comment-counter {
 	position: absolute;
-    bottom: -3%;
+    bottom: -12%;
     right: 5%;
     display: flex;
 }
 
 .like-counter {
 	position: absolute;
-    bottom: -3%;
+    bottom: -12%;
     left: 5%;
     display: flex;
 }

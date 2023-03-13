@@ -16,10 +16,10 @@
             <img class="card-img" src=" {{ post.featured_image.url }}">
             {% endif %}
           </div>
-          <div class="image-overlay" id="image-overlay">
-            <p class="author">{{ post.title }}<span class="gallery-likes"></span></p>
+          <div class="image-overlay">
+            <p class="author">{{ post.title }}</p>
           </div>
-          <div class="image-overlay2" id="image-overlay2">
+          <div class="image-overlay2">
               <span class="like-counter"><i class="far fa-heart"></i>
               {{ post.number_of_likes }}</span>
               {% with post.comments.count as total_comments %}

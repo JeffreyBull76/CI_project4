@@ -1,14 +1,17 @@
 {% extends "index.html" %}
 {% block main %}
-
 <main class="gallery-pad">
 
-  <div class="row justify-content-center no-gutters">
+  <div class="container-fluid"><h3>Account Name: {{ user.username }}</h3></div>
+  <div class="container-fluid"><p>POST LIST:</p></div>
+  <div class="container-fluid">
+  <div class="row justify-content-left no-gutters">
     {% for post in post_list %}
     <div id="card-container">
       <div class="d-flex justify-content-center">
-        <a href="{% url 'post_detail' post.slug %}">
+        
           <div class="card h-100">
+
             <div class="image-container">
               {% if "placeholder" in post.featured_image.url %}
               <img src="https://via.placeholder.com/384x512" class="card-img-top" alt="...">
@@ -16,21 +19,34 @@
               <img class="card-img" src=" {{ post.featured_image.url }}">
               {% endif %}
             </div>
-            <div class="image-overlay" id="image-overlay">
-              <p class="author">{{ post.title }}<span class="gallery-likes"></span></p>
+
+            <div class="image-overlay">
+              <p class="author">{{ post.title }}</p>
+                {% if post.status == 1 %}
+                <div id="acc-pst-det">POST STATUS: PUBLISHED</div>
+                {% else %}
+                <div id="acc-pst-det">POST STATUS: DRAFT</div>
+                {% endif %}
             </div>
-            <div class="image-overlay2" id="image-overlay2">
+
+            <div class="image-overlay2">
               <span class="like-counter"><i class="far fa-heart"></i>
                 {{ post.number_of_likes }}</span>
               {% with post.comments.count as total_comments %}
               <span class="comment-counter"><i class="far fa-comments"></i> {{ total_comments }}</span>
               {% endwith %}
             </div>
+
+            
+
           </div>
-        </a>
+        
       </div>
     </div>
     {% endfor %}
   </div>
+</div>
+
 </main>
 {% endblock %}
+<a href="{% url 'post_detail' post.slug %}"></a>
