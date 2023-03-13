@@ -161,15 +161,15 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CLOUDINARY_CONFIG = {
-    'CLOUD_NAME': 'dg3v2epqy',
-    'API_KEY': '537655497713984',
-    'API_SECRET': 'y1yMPRYaJZrUj7hmshHpNp43qUg',
-    'UNSIGNED_UPLOAD_PRESET': 'CIProject4',
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('API_KEY'),
+    'API_SECRET': os.environ.get('API_SECRET'),
+    'UNSIGNED_UPLOAD_PRESET': os.environ.get('UNSIGNED_UPLOAD_PRESET'),
 }
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dg3v2epqy',
-    'API_KEY': '537655497713984',
-    'API_SECRET': 'y1yMPRYaJZrUj7hmshHpNp43qUg',
-    'UNSIGNED_UPLOAD_PRESET': 'CIProject4',
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('API_KEY'),
+    'API_SECRET': os.environ.get('API_SECRET'),
+    'UNSIGNED_UPLOAD_PRESET': os.environ.get('UNSIGNED_UPLOAD_PRESET'),
 }
