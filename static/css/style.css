@@ -1,21 +1,53 @@
-/* Header and nav */
-.nav-link {
-	display: inline;
-}
-
 /* default styles */
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 
 html,
 body {
 	margin: 0;
 	padding: 0;
-	background-color: rgb(41, 41, 41);
+	background-color: #292b2c;
 	color: #dfdfdf;
+}
+
+a {
+	text-decoration: none;
+	color: white;
 }
 
 hr {
 	background-color: #b1b1b1;
 	margin-bottom: 20px;
+}
+
+/* Header and nav */
+
+.navbar-brand {
+	color: #f0ad4e;
+	font-family: 'Julius Sans One', sans-serif;
+	font-size: xx-large;
+}
+
+.sub-nav-col {
+	background-color: #f0ad4e;
+}
+
+.nav-link {
+	display: inline;
+	color: white;
+	align-self: flex-end;
+}
+
+.sub-nav-links {
+	color: #1a1a1a;
+}
+
+/* Jumbotron */
+
+.jumbotron {
+	background-image: url("../testimages/TestHero.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 700px;
 }
 
 /* footer styles */
@@ -27,6 +59,18 @@ hr {
 .footer,
 .push {
 	height: 100px;
+}
+
+.text-left {
+	padding-left: 3%;
+}
+
+.text-right {
+	padding-right: 3%;
+}
+
+.text-right i {
+	padding: 0 10px 0 10px;
 }
 
 main {
@@ -43,22 +87,24 @@ section {
 	padding: 0;
 }
 
-.nav-link {
-	color: white;
-	align-self: flex-end;
+/* cards & gallery */
+
+.card-img {
+	width: 100%;
 }
 
-/* cards */
+.card-container {
+	width: 20%;
+	height: 100%;
+}
 
 .gallery-pad {
 	padding-top: 5px;
 }
 
-.card-container {
-	padding: 1px;
-	margin-left: 0 !important;
-	margin-right: 0 !important;
-	margin-bottom: 2px !important;
+#card-container {
+	padding: 3px;
+	margin: 0;
 }
 
 .card {
@@ -85,20 +131,25 @@ section {
     position: absolute;
     bottom: 0;
     min-width: 100%;
-    background-color: #0000002f;
+    background-color: #ffffff00;
 }
 
-.image-overlay2 a {
-	color: inherit !important;
-	text-decoration: none !important;
+.comment-counter {
+	position: absolute;
+    bottom: -3%;
+    right: 5%;
+    display: flex;
 }
 
-.card-text:last-child {
-	margin: 0 0 10px 5px;
+.like-counter {
+	position: absolute;
+    bottom: -3%;
+    left: 5%;
+    display: flex;
 }
 
 .author {
-    color: rgb(189, 189, 189);
+    color: rgb(207, 207, 207);
     margin: 4px;
 	text-transform: uppercase;
 }
@@ -136,21 +187,12 @@ section {
 	padding-top: 25px;
 }
 
-.text-primary {
-	color: darkgoldenrod !important;
+#text-primary {
+	color: darkgoldenrod;
 }
 
 .fa-circle {
 	color: #000;
-}
-
-/* Jumbotron */
-
-.jumbotron {
-	background-image: url("../testimages/TestHero.png");
-	background-repeat: no-repeat;
-	background-position: center;
-	height: 700px;
 }
 
 /* Account forms */
