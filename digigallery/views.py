@@ -3,12 +3,22 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm, SubmitForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'gallery.html'
+
+
+class AuthorPostList(LoginRequiredMixin, generic.ListView):
+    model = Post
+    template_name = 'account.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(author=self.request.user).order_by('-created_on')  # noqa
 
 
 class PostDetail(View):
