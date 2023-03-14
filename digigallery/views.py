@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Post
 from .forms import CommentForm, SubmitForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -114,3 +115,11 @@ class Submission(View):
                     "posted": True,
                 },
             )
+
+
+class PostDeleteView(LoginRequiredMixin, View):
+    def get(self, request, slug):
+        post = get_object_or_404(Post, slug=slug, author=request.user)
+        post.delete()
+        messages.success(request, 'Your post has been deleted!')
+        return redirect('home')
