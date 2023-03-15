@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from cloudinary import api as cloudinary_api
-from .models import Post
+from .models import Post, Comment
 from .forms import CommentForm, SubmitForm
 
 
@@ -151,3 +151,12 @@ class PostUpdateView(View):
         post.method = request.POST.get('method')
         post.save()
         return redirect('account_posts')
+
+
+class CommentDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        comment = get_object_or_404(Comment, pk=pk)
+        comment.delete()
+
+        messages.error(request, 'You are not authorized to delete this!')
+        return redirect('post_detail', slug=comment.post.slug)

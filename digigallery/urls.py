@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-from .views import AuthorPostList, PostDeleteView
+from .views import AuthorPostList, PostDeleteView, CommentDeleteView
 
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path('account.html', views.AuthorPostList.as_view(), name='account_posts'),
     path('delete/<slug:slug>/', PostDeleteView.as_view(), name='delete_post'),
     path('<slug:slug>/update/', views.PostUpdateView.as_view(), name='post_update'),  # noqa
+    path('comment/<int:pk>/delete/', CommentDeleteView.as_view(), name='comment_delete'),  # noqa
 ]

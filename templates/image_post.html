@@ -62,13 +62,22 @@
   <div class="row d-flex">
     <div class="col-lg-8 col-md-8 col-sm-12">
       <!-- comments section -->
-      {% for comment in comments reversed %}
-      <div>
-        <h3>{{ comment.name }}</h3>
-        <h4>{{ comment.created_on }}</h4>
-        <p>{{ comment.body | linebreaks }}</p>
+      {% for comment in post.comments.all %}
+      <div class="card mb-3">
+        <div class="card-header">
+          {{ comment.name }} said on {{ comment.created_on }}:
+          {% if user.is_authenticated %}
+          <a href="{% url 'comment_delete' pk=comment.pk %}" class="btn btn-danger btn-sm float-right">Delete</a>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <p>{{ comment.body }}</p>
+        </div>
       </div>
+      {% empty %}
+      <p>No comments yet.</p>
       {% endfor %}
+
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12 text-right">

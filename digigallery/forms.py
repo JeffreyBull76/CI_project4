@@ -17,7 +17,7 @@ class SubmitForm(forms.ModelForm):
         model = Post
         fields = ['title', 'prompt', 'negprompt', 'method', 'featured_image']
 
-    featured_image = forms.ImageField(required=False)
+    featured_image = forms.ImageField(required=True)
 
     def __init__(self, *args, **kwargs):
         self.author = kwargs.pop('author', None)
