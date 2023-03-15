@@ -156,7 +156,9 @@ class PostUpdateView(View):
 class CommentDeleteView(LoginRequiredMixin, View):
     def get(self, request, pk):
         comment = get_object_or_404(Comment, pk=pk)
-        comment.delete()
-
-        messages.error(request, 'You are not authorized to delete this!')
+        if request.user.username == comment.name:
+            comment.delete()
+            messages.success(request, 'Comment deleted!')
+        else:
+            messages.error(request, 'You are not the author!')
         return redirect('post_detail', slug=comment.post.slug)
