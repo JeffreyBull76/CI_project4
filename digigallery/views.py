@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from cloudinary import api as cloudinary_api
 from .models import Post
 from .forms import CommentForm, SubmitForm
 
@@ -120,7 +121,15 @@ class Submission(View):
 class PostDeleteView(LoginRequiredMixin, View):
     def get(self, request, slug):
         post = get_object_or_404(Post, slug=slug, author=request.user)
+
+        # Delete featured image from Cloudinary
+        cloudinary_public_id = post.featured_image.public_id
+        if cloudinary_public_id:
+            cloudinary_api.delete_resources([cloudinary_public_id])
+
+        # Delete the post once image has been deleted
         post.delete()
+
         messages.success(request, 'Your post has been deleted!')
         return redirect('home')
 
