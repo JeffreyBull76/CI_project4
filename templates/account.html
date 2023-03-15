@@ -33,6 +33,7 @@
               {% endif %}
               {% if request.user == post.author %}
               <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger">Delete</a>
+              <a href="{% url 'post_update' post.slug %}" class="btn btn-danger">Update</a>
               {% endif %}
             </div>
 
@@ -56,4 +57,3 @@
 
 </main>
 {% endblock %}
-<a href="{% url 'post_detail' post.slug %}"></a>

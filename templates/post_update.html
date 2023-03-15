@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% block main %}
+
+<h1>Update Post: {{ post.title }}</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <label>Prompt:</label>
+  <textarea name="prompt">{{ post.prompt }}</textarea>
+  <label>Negative Prompt:</label>
+  <textarea name="negprompt">{{ post.negprompt }}</textarea>
+  <label>Method:</label>
+  <textarea name="method">{{ post.method }}</textarea>
+  <div>
+    <label>Title:</label>
+    <span>{{ post.title }}</span>
+  </div>
+  <div>
+    <label>Featured Image:</label>
+    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+  </div>
+  <input type="submit" value="Update Post">
+</form>
+
+
+{% endblock %}

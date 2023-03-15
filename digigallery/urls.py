@@ -10,4 +10,5 @@ urlpatterns = [
     path('create_post.html', views.Submission.as_view(), name='create_post'),
     path('account.html', views.AuthorPostList.as_view(), name='account_posts'),
     path('delete/<slug:slug>/', PostDeleteView.as_view(), name='delete_post'),
+    path('<slug:slug>/update/', views.PostUpdateView.as_view(), name='post_update'),  # noqa
 ]

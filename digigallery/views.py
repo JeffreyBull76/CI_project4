@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 from .forms import CommentForm, SubmitForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class PostList(generic.ListView):
@@ -123,3 +123,22 @@ class PostDeleteView(LoginRequiredMixin, View):
         post.delete()
         messages.success(request, 'Your post has been deleted!')
         return redirect('home')
+
+
+class PostUpdateView(View):
+    template_name = 'post_update.html'
+
+    def get(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+        context = {
+            'post': post
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+        post.prompt = request.POST.get('prompt')
+        post.negprompt = request.POST.get('negprompt')
+        post.method = request.POST.get('method')
+        post.save()
+        return redirect('account_posts')
