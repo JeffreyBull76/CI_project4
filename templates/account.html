@@ -60,7 +60,8 @@
   <div class="card-header">
     {{ comment.name }} said on {{ comment.created_on }}:
     {% if user.is_authenticated and comment.name == user.username %}
-    <a href="{% url 'comment_delete' pk=comment.pk %}" class="btn btn-danger btn-sm float-right">Delete</a>
+    
+    <a href="{% url 'comment_delete' pk=comment.pk %}?page=account" class="btn btn-danger btn-sm float-right">Delete</a>
     {% endif %}
   </div>
   <div class="card-body">

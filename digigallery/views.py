@@ -28,13 +28,6 @@ class AuthorPostList(LoginRequiredMixin, generic.ListView):
         context['user_comments'] = user_comments
         return context
 
-        if request.user.username == comment.name:
-            comment.delete()
-            messages.success(request, 'Comment deleted!')
-        else:
-            messages.error(request, 'You are not the author!')
-        return redirect('post_detail', slug=comment.post.slug)
-
 
 class PostDetail(View):
 
@@ -174,4 +167,10 @@ class CommentDeleteView(LoginRequiredMixin, View):
             messages.success(request, 'Comment deleted!')
         else:
             messages.error(request, 'You are not the author!')
-        return redirect('post_detail', slug=comment.post.slug)
+
+        # redirect conditionally based on current page
+        current_page = request.GET.get('page')
+        if current_page == 'account':
+            return redirect('account_posts')
+        else:
+            return redirect('post_detail', slug=comment.post.slug)
