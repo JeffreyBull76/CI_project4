@@ -22,6 +22,19 @@ class AuthorPostList(LoginRequiredMixin, generic.ListView):
         queryset = super().get_queryset()
         return queryset.filter(author=self.request.user).order_by('-created_on')  # noqa
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_comments = Comment.objects.filter(name=self.request.user.username)
+        context['user_comments'] = user_comments
+        return context
+
+        if request.user.username == comment.name:
+            comment.delete()
+            messages.success(request, 'Comment deleted!')
+        else:
+            messages.error(request, 'You are not the author!')
+        return redirect('post_detail', slug=comment.post.slug)
+
 
 class PostDetail(View):
 

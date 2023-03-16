@@ -55,5 +55,20 @@
     </div>
   </div>
 
+{% for comment in user_comments %}
+<div class="card mb-3">
+  <div class="card-header">
+    {{ comment.name }} said on {{ comment.created_on }}:
+    {% if user.is_authenticated and comment.name == user.username %}
+    <a href="{% url 'comment_delete' pk=comment.pk %}" class="btn btn-danger btn-sm float-right">Delete</a>
+    {% endif %}
+  </div>
+  <div class="card-body">
+    <p>{{ comment.body }}</p>
+  </div>
+</div>
+{% empty %}
+<p>No comments yet.</p>
+{% endfor %}
 </main>
 {% endblock %}
