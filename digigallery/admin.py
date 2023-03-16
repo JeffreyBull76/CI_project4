@@ -3,9 +3,17 @@ from .models import Post, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
+def make_published(modeladmin, request, queryset):
+    queryset.update(status=1)
+
+
+make_published.short_description = "Mark selected posts as published"
+
+
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
+    actions = [make_published]
     summernote_fields = ('prompt', 'negprompt', 'method')
     prepopulated_fields = {'slug': ('title',)}
     list_display = ('title', 'slug', 'status', 'created_on')
