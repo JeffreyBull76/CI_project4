@@ -3,9 +3,12 @@
 {% block main %}
 <main class="gallery-pad">
 
-  <div class="row justify-content-center no-gutters">
+  <div class="masonry-container">
+    <div class="masonry-columns">
     {% for post in post_list %}
-    <div id="card-container">
+    
+    
+    <div id="card-container masonry-brick">
       <div class="d-flex justify-content-center">
         <a href="{% url 'post_detail' post.slug %}">
         <div class="card h-100">
@@ -32,6 +35,8 @@
     </div>
     {% endfor %}
   </div>
+</div>
+
 
 </main>
 {% endblock %}
