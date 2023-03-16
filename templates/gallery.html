@@ -14,9 +14,9 @@
         <div class="card h-100">
           <div class="image-container">
             {% if "placeholder" in post.featured_image.url %}
-            <img src="https://via.placeholder.com/384x512" class="card-img-top" alt="...">
+            <img src="https://via.placeholder.com/384x512" class="card-img-top" alt="..." loading="lazy">
             {% else %}
-            <img class="card-img" src=" {{ post.featured_image.url }}">
+            <img class="card-img" src=" {{ post.featured_image.url }}" loading="lazy">
             {% endif %}
           </div>
           <div class="image-overlay">
