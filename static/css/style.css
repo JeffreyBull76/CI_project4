@@ -110,6 +110,9 @@ section {
 .card {
 	max-width: 300px;
 	border: none;
+	transform: translateY(100%);
+	opacity: 0;
+	transition: 200ms;
 }
 
 .card-title, .card-text {
@@ -216,7 +219,7 @@ section {
 .masonry-container {
 	--column-count-small: 2;
 	--column-count-medium: 3;
-	--column-count-large: 5;
+	--column-count-large: 4;
 	--column-count-xlarge: 6;
 	--column-gap: 0.125rem;
 	padding: var(--column-gap);
@@ -261,3 +264,8 @@ section {
   .masonry-brick:first-child {
 	margin: 0 0 var(--column-gap);
   }
+
+.card.show {
+	transform: translateY(0);
+	opacity: 1;
+}
