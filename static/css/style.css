@@ -115,6 +115,11 @@ section {
 	transition: 200ms;
 }
 
+.card.show {
+	transform: translateY(0);
+	opacity: 1;
+}
+
 .card-title, .card-text {
 	color: gray;
 }
@@ -264,8 +269,3 @@ section {
   .masonry-brick:first-child {
 	margin: 0 0 var(--column-gap);
   }
-
-.card.show {
-	transform: translateY(0);
-	opacity: 1;
-}
