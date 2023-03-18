@@ -14,12 +14,12 @@
     <p>POST LIST:</p>
   </div>
   <div class="container-fluid">
-    <div class="row justify-content-left no-gutters">
+    <div class="row justify-content-center no-gutters">
       {% for post in post_list %}
       <div id="card-container">
         <div class="d-flex justify-content-center">
 
-          <div class="card h-100">
+          <div class="card img-card-acc h-100">
 
             <div class="image-container">
               {% if "placeholder" in post.featured_image.url %}
@@ -78,5 +78,4 @@
   <p>No comments yet.</p>
   {% endfor %}
 </main>
-<script src="../static/js/script.js"></script>
 {% endblock %}

@@ -18,5 +18,17 @@ document.addEventListener("DOMContentLoaded", function(){
 function copyToClipboard() {
     const promptText = document.getElementById("prompt-text").innerText;
     navigator.clipboard.writeText(promptText);
-    alert("Text copied to clipboard!");
+    alert("Prompt copied to clipboard!");
+}
+
+function copyToClipboard() {
+    const promptText = document.getElementById("negprompt-text").innerText;
+    navigator.clipboard.writeText(promptText);
+    alert("Negative prompt copied to clipboard!");
+}
+
+function copyToClipboard() {
+    const promptText = document.getElementById("method-text").innerText;
+    navigator.clipboard.writeText(promptText);
+    alert("Method copied to clipboard!");
 }

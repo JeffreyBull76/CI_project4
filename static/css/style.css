@@ -65,10 +65,6 @@ hr {
 	padding-left: 3%;
 }
 
-.text-right {
-	padding-right: 1%;
-}
-
 main {
 	display: flex;
 	flex-direction: column;
@@ -109,6 +105,11 @@ section {
 	transform: translateY(100%);
 	opacity: 0;
 	transition: 200ms;
+}
+
+.img-card-acc {
+	max-width: 300px;
+	border: none;
 }
 
 .img-card.show {
@@ -276,13 +277,19 @@ section {
 
 .card-body h5 {
 	text-align: left;
+	color: #f0ad4e;
 }
 
 .card-elements p {
 	text-align: left;
 	cursor: pointer;
+	color: #000000;
 }
 
 #text-card .card-body {
 	padding: 0;
+}
+
+#text-card h1 {
+	color: #f0ad4e;
 }
