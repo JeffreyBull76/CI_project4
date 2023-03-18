@@ -12,7 +12,7 @@
     <div id="card-container masonry-brick">
       <div class="d-flex justify-content-center">
         <a href="{% url 'post_detail' post.slug %}">
-        <div class="card h-100">
+        <div class="card img-card h-100">
           <div class="image-container">
             {% if "placeholder" in post.featured_image.url %}
             <img src="https://via.placeholder.com/384x512" class="card-img-top" alt="..." loading="lazy">
