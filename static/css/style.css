@@ -15,8 +15,12 @@ a {
 }
 
 hr {
-	background-color: #b1b1b1;
-	margin-bottom: 20px;
+	background-color: #f0ad4e;
+	margin: 2rem 0 2rem 0;
+}
+
+.fa-heart {
+	cursor: pointer;
 }
 
 /* Header and nav */
@@ -214,7 +218,7 @@ section {
 	--column-count-small: 2;
 	--column-count-medium: 3;
 	--column-count-large: 4;
-	--column-count-xlarge: 6;
+	--column-count-xlarge: 7;
 	--column-gap: 0.125rem;
 	padding: var(--column-gap);
   }
@@ -224,6 +228,7 @@ section {
 	column-gap: var(--column-gap);
 	column-count: var(--column-count-small);
 	column-width: calc(1 / var(--column-count-small) * 100%);
+	margin-bottom: 100px;
   }
   
   @media only screen and (min-width: 640px) {
@@ -270,9 +275,13 @@ section {
 }
 
 #text-card {
-	border: 0.5px solid #4e4e4e;
-	border-radius: 0;
+	border: 0.5px solid #000000;
 	margin-top: 2.5%;
+}
+
+#text-card .card-header {
+	background-color: #292b2c;
+	border-radius: 0;
 }
 
 .card-body h5 {
@@ -283,13 +292,28 @@ section {
 .card-elements p {
 	text-align: left;
 	cursor: pointer;
-	color: #000000;
+	color: #ffffff;
 }
 
 #text-card .card-body {
 	padding: 0;
+	background-color: #242424;
 }
 
 #text-card h1 {
 	color: #f0ad4e;
+}
+
+.promptdiv, .negpromptdiv, .methoddiv {
+	background-color: #242424;
+}
+
+.btn-like {
+	background-color: #ffffff00;
+	border: 0;
+}
+
+.btn-like .fa-heart {
+	font-size: large;
+	color: #ffffff;
 }
