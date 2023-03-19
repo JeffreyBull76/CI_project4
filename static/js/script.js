@@ -5,14 +5,18 @@ document.addEventListener("DOMContentLoaded", function(){
     
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            entry.target.classList.toggle("show", entry.isIntersecting)
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            entry.target.style.animationPlayState = "running";
+            observer.unobserve(entry.target);
+          }
         })
-    },
-    )
-    
+      }, {once: true});
+      
     cards.forEach(card => {
         observer.observe(card)
     })
+        
 })
 
 function copyToClipboard() {

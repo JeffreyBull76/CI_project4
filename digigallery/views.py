@@ -6,12 +6,16 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from cloudinary import api as cloudinary_api
 from .models import Post, Comment
 from .forms import CommentForm, SubmitForm
+from django.db.models import Count
 
 
 class PostList(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'gallery.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(status=1).order_by('-created_on')
 
 
 class AuthorPostList(LoginRequiredMixin, generic.ListView):
