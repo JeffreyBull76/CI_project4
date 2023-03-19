@@ -61,9 +61,9 @@
 
 <hr>
 
-<div class="row justify-content-start">
+<div class="row container-fluid justify-content-start">
 
-  <div style="margin-right: 2rem; padding-left: 2.5rem;">
+  <div style="margin-right: 2rem; padding-left: 1rem;">
     {% if user.is_authenticated %}
     <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
       {% csrf_token %}

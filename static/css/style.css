@@ -1,5 +1,6 @@
 /* default styles */
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 html,
 body {
@@ -12,6 +13,10 @@ body {
 a {
 	text-decoration: none;
 	color: white;
+}
+
+a:hover {
+	color: #f0ad4e;
 }
 
 hr {
@@ -29,6 +34,10 @@ hr {
 	color: #f0ad4e;
 	font-family: 'Julius Sans One', sans-serif;
 	font-size: xx-large;
+}
+
+.sub-nav-links:hover {
+	color: #ffffff;
 }
 
 .sub-nav-col {
@@ -125,7 +134,7 @@ section {
     position: absolute;
     top: 0;
     min-width: 100%;
-    background-color: #4646464b;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 }
 
 #acc-pst-det {
@@ -148,6 +157,7 @@ section {
     bottom: -12%;
     right: 5%;
     display: flex;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 .like-counter {
@@ -155,13 +165,15 @@ section {
     bottom: -12%;
     left: 5%;
     display: flex;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 .author {
-    color: rgb(207, 207, 207);
+	font-family: 'Poppins', sans-serif;
+	font-weight: 500;
     margin: 4px;
 	text-transform: uppercase;
-	font-size: small;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 .gallery-likes {
@@ -183,6 +195,14 @@ section {
 
 .service-row {
 	padding: 40px;
+}
+
+.service-pad {
+	margin-bottom: 2rem;
+}
+
+.service-pad h4, .service-row h2 {
+	color: #f0ad4e;
 }
 
 .service-icons {
