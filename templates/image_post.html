@@ -61,12 +61,40 @@
 
 <hr>
 
+<div class="row justify-content-start">
+
+  <div style="margin-right: 2rem; padding-left: 2.5rem;">
+    {% if user.is_authenticated %}
+    <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+      {% csrf_token %}
+      {% if liked %}
+      <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like"><i
+          class="fas fa-heart"></i></button>
+      {% else %}
+      <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like"><i
+          class="far fa-heart"></i></button>
+      {% endif %}
+    </form>
+    {% else %}
+    <span><i class="far fa-heart"></i></span>
+    {% endif %}
+    <span>{{ post.number_of_likes }}</span>
+  </div>
+
+  <div style="margin-top: 3px;">
+    <span><i class="far fa-comments"></i></span><span style="padding-left: 10px;">{{ comments.count }}</span>
+  </div>
+
+</div>
+
+<hr>
+
 <div class="container-fluid">
-  <div class="row d-flex">
+  <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-12">
       <!-- comments section -->
       {% for comment in post.comments.all %}
-      <div class="card mb-3">
+      <div class="card mb-3" id="comment-card">
         <div class="card-header">
           {{ comment.name }} said on {{ comment.created_on }}:
           {% if user.is_authenticated and comment.name == user.username %}
@@ -84,36 +112,10 @@
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12 text-right">
-      <div class="row justify-content-end">
 
-          <div style="margin-right: 15px;">
-            {% if user.is_authenticated %}
-            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
-              {% csrf_token %}
-              {% if liked %}
-              <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like"><i
-                  class="fas fa-heart"></i></button>
-              {% else %}
-              <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like"><i
-                  class="far fa-heart"></i></button>
-              {% endif %}
-            </form>
-            {% else %}
-            <span><i class="far fa-heart"></i></span>
-            {% endif %}
-            <span>{{ post.number_of_likes }}</span>
-          </div>
 
-          <div style="margin-top: 3px; margin-right: 10px;">
-            <span><i class="far fa-comments"></i></span><span style="padding-left: 10px;">{{ comments.count }}</span>
-          </div>
-
-      </div>
-
-      <hr>
-
-      <div class="row">
-        <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="card-body" id="comment-card">
           <!-- comment section form -->
 
           {% if user.is_authenticated %}
