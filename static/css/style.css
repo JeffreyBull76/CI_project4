@@ -63,6 +63,61 @@ hr {
 	height: 700px;
 }
 
+/* MODAL */
+
+.modal-title {
+	font-family: 'Julius Sans One', sans-serif;
+	color: #f0ad4e;
+}
+
+.modal-text {
+	font-family: 'Poppins', sans-serif;
+	font-size: 0.9rem;
+}
+
+.modal-content p:nth-child(2) {
+	margin-top: 35px;
+}
+
+.modal-content {
+	padding: 25px;
+}
+
+/* LANDING SERVICES SECTION */
+
+.service-row {
+	padding: 40px;
+}
+
+.service-pad {
+	margin-bottom: 2rem;
+}
+
+.service-pad h4,
+.service-row h2 {
+	color: #f0ad4e;
+}
+
+.service-icons {
+	padding: 15px;
+}
+
+.section-heading {
+	padding-top: 35px;
+}
+
+.text-muted {
+	padding-top: 25px;
+}
+
+#text-primary {
+	color: darkgoldenrod;
+}
+
+.fa-circle {
+	color: #000;
+}
+
 /* FOOTER STYLES */
 .wrapper {
 	min-height: 40%;
@@ -259,41 +314,6 @@ section {
 	}
 }
 
-/* LANDING SERVICES SECTION */
-
-.service-row {
-	padding: 40px;
-}
-
-.service-pad {
-	margin-bottom: 2rem;
-}
-
-.service-pad h4,
-.service-row h2 {
-	color: #f0ad4e;
-}
-
-.service-icons {
-	padding: 15px;
-}
-
-.section-heading {
-	padding-top: 35px;
-}
-
-.text-muted {
-	padding-top: 25px;
-}
-
-#text-primary {
-	color: darkgoldenrod;
-}
-
-.fa-circle {
-	color: #000;
-}
-
 /* USER LOGIN-ACCOUNT FORMS BASE STYLES */
 
 .acnt-forms {
@@ -373,6 +393,10 @@ section {
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
+.card-subtitle {
+	font-size: small;
+}
+
 #text-card {
 	border: 0.5px solid #000000;
 	margin-top: 2.5%;
@@ -400,6 +424,7 @@ section {
 }
 
 #text-card h1 {
+	font-family: 'Julius Sans One', sans-serif;
 	color: #f0ad4e;
 }
 
@@ -429,7 +454,13 @@ section {
 
 #comment-card .card-header,
 #comment-card h3 {
+	font-family: 'Julius Sans One', sans-serif;
 	color: #f0ad4e;
+}
+
+#comment-card .card-header {
+	font-size: small;
+	font-family: 'Julius Sans One', sans-serif;
 }
 
 #comment-card .textarea {
@@ -482,22 +513,49 @@ section {
 	margin-left: -14px;
 }
 
-/* MODAL */
+/* ACOUNT PAGE STYLE */
 
-.modal-title {
+.accnt-page-header {
+	margin: 2rem 0;
+}
+
+.accnt-page-header a .btn {
+	margin: 10px 0 20px 0;
+}
+
+.accnt-page-header h3 {
+	color: #f0ad4e;
+	font-family: 'Julius Sans One', sans-serif;
+}
+
+.accnt-page-header p {
+	font-family: 'Poppins', sans-serif;
+}
+
+.updte-page-form-style label {
+	display: block;
+}
+
+.update-title {
+	margin-top: 15px;
 	font-family: 'Julius Sans One', sans-serif;
 	color: #f0ad4e;
 }
 
-.modal-text {
+.update-text {
 	font-family: 'Poppins', sans-serif;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 }
 
-.modal-content p:nth-child(2) {
-	margin-top: 35px;
+.update-textarea {
+	border: 0;
+	background-color: #c0c0c0;
+	font-size: 1rem;
+	color: #000;
+	height: 6.5rem;
+	width: 100%;
 }
 
-.modal-content {
-	padding: 25px;
+.update-post-btn {
+	margin: 2% 3%;
 }

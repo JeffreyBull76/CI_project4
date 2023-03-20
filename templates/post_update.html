@@ -2,26 +2,63 @@
 {% block main %}
 
 <!-- retrieves data from our view to populate a form with existing post data -->
-<h1>Update Post: {{ post.title }}</h1>
+<div class="container-fluid">
+  <h3 class="update-title">Update Post:</h3>
+  <div class="row d-flex">
 
-<form method="post">
-  {% csrf_token %}
-  <label>Prompt:</label>
-  <textarea name="prompt">{{ post.prompt }}</textarea>
-  <label>Negative Prompt:</label>
-  <textarea name="negprompt">{{ post.negprompt }}</textarea>
-  <label>Method:</label>
-  <textarea name="method">{{ post.method }}</textarea>
-  <div>
-    <label>Title:</label>
-    <span>{{ post.title }}</span>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="post-image">
+        {% if "placeholder" in post.featured_image.url %}
+        <img src="https://via.placeholder.com/512x512" alt="Post Image" class="img-fluid">
+        {% else %}
+        <img src=" {{ post.featured_image.url }}" class="img-fluid">
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+      <div class="card" id="text-card">
+        <form method="post">
+          {% csrf_token %}
+
+          <div class="card-header">
+            <h3 class="card-title update-title">{{ post.title }}</h3>
+            <p class="card-subtitle">CREATED BY: {{ post.author }} | ON: {{ post.created_on }}</p>
+          </div>
+
+          <div class="card-body">
+
+            <div class="promptdiv list-group-item updte-page-form-style update-text">
+              <label>
+                <h5 class="card-title">PROMPT:</h5>
+              </label>
+              <textarea name="prompt" class="update-textarea">{{ post.prompt }}</textarea>
+            </div>
+
+            <div class="negpromptdiv list-group-item updte-page-form-style update-text">
+              <label>
+                <h5 class="card-title">NEGATIVE PROMPT:</h5>
+              </label>
+              <textarea name="negprompt" class="update-textarea">{{ post.negprompt }}</textarea>
+            </div>
+
+            <div class="methoddiv list-group-item updte-page-form-style update-text">
+              <label>
+                <h5 class="card-title">METHOD:</h5>
+              </label>
+              <textarea name="method" class="update-textarea">{{ post.method }}</textarea>
+            </div>
+
+            <div class="update-btn-row d-flex justify-content-start">
+              <button type="submit" class="update-post-btn btn btn-warning" value="Update Post">Submit</button>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+
+    </div>
   </div>
-  <div>
-    <label>Featured Image:</label>
-    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-  </div>
-  <input type="submit" value="Update Post">
-</form>
 
-
-{% endblock %}
+  {% endblock %}

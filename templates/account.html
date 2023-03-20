@@ -1,17 +1,17 @@
 {% extends "index.html" %}
 {% block main %}
 <main class="gallery-pad">
-  <!-- checks for superuser to show button to access admin panel -->
-  {% if request.user.is_superuser %}
-  <a href="{% url 'admin:index' %}">
-    <button class="btn btn-danger">Superuser Button</button>
-  </a>
-  {% endif %}
 
-  <div class="container-fluid">
+  <div class="container-fluid accnt-page-header">
+    <!-- checks for superuser to show button to access admin panel -->
+    
     <h3>Account Name: {{ user.username }}</h3>
-  </div>
-  <div class="container-fluid">
+    {% if request.user.is_superuser %}
+    <a href="{% url 'admin:index' %}">
+      <button class="btn btn-danger">Admin Panel</button>
+    </a>
+    {% endif %}
+    <p>MORE ACCOUNT INFORMATION COMMING SOON!</p>
     <p>POST LIST:</p>
   </div>
   <div class="masonry-container">
@@ -62,23 +62,32 @@
   </div>
 
   <!-- shows all comments by current user and allows them to be deleted -->
-  {% for comment in user_comments %}
-  <div class="card mb-3">
-    <div class="card-header">
-      {{ comment.name }} said on {{ comment.created_on }}:
-      {% if user.is_authenticated and comment.name == user.username %}
-
-      <a href="{% url 'comment_delete' pk=comment.pk %}?page=account"
-        class="btn btn-danger btn-sm float-right">Delete</a>
-      {% endif %}
-    </div>
-    <div class="card-body">
-      <p>{{ comment.body }}</p>
+  <div class="container-fluid">
+    <p>COMMENT LIST:</p>
+    <div class="row">
+      <!-- comments section displays user feedback -->
+      {% for comment in user_comments %}
+      <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+        <div class="card mb-3" id="comment-card">
+          <div class="card-header">
+            {{ comment.name }} said on {{ comment.created_on }}:
+          </div>
+          <div class="card-body">
+            <p>{{ comment.body }}</p>
+            {% if user.is_authenticated and comment.name == user.username %}
+            <a href="{% url 'comment_delete' pk=comment.pk %}?page=account"
+              class="btn btn-danger btn-sm float-right">Delete</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <!-- displays a message when no comments are present -->
+      <p>No comments yet.</p>
+      {% endfor %}
     </div>
   </div>
-  <!-- displays a message when no comments are present -->
-  {% empty %}
-  <p>No comments yet.</p>
-  {% endfor %}
+
+
 </main>
 {% endblock %}
