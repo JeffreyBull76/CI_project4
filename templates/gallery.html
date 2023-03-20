@@ -13,7 +13,7 @@
           <div class="d-flex justify-content-center">
             <!-- retrieves a post based on the slug data passed to the view -->
             <a href="{% url 'post_detail' post.slug %}">
-              <div class="card img-card h-100">
+              <div class="card img-card h-100" data-aos="{{ post.slug }}">
                 <div class="image-container">
                   {% if "placeholder" in post.featured_image.url %}
                   <img src="https://via.placeholder.com/384x512" class="card-img-top" alt="..." loading="lazy">

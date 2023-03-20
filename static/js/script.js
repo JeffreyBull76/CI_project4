@@ -1,23 +1,32 @@
 /** https://www.youtube.com/watch?v=2IbRtjez6ag **/
-document.addEventListener("DOMContentLoaded", function(){
 
-    const cards = document.querySelectorAll(".img-card")
-    
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-            entry.target.style.animationPlayState = "running";
-            observer.unobserve(entry.target);
-          }
-        })
-      }, {once: true});
-      
-    cards.forEach(card => {
-        observer.observe(card)
-    })
-        
-})
+document.addEventListener("DOMContentLoaded", function() {
+
+  const cards = document.querySelectorAll(".img-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+
+  cards.forEach(card => {
+    const img = card.querySelector('img');
+    if (img.complete) {
+      observer.observe(card);
+    } else {
+      img.addEventListener('load', function() {
+        observer.observe(card);
+      });
+    }
+  });
+
+});
 
 function copyToClipboard() {
     const promptText = document.getElementById("prompt-text").innerText;
