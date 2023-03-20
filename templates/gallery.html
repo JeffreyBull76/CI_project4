@@ -1,43 +1,47 @@
 {% extends "index.html" %}
 
 {% block main %}
-
+<!-- Padding to create space -->
 <main class="gallery-pad">
 
   <div class="masonry-container">
     <div class="masonry-columns">
-    {% for post in post_list %}
-    
-    
-    <div id="card-container masonry-brick">
-      <div class="d-flex justify-content-center">
-        <a href="{% url 'post_detail' post.slug %}">
-        <div class="card img-card h-100">
-          <div class="image-container">
-            {% if "placeholder" in post.featured_image.url %}
-            <img src="https://via.placeholder.com/384x512" class="card-img-top" alt="..." loading="lazy">
-            {% else %}
-            <img class="card-img" src="{{ post.featured_image.url }}" loading="lazy">
-            {% endif %}
-          </div>
-          <div class="image-overlay">
-            <p class="author">{{ post.title }}</p>
-          </div>
-          <div class="image-overlay2">
-              <span class="like-counter"><i class="far fa-heart"></i>
-              {{ post.number_of_likes }}</span>
-              {% with post.comments.count as total_comments %}
-              <span class="comment-counter"><i class="far fa-comments"></i> {{ total_comments }}</span>
-              {% endwith %}
+      <!-- Iteration to create our masonry gallery -->
+      {% for post in post_list %}
+      <div id="img-spacer">
+        <div id="card-container masonry-brick">
+          <div class="d-flex justify-content-center">
+            <!-- retrieves a post based on the slug data passed to the view -->
+            <a href="{% url 'post_detail' post.slug %}">
+              <div class="card img-card h-100">
+                <div class="image-container">
+                  {% if "placeholder" in post.featured_image.url %}
+                  <img src="https://via.placeholder.com/384x512" class="card-img-top" alt="..." loading="lazy">
+                  {% else %}
+                  <img class="card-img" src="{{ post.featured_image.url }}" loading="lazy">
+                  {% endif %}
+                </div>
+                <!-- overlays which contain the likes and comments displays -->
+                <div class="image-overlay">
+                  <p class="author">{{ post.title }}</p>
+                </div>
+                <div class="image-overlay2">
+                  <span class="like-counter"><i class="far fa-heart"></i>
+                    {{ post.number_of_likes }}</span>
+                  {% with post.comments.count as total_comments %}
+                  <span class="comment-counter"><i class="far fa-comments"></i> {{ total_comments }}</span>
+                  {% endwith %}
+                </div>
+              </div>
+            </a>
           </div>
         </div>
-      </a>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
 
-<script src="../static/js/script.js"></script>
+  <!-- Custom script loader for intersection observer function -->
+  <script src="../static/js/script.js"></script>
 </main>
 {% endblock %}

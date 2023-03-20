@@ -61,6 +61,7 @@
 
 <hr>
 
+<!-- row containing the likes and comments counter -->
 <div class="row container-fluid justify-content-start">
 
   <div style="margin-right: 2rem; padding-left: 1rem;">
@@ -91,8 +92,8 @@
 
 <div class="container-fluid">
   <div class="row">
+    <!-- comments section displays user feedback -->
     <div class="col-lg-8 col-md-8 col-sm-12">
-      <!-- comments section -->
       {% for comment in post.comments.all %}
       <div class="card mb-3" id="comment-card">
         <div class="card-header">
@@ -105,6 +106,7 @@
           <p>{{ comment.body }}</p>
         </div>
       </div>
+      <!-- displays a message when no comments are present -->
       {% empty %}
       <p>COMMENT ON MY ART...</p>
       {% endfor %}
@@ -112,12 +114,10 @@
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12 text-right">
-
+      <!-- comment section form -->
 
       <div class="row justify-content-center">
         <div class="card-body" id="comment-card">
-          <!-- comment section form -->
-
           {% if user.is_authenticated %}
           <h3>LEAVE A COMMENT:</h3>
           <p>Posting as: {{ user.username }}</p>
@@ -131,9 +131,8 @@
       </div>
     </div>
   </div>
-
 </div>
-
+<!-- Custom script loader for text copy function -->
 <script src="../static/js/script.js"></script>
 
 {% endblock main %}

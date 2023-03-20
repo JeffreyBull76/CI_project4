@@ -1,8 +1,12 @@
+<!-- included in index html by default -->
 {% block nav %}
+
+<!-- Authenticated user check -->
 {% if user.is_authenticated %}
 
 <header>
 
+  <!-- Main logout or account navigation -->
   <nav class="navbar bg-dark navbar-items">
     <a class="navbar-brand" href="{% url 'home' %}">Promptiverse</a>
     <div class="ml-auto">
@@ -17,6 +21,7 @@
     </div>
   </nav>
 
+  <!-- gallery or submissions pages -->
   <nav class="navbar sub-nav-col navbar-items">
     <div class="container-fluid">
       <div class="mr-auto">
@@ -35,6 +40,7 @@
 </header>
 
 
+<!-- This is returned if user is not registered -->
 {% else %}
   <header>
 

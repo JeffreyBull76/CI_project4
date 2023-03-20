@@ -2,16 +2,20 @@
 {% load crispy_forms_tags %}
 
 {% block main %}
+<!-- Authenticated user check -->
 {% if user.is_authenticated %}
+<!-- form to allow user submission of artwork and prompts -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 create-post-div">
             <h4>SUBMIT NEW POST:</h4>
             <p>Posting as: {{ user.username }}</p>
+            <!-- form is built from our submission view -->
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ submit_form|crispy }}
 
+                <!-- displays an alert if user submits form with errors -->
                 {% if submit_form.featured_image.errors %}
                     {% for error in submit_form.featured_image.errors %}
                         <div class="alert alert-danger">{{ error }}</div>
@@ -21,7 +25,14 @@
             </form>
         </div>
         <div class="col-md-4">
-            SOME MORE CONTENT
+            <div class="card mb-3" id="comment-card">
+                <div class="card-header text-uppercase">
+                    Heading
+                </div>
+                <div class="card-body">
+                    Body
+                </div>
+              </div>
         </div>
     </div>
 </div>

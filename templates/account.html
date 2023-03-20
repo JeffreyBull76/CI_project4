@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 {% block main %}
 <main class="gallery-pad">
+  <!-- checks for superuser to show button to access admin panel -->
   {% if request.user.is_superuser %}
   <a href="{% url 'admin:index' %}">
     <button class="btn btn-danger">Superuser Button</button>
@@ -15,6 +16,7 @@
   </div>
   <div class="masonry-container">
     <div class="masonry-columns">
+      <!-- retrieves all posts from current user -->
       {% for post in post_list %}
       <div id="card-container masonry-brick">
         <div class="d-flex justify-content-center">
@@ -32,6 +34,7 @@
             <div class="image-overlay">
               <p class="author">{{ post.title }}</p>
               {% if post.status == 1 %}
+              <!-- displays current status and allows deletion or updating -->
               <div id="acc-pst-det">POST STATUS: PUBLISHED</div>
               {% else %}
               <div id="acc-pst-det">POST STATUS: DRAFT</div>
@@ -42,6 +45,7 @@
               {% endif %}
             </div>
 
+            <!-- shows likes and comments counter -->
             <div class="image-overlay2">
               <span class="like-counter"><i class="far fa-heart"></i>
                 {{ post.number_of_likes }}</span>
@@ -50,16 +54,14 @@
               {% endwith %}
             </div>
 
-
-
           </div>
-
         </div>
       </div>
       {% endfor %}
     </div>
   </div>
 
+  <!-- shows all comments by current user and allows them to be deleted -->
   {% for comment in user_comments %}
   <div class="card mb-3">
     <div class="card-header">
@@ -74,6 +76,7 @@
       <p>{{ comment.body }}</p>
     </div>
   </div>
+  <!-- displays a message when no comments are present -->
   {% empty %}
   <p>No comments yet.</p>
   {% endfor %}

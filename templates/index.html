@@ -2,25 +2,53 @@
 
 {% block index %}
 
+<!-- Navbar loads here unsing include -->
 {% include 'nav.html' %}
 
+  <!-- Authenticated user check -->
   {% if user.is_authenticated %}
 
+  <!-- Other content extends here -->
   {% block main %}
   {% endblock main %}
 
   {% else %}
+  <!-- This is the jumbotron and hero section -->
   <div class="jumbotron jumbotron-fluid d-flex align-items-center">
     <div class="container text-center">
       <h1 class="display-4">Welcome to the Promptiverse</h1>
       <p class="lead mb-4">Discover AI-generated art and creativity at its finest.</p>
-      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#aboutModal">
         Learn More
       </button>
     </div>
   </div>
+
+  <!-- This is the modal about section -->
+  <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-padding">
+      <div class="modal-content bg-dark text-white">
+          <h5 class="modal-title" id="exampleModalLabel">Want to know more? stay a while and listen</h5>
+          <p class="modal-text">You have found your way to the Promptiverse, a gallery site to showcase AI art.</p>
+          <p class="modal-text">AI art is a form of art created using artificial intelligence algorithms. 
+            These algorithms are designed to learn patterns from existing data and generate new, unique outputs that can be considered art. 
+            The AI system can be trained on a variety of input sources, such as images, text, and audio.</p>
+
+          <p class="modal-text">The process of creating AI art involves feeding the AI system with input data and letting it generate a new output based on the learned patterns. 
+            The generated output can then be refined or altered by a human artist to create a final piece of art.</p>
+          <p class="modal-text">Remember be respectful and constructive. Go to the Signup link to start viewing & posting..</p>
+          <div class="modal-btn">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
   
   <main>
+
+    <!-- This is the services information section -->
     <section id="services">
       <div class="container">
         <div class="row service-row">
@@ -66,6 +94,7 @@
   <div class="wrapper">
     <div class="push"></div>
   </div>
+  <!-- This the footer and SM links -->
   <footer class="footer bg-dark text-white d-flex align-items-center">
     <div class="container-fluid">
       <div class="row">
