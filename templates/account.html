@@ -11,7 +11,7 @@
       <button class="btn btn-danger">Admin Panel</button>
     </a>
     {% endif %}
-    <p>MORE ACCOUNT INFORMATION COMMING SOON!</p>
+    <p>MORE ACCOUNT INFORMATION COMING SOON!</p>
     <p>POST LIST:</p>
   </div>
   <div class="masonry-container">
@@ -40,10 +40,7 @@
               {% else %}
               <div id="acc-pst-det">POST STATUS: DRAFT</div>
               {% endif %}
-              {% if request.user == post.author %}
-              <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger">Delete</a>
-              <a href="{% url 'post_update' post.slug %}" class="btn btn-danger">Update</a>
-              {% endif %}
+              <a href="{% url 'toggle_post_status' post.id %}" class="btn btn-warning">Toggle Status</a>
             </div>
 
             <!-- shows likes and comments counter -->
@@ -92,8 +89,9 @@
               <div id="acc-pst-det">POST STATUS: DRAFT</div>
               {% endif %}
               {% if request.user == post.author %}
-              <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger">Delete</a>
-              <a href="{% url 'post_update' post.slug %}" class="btn btn-danger">Update</a>
+              <a href="{% url 'delete_post' post.slug %}" class="btn btn-warning" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+              <a href="{% url 'post_update' post.slug %}" class="btn btn-warning" onclick="return confirm('Are you sure you want to update this post?')">Update</a>
+
               {% endif %}
             </div>
 

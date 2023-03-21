@@ -9,6 +9,14 @@ from .forms import CommentForm, SubmitForm
 from django.db.models import Count
 
 
+def toggle_post_status(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    # toggle the status to publish field between 0 and 1
+    post.status = 1 - post.status
+    post.save()
+    return HttpResponseRedirect(reverse('account_posts'))
+
+
 class PostList(generic.ListView):
     model = Post
     template_name = 'gallery.html'

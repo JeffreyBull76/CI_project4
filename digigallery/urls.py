@@ -12,4 +12,5 @@ urlpatterns = [
     path('delete/<slug:slug>/', PostDeleteView.as_view(), name='delete_post'),
     path('<slug:slug>/update/', views.PostUpdateView.as_view(), name='post_update'),  # noqa
     path('comment/<int:pk>/delete/', CommentDeleteView.as_view(), name='comment_delete'),  # noqa
+    path('posts/<int:post_id>/toggle_status/', views.toggle_post_status, name='toggle_post_status'),  # noqa
 ]
