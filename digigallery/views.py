@@ -23,14 +23,17 @@ class AuthorPostList(LoginRequiredMixin, generic.ListView):
     template_name = 'account.html'
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.filter(author=self.request.user).order_by('-created_on')  # noqa
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        user_comments = Comment.objects.filter(name=self.request.user.username)
-        context['user_comments'] = user_comments
-        return context
+        user = self.request.user
+        if user.is_superuser or user.is_staff:
+            # If the user is a superuser or staff, include all draft posts
+            queryset = Post.objects.filter(status=0)
+            # Also include posts where the author is the current user
+            queryset = queryset | Post.objects.filter(author=user)
+        else:
+            # Otherwise, only include posts where the author is the current
+            queryset = Post.objects.filter(author=user)
+        queryset = queryset.order_by('-created_on')
+        return queryset
 
 
 class PostDetail(View):

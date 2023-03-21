@@ -4,7 +4,7 @@
 
   <div class="container-fluid accnt-page-header">
     <!-- checks for superuser to show button to access admin panel -->
-    
+
     <h3>Account Name: {{ user.username }}</h3>
     {% if request.user.is_superuser %}
     <a href="{% url 'admin:index' %}">
@@ -16,8 +16,9 @@
   </div>
   <div class="masonry-container">
     <div class="masonry-columns">
-      <!-- retrieves all posts from current user -->
+      <!-- Creates list of all draft posts -->
       {% for post in post_list %}
+      {% if post.status == 0 %}
       <div id="card-container masonry-brick">
         <div class="d-flex justify-content-center">
 
@@ -57,37 +58,61 @@
           </div>
         </div>
       </div>
+      {% endif %}
       {% endfor %}
     </div>
   </div>
 
-  <!-- shows all comments by current user and allows them to be deleted -->
-  <div class="container-fluid">
-    <p>COMMENT LIST:</p>
-    <div class="row">
-      <!-- comments section displays user feedback -->
-      {% for comment in user_comments %}
-      <div class="col-lg-3 col-md-4 col-sm-12 col-12">
-        <div class="card mb-3" id="comment-card">
-          <div class="card-header">
-            {{ comment.name }} said on {{ comment.created_on }}:
-          </div>
-          <div class="card-body">
-            <p>{{ comment.body }}</p>
-            {% if user.is_authenticated and comment.name == user.username %}
-            <a href="{% url 'comment_delete' pk=comment.pk %}?page=account"
-              class="btn btn-danger btn-sm float-right">Delete</a>
-            {% endif %}
+
+
+  <div class="masonry-container">
+    <div class="masonry-columns">
+      <!-- rCreates list of posts from current user -->
+      {% for post in post_list %}
+      {% if post.author == request.user %}
+      <div id="card-container masonry-brick">
+        <div class="d-flex justify-content-center">
+
+          <div class="card img-card-acc h-100">
+
+            <div class="image-container">
+              {% if "placeholder" in post.featured_image.url %}
+              <img src="https://via.placeholder.com/384x512" class="card-img-top" alt="...">
+              {% else %}
+              <img class="card-img" src=" {{ post.featured_image.url }}">
+              {% endif %}
+            </div>
+
+            <div class="image-overlay">
+              <p class="author">{{ post.title }}</p>
+              {% if post.status == 1 %}
+              <!-- displays current status and allows deletion or updating -->
+              <div id="acc-pst-det">POST STATUS: PUBLISHED</div>
+              {% else %}
+              <div id="acc-pst-det">POST STATUS: DRAFT</div>
+              {% endif %}
+              {% if request.user == post.author %}
+              <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger">Delete</a>
+              <a href="{% url 'post_update' post.slug %}" class="btn btn-danger">Update</a>
+              {% endif %}
+            </div>
+
+            <!-- shows likes and comments counter -->
+            <div class="image-overlay2">
+              <span class="like-counter"><i class="far fa-heart"></i>
+                {{ post.number_of_likes }}</span>
+              {% with post.comments.count as total_comments %}
+              <span class="comment-counter"><i class="far fa-comments"></i> {{ total_comments }}</span>
+              {% endwith %}
+            </div>
+
           </div>
         </div>
       </div>
-      {% empty %}
-      <!-- displays a message when no comments are present -->
-      <p>No comments yet.</p>
+      {% endif %}
       {% endfor %}
     </div>
   </div>
-
-
+  {
 </main>
 {% endblock %}
