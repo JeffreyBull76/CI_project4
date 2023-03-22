@@ -12,8 +12,9 @@
     </a>
     {% endif %}
     <p>MORE ACCOUNT INFORMATION COMING SOON!</p>
-    <p>POST LIST:</p>
   </div>
+  <p class="text-uppercase acnt-text" style="margin-left: 15px;">Draft post list:</p>
+  
   <!-- checks for superuser to populate draft post list -->
   {% if request.user.is_superuser %}
   <div class="masonry-container">
@@ -21,6 +22,7 @@
       <!-- Creates list of all draft posts for admins-->
       {% for post in post_list %}
       {% if post.status == 0 %}
+      <div id="img-spacer">
       <div id="card-container masonry-brick">
         <div class="d-flex justify-content-center">
 
@@ -35,28 +37,27 @@
             </div>
 
             <div class="image-overlay">
-              <p class="author">{{ post.title }}</p>
+              <p class="author">{{ post.title }}</p>      
+            </div>
+
+            <div class="account-overlay2">
               {% if post.status == 1 %}
               <!-- displays current status and allows deletion or updating -->
               <div id="acc-pst-det">POST STATUS: PUBLISHED</div>
               {% else %}
               <div id="acc-pst-det">POST STATUS: DRAFT</div>
               {% endif %}
-              <a href="{% url 'toggle_post_status' post.id %}" class="btn btn-warning">Toggle Status</a>
-            </div>
-
-            <!-- shows likes and comments counter -->
-            <div class="image-overlay2">
-              <span class="like-counter"><i class="far fa-heart"></i>
-                {{ post.number_of_likes }}</span>
-              {% with post.comments.count as total_comments %}
-              <span class="comment-counter"><i class="far fa-comments"></i> {{ total_comments }}</span>
-              {% endwith %}
+              <div class="acc-btn-div">
+                {% if request.user == post.author %}
+                <a href="{% url 'toggle_post_status' post.id %}" class="btn btn-warning btn-sm">Publish</a>
+                {% endif %}
+              </div>
             </div>
 
           </div>
         </div>
       </div>
+    </div>
       {% endif %}
       {% endfor %}
     </div>
@@ -64,12 +65,16 @@
   {% endif %}
 
 
-
+  <hr style="width: 100%;">
+  <div class="container-fluid">
+    <p class="text-uppercase acnt-text">User post list:</p>
+  </div>
   <div class="masonry-container">
     <div class="masonry-columns">
       <!-- rCreates list of posts from current user -->
       {% for post in post_list %}
       {% if post.author == request.user %}
+      <div id="img-spacer">
       <div id="card-container masonry-brick">
         <div class="d-flex justify-content-center">
 
@@ -85,35 +90,33 @@
 
             <div class="image-overlay">
               <p class="author">{{ post.title }}</p>
+            </div>
+
+            <!-- shows likes and comments counter -->
+            <div class="account-overlay2">
+
               {% if post.status == 1 %}
               <!-- displays current status and allows deletion or updating -->
               <div id="acc-pst-det">POST STATUS: PUBLISHED</div>
               {% else %}
               <div id="acc-pst-det">POST STATUS: DRAFT</div>
               {% endif %}
-              {% if request.user == post.author %}
-              <a href="{% url 'delete_post' post.slug %}" class="btn btn-warning" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
-              <a href="{% url 'post_update' post.slug %}" class="btn btn-warning" onclick="return confirm('Are you sure you want to update this post?')">Update</a>
-
-              {% endif %}
-            </div>
-
-            <!-- shows likes and comments counter -->
-            <div class="image-overlay2">
-              <span class="like-counter"><i class="far fa-heart"></i>
-                {{ post.number_of_likes }}</span>
-              {% with post.comments.count as total_comments %}
-              <span class="comment-counter"><i class="far fa-comments"></i> {{ total_comments }}</span>
-              {% endwith %}
+              <div class="acc-btn-div">
+                {% if request.user == post.author %}
+                <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+                <a href="{% url 'post_update' post.slug %}" class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to update this post?')">Update</a>
+                {% endif %}
+              </div>
             </div>
 
           </div>
+
         </div>
       </div>
+    </div>
       {% endif %}
       {% endfor %}
     </div>
   </div>
-
 </main>
 {% endblock %}

@@ -12,7 +12,7 @@
         <div id="card-container masonry-brick">
           <div class="d-flex justify-content-center">
             <!-- retrieves a post based on the slug data passed to the view -->
-            <a href="{% url 'post_detail' post.slug %}">
+            <a href="{% url 'post_detail' post.slug %}" class="title-opacity">
               <div class="card img-card h-100" data-aos="{{ post.slug }}">
                 <div class="image-container">
                   {% if "placeholder" in post.featured_image.url %}
@@ -23,7 +23,7 @@
                 </div>
                 <!-- overlays which contain the likes and comments displays -->
                 <div class="image-overlay">
-                  <p class="author">{{ post.title }}</p>
+                  <p class="gallery-author">{{ post.title }}</p>
                 </div>
                 <div class="image-overlay2">
                   <span class="like-counter"><i class="far fa-heart"></i>
