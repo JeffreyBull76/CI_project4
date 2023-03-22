@@ -14,6 +14,7 @@ def toggle_post_status(request, post_id):
     # toggle the status to publish field between 0 and 1
     post.status = 1 - post.status
     post.save()
+    messages.success(request, 'The post has been published!')
     return HttpResponseRedirect(reverse('account_posts'))
 
 
@@ -81,6 +82,7 @@ class PostDetail(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
+            messages.success(request, 'Comment submitted')
 
             comment_form = CommentForm()
         else:
@@ -102,8 +104,10 @@ class PostLike(View):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
+            messages.warning(request, 'Your like has been removed')
         else:
             post.likes.add(request.user)
+            messages.success(request, 'Thanks for the like!')
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
@@ -127,6 +131,7 @@ class Submission(View):
             new_post = submit_form.save(commit=False)
             new_post.author = request.user
             new_post.save()
+            messages.success(request, 'You have submitted a new post!')
             return redirect('home')
         else:
             return render(
@@ -151,8 +156,8 @@ class PostDeleteView(LoginRequiredMixin, View):
         # Delete the post once image has been deleted
         post.delete()
 
-        messages.success(request, 'Your post has been deleted!')
-        return redirect('home')
+        messages.warning(request, 'Your post has been deleted!')
+        return redirect('account_posts')
 
 
 class PostUpdateView(View):
@@ -171,6 +176,7 @@ class PostUpdateView(View):
         post.negprompt = request.POST.get('negprompt')
         post.method = request.POST.get('method')
         post.save()
+        messages.success(request, 'Post Updated!')
         return redirect('account_posts')
 
 
@@ -179,7 +185,7 @@ class CommentDeleteView(LoginRequiredMixin, View):
         comment = get_object_or_404(Comment, pk=pk)
         if request.user.username == comment.name:
             comment.delete()
-            messages.success(request, 'Comment deleted!')
+            messages.warning(request, 'Comment deleted!')
         else:
             messages.error(request, 'You are not the author!')
 
