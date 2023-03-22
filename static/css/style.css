@@ -6,7 +6,7 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #292b2c;
+	background-color: #343a40;
 	color: #dfdfdf;
 }
 
@@ -26,6 +26,19 @@ hr {
 
 .fa-heart {
 	cursor: pointer;
+}
+
+/* ERROR PAGES */
+
+.error-box {
+	margin-top: 20%;
+}
+
+.error-box p {
+	font-family: 'Poppins', sans-serif;
+	color: #f0ad4e;
+	font-size: small;
+	text-align: center;
 }
 
 /* HEADER AND NAV BAR STYLES */
@@ -514,7 +527,7 @@ section {
 	margin-left: -14px;
 }
 
-/* ACOUNT PAGE STYLE */
+/* ACCOUNT PAGE STYLE */
 
 .accnt-page-header {
 	margin: 2rem 0;
@@ -559,4 +572,10 @@ section {
 
 .update-post-btn {
 	margin: 2% 3%;
+}
+
+.emptypost-div {
+	padding: 40% 0;
+	color: #f0ad4e;
+	font-family: 'Julius Sans One', sans-serif;
 }

@@ -14,9 +14,11 @@
     <p>MORE ACCOUNT INFORMATION COMING SOON!</p>
     <p>POST LIST:</p>
   </div>
+  <!-- checks for superuser to populate draft post list -->
+  {% if request.user.is_superuser %}
   <div class="masonry-container">
     <div class="masonry-columns">
-      <!-- Creates list of all draft posts -->
+      <!-- Creates list of all draft posts for admins-->
       {% for post in post_list %}
       {% if post.status == 0 %}
       <div id="card-container masonry-brick">
@@ -59,6 +61,7 @@
       {% endfor %}
     </div>
   </div>
+  {% endif %}
 
 
 
@@ -111,6 +114,6 @@
       {% endfor %}
     </div>
   </div>
-  {
+
 </main>
 {% endblock %}
