@@ -2,111 +2,101 @@
 
 {% block index %}
 
-  <!-- Authenticated user check -->
-  {% if user.is_authenticated %}
+<!-- Authenticated user check -->
+{% if user.is_authenticated %}
 
-  <!-- Other content extends here -->
-  {% block main %}
-  {% endblock main %}
+<!-- Other content extends here -->
+{% block main %}
+{% endblock main %}
 
-  {% else %}
-  <!-- This is the jumbotron and hero section -->
-  <div class="jumbotron jumbotron-fluid d-flex align-items-center">
-    <div class="container text-center">
-      <h1 class="display-4">Welcome to the Promptiverse</h1>
-      <p class="lead mb-4">Discover AI-generated art and creativity at its finest.</p>
-      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#aboutModal">
-        Learn More
-      </button>
-    </div>
+{% else %}
+<!-- This is the jumbotron and hero section -->
+<div class="jumbotron jumbotron-fluid d-flex align-items-center">
+  <div class="container text-center">
+    <h1 class="display-4">Welcome to the Promptiverse</h1>
+    <p class="lead mb-4">Discover AI-generated art and creativity at its finest.</p>
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#aboutModal">
+      Learn More
+    </button>
   </div>
+</div>
 
-  <!-- This is the modal about section -->
-  <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-padding">
+<!-- This is the modal about section -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-padding">
       <div class="modal-content bg-dark text-white">
-          <h5 class="modal-title" id="exampleModalLabel">Want to know more? stay a while and listen</h5>
-          <p class="modal-text">You have found your way to the Promptiverse, a gallery site to showcase AI art.</p>
-          <p class="modal-text">AI art is a form of art created using artificial intelligence algorithms. 
-            These algorithms are designed to learn patterns from existing data and generate new, unique outputs that can be considered art. 
-            The AI system can be trained on a variety of input sources, such as images, text, and audio.</p>
+        <h5 class="modal-title" id="exampleModalLabel">Want to know more? stay a while and listen</h5>
+        <p class="modal-text">You have found your way to the Promptiverse, a gallery site to showcase AI art.</p>
+        <p class="modal-text">AI art is a form of art created using artificial intelligence algorithms.
+          These algorithms are designed to learn patterns from existing data and generate new, unique outputs that can
+          be considered art.
+          The AI system can be trained on a variety of input sources, such as images, text, and audio.</p>
 
-          <p class="modal-text">The process of creating AI art involves feeding the AI system with input data and letting it generate a new output based on the learned patterns. 
-            The generated output can then be refined or altered by a human artist to create a final piece of art.</p>
-          <p class="modal-text">Remember be respectful and constructive. Go to the Signup link to start viewing & posting!</p>
-          <div class="modal-btn">
+        <p class="modal-text">The process of creating AI art involves feeding the AI system with input data and letting
+          it generate a new output based on the learned patterns.
+          The generated output can then be refined or altered by a human artist to create a final piece of art.</p>
+        <p class="modal-text">Remember be respectful and constructive. Go to the Signup link to start viewing & posting!
+        </p>
+        <div class="modal-btn">
           <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-    </div>
   </div>
-  
-  <main>
+</div>
 
-    <!-- This is the services information section -->
-    <section id="services">
-      <div class="container">
-        <div class="row service-row">
-          <div class="col-lg-12 text-center">
-            <h2 class="text-uppercase section-heading">About</h2>
-            <h3 class="text-muted section-subheading">Welcome to our AI art gallery, where creators showcase their
-              AI-generated artwor</h3>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-md-4 service-pad"><span class="fa-stack fa-3x service-icons"><i
-                class="fa fa-circle fa-stack-2x" id="text-primary"></i><i
-                class="fa fa-solid fa-palette fa-stack-1x fa-inverse"></i></span>
-            <h4 class="section-heading text-uppercase">Showcase</h4>
-            <p class="text-muted text-left">Our community is dedicated to exploring
-              the creative possibilities of machine learning algorithms, and we encourage artists of all levels to join
-              us.</p>
-          </div>
-          <div class="col-md-4 service-pad"><span class="fa-stack fa-3x service-icons"><i
-                class="fa fa-circle fa-stack-2x" id="text-primary"></i><i
-                class="fa fa-solid fa-comment fa-stack-1x fa-inverse"></i></span>
-            <h4 class="section-heading text-uppercase">Comment</h4>
-            <p class="text-muted">Each post features an image, title, prompt, negative prompt, and method, providing a
-              glimpse into the creative process
-              behind the art. Members can like, unlike, and comment on each other's posts, providing feedback and
-              inspiration to one another.</p>
-          </div>
-          <div class="col-md-4 service-pad"><span class="fa-stack fa-3x service-icons"><i
-                class="fa fa-circle fa-stack-2x" id="text-primary"></i><i
-                class="fa fa-laptop fa-stack-1x fa-inverse"></i></span>
-            <h4 class="section-heading text-uppercase">Expand</h4>
-            <p class="text-muted text-right">Your mind, to join our community, simply click the 'Account' button and sign up for an
-              account. Please note that access to the site
-              is prohibited without signing up. We look forward to seeing your AI art!</p>
-          </div>
+<main>
+
+  <!-- This is the services information section -->
+  <section id="services">
+    <div class="container">
+      <div class="row service-row">
+        <div class="col-lg-12 text-center">
+          <h2 class="text-uppercase section-heading">About</h2>
+          <h3 class="muted-text-pad section-subtext">Welcome to our AI art gallery, where creators showcase their
+            AI-generated artwork...</h3>
         </div>
       </div>
-    </section>
-
-  </main>
-  {% endif %}
-
-  <div class="wrapper">
-    <div class="push"></div>
-  </div>
-  <!-- This the footer and SM links -->
-  <footer class="footer bg-dark text-white d-flex align-items-center">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-6">
-          <p class="text-left">Footer</p>
+      <div class="row text-center">
+        <div class="col-md-4 service-pad">
+          <span><i class="fa-solid fa-eye section-fa"></i></span>
+          <h4 class="section-heading text-uppercase">Showcase</h4>
+          <p class="section-subtext sect-cont-text">Our community is dedicated to exploring
+            the creative possibilities of machine learning algorithms, and we encourage artists of all levels to join
+            us.</p>
         </div>
-        <div class="col-6">
-          <div class="social-links text-right">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-youtube"></i>
-          </div>
+        <div class="col-md-4 service-pad">
+          <span><i class="fa-regular fa-comments section-fa"></i></span>
+          <h4 class="section-heading text-uppercase">Comment</h4>
+          <p class="section-subtext sect-cont-text">Each post features an image, title, prompt, negative prompt, and method, providing a
+            glimpse into the creative process
+            behind the art. Members can like, unlike, and comment on each other's posts, providing feedback and
+            inspiration to one another.</p>
+        </div>
+        <div class="col-md-4 service-pad">
+          <span><i class="fa-solid fa-brain section-fa"></i></span>
+          <h4 class="section-heading text-uppercase">Expand</h4>
+          <p class="section-subtext sect-cont-text">Your mind, to join our community, simply click the 'Account' button and sign
+            up for an
+            account. Please note that access to the site
+            is prohibited without signing up. We look forward to seeing your AI art!</p>
         </div>
       </div>
     </div>
-  </footer>
-  {% endblock index %}
+  </section>
 
+</main>
+{% endif %}
+
+<div class="wrapper">
+  <div class="push"></div>
+</div>
+<!-- This the footer and SM links -->
+<footer class="footer bg-dark d-flex container-fluid justify-content-center">
+  <div class="foot-div">
+    <h6>Copyright ©2023 | Promptiverse | Privacy Policy</h6>
+  </div>
+</footer>
+{% endblock index %}

@@ -28,6 +28,20 @@ hr {
 	cursor: pointer;
 }
 
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
+section {
+	margin: 0;
+	padding: 0;
+}
+
 /* ERROR PAGES */
 
 .error-box {
@@ -103,7 +117,7 @@ hr {
 }
 
 .service-pad {
-	margin-bottom: 2rem;
+	margin: 2rem 0 3rem 0;
 }
 
 .service-pad h4,
@@ -116,19 +130,41 @@ hr {
 }
 
 .section-heading {
+	color: #f0ad4e;
+	font-family: 'Julius Sans One', sans-serif;
 	padding-top: 35px;
 }
 
-.text-muted {
+.section-subtext {
+	color: #bbbfc4;
+	font-family: 'Poppins',sans-serif;
+}
+
+.muted-text-pad {
 	padding-top: 25px;
 }
 
 #text-primary {
-	color: darkgoldenrod;
+	color: #f0ad4e;
 }
 
-.fa-circle {
-	color: #000;
+.section-fa {
+	color: #f0ad4e;
+	font-size: xx-large;
+}
+
+@media only screen and (min-width: 767px) {
+	.service-pad:nth-child(1) .sect-cont-text {
+		text-align: left;
+	}
+	
+	.service-pad:nth-child(2) .sect-cont-text {
+		text-align: center;
+	}
+	
+	.service-pad:nth-child(3) .sect-cont-text {
+		text-align: right;
+	}
 }
 
 /* FOOTER STYLES */
@@ -138,29 +174,14 @@ hr {
 	margin-bottom: -100px;
 }
 
+.foot-div {
+	font-family: 'Poppins',sans-serif;
+	color: #f0ad4e;
+}
+
 .footer,
 .push {
 	height: 100px;
-}
-
-.text-left {
-	font-family: 'Poppins', sans-serif;
-	color: #f0ad4e;
-	padding-left: 1.5%;
-}
-
-main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin: 0;
-	padding: 0;
-}
-
-section {
-	margin: 0;
-	padding: 0;
 }
 
 /* CARDS GALLERY */
@@ -241,7 +262,7 @@ section {
  * animation slide-in-blurred-bottom
  * ----------------------------------------
  */
- @-webkit-keyframes slide-in-blurred-bottom {
+@-webkit-keyframes slide-in-blurred-bottom {
 	0% {
 		-webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
 		transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
@@ -313,18 +334,20 @@ section {
 }
 
 
-.title-opacity:hover .gallery-author, .title-opacity:hover .image-overlay2 {
+.title-opacity:hover .gallery-author,
+.title-opacity:hover .image-overlay2 {
 	animation: fade-in 0.6s ease-out forwards;
 }
 
 @keyframes fade-in {
 	from {
-	  opacity: 0;
+		opacity: 0;
 	}
+
 	to {
-	  opacity: 1;
+		opacity: 1;
 	}
-  }
+}
 
 .gallery-likes {
 	position: absolute;
@@ -523,7 +546,8 @@ section {
 	margin: 10px 0;
 }
 
-#submit-card p, li {
+#submit-card p,
+li {
 	font-family: 'Poppins', sans-serif;
 	font-size: small;
 }
@@ -555,7 +579,7 @@ section {
 	color: #f0ad4e;
 	margin: 0 0 4px 8px;
 	font-size: small;
-	text-shadow: 0px 0px 7px rgba(0,0,0,1), 0px 0px 7px rgba(0,0,0,1), 0px 0px 7px rgba(0,0,0,1), 0px 0px 7px rgba(0,0,0,1);
+	text-shadow: 0px 0px 7px rgba(0, 0, 0, 1), 0px 0px 7px rgba(0, 0, 0, 1), 0px 0px 7px rgba(0, 0, 0, 1), 0px 0px 7px rgba(0, 0, 0, 1);
 }
 
 .accnt-page-header {
@@ -617,6 +641,7 @@ section {
 .acc-btn-div a:nth-child(1) {
 	margin: 0 0 7px 7px;
 }
+
 .acc-btn-div a:nth-child(2) {
 	float: right;
 	margin-right: 7px;
