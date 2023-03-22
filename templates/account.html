@@ -48,7 +48,7 @@
                 <div id="acc-pst-det">POST STATUS: DRAFT</div>
                 {% endif %}
                 <div class="acc-btn-div">
-                  {% if request.user == post.author %}
+                  {% if request.user.is_superuser %}
                   <a href="{% url 'toggle_post_status' post.id %}" class="btn btn-warning btn-sm">Publish</a>
                   {% endif %}
                 </div>
