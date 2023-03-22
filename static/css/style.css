@@ -144,7 +144,9 @@ hr {
 }
 
 .text-left {
-	padding-left: 3%;
+	font-family: 'Poppins', sans-serif;
+	color: #f0ad4e;
+	padding-left: 1.5%;
 }
 
 main {
@@ -578,6 +580,10 @@ section {
 	font-family: 'Poppins', sans-serif;
 	color: #f0ad4e;
 	align-self: flex-start;
+}
+
+.acnt-text-div {
+	border-bottom: 1px solid #f0ad4e;
 }
 
 .updte-page-form-style label {
