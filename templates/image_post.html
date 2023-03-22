@@ -12,7 +12,7 @@
         {% if "placeholder" in post.featured_image.url %}
         <img src="https://via.placeholder.com/512x512" alt="Post Image" class="img-fluid">
         {% else %}
-        <img src=" {{ post.featured_image.url }}" class="img-fluid">
+        <img src=" {{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid">
         {% endif %}
       </div>
     </div>

@@ -16,7 +16,7 @@
     <h1 class="display-4">Welcome to the Promptiverse</h1>
     <p class="lead mb-4">Discover AI-generated art and creativity at its finest.</p>
     <button type="button" class="btn btn-warning btn-lg text-uppercase landing-button" data-toggle="modal"
-      data-target="#aboutModal">
+      data-target="#aboutModal" aria-label="Learn more about the site">
       Learn More
     </button>
   </div>
@@ -48,52 +48,6 @@
   </div>
 </div>
 
-<!-- This is the modal Privacy section -->
-<div class="modal fade" id="legalModal" tabindex="-1" role="dialog" aria-labelledby="legalModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-padding">
-      <div class="modal-content bg-dark">
-        <h5 class="modal-title2">Legal Policy</h5>
-        <p class="modal-text modal-text2">We take your safety and rights, and that of all users, seriously and are committed to protecting your personal
-          information.
-          This Legal Policy explains how we collect, use, and disclose your personal information. And some general TOS information.</p>
-
-        <p class="modal-text">
-          <ol>
-            <li class="foot-modal-li">Collection of Information: We collect personal information that you voluntarily
-              provide to us, such as your name,
-              email address, and any other information you provide when you use our website.</li>
-            <li class="foot-modal-li">Use of Information: We use your personal information to provide you with the
-              products and services you request,
-              to communicate with you, and to improve our website. All artwork posted is free to use and alter by all
-              community members. By posting
-              your artwork you relinquish all rights to it, and it enters the public domain.</li>
-            <li class="foot-modal-li">Cookies: We use cookies and similar technologies to analyze website traffic and
-              usage, and to provide you with
-              a better website experience.</li>
-            <li class="foot-modal-li">Your Rights: You have the right to access, correct, or delete your personal
-              information. You may also opt-out
-              of receiving marketing communications from us at any time</li>
-            <li class="foot-modal-li">Data Security: We take reasonable measures to protect your personal information
-              from unauthorized access,
-              disclosure, or destruction.</li>
-            <li class="foot-modal-li">Changes to this Privacy Policy: We may update this Privacy Policy from time to
-              time. The updated policy will
-              be posted on our website.</li>
-            <li class="foot-modal-li">Harmful Content: Users found posting harmful content or abuse will be immediately 
-              banned from the site at the admins discretion.</li>
-          </ol>
-          <p class="modal-text2">If you need to contact us regarding this policy, send an email to admin@promptiverse.com.</p>
-        </p>
-        <div class="modal-btn">
-          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <main>
 
   <!-- This is the services information section -->
@@ -102,7 +56,7 @@
       <div class="row service-row">
         <div class="col-lg-12 text-center">
           <h2 class="text-uppercase section-heading">About</h2>
-          <h4 class="muted-text-pad section-subtext">Welcome to our AI art gallery, where creators showcase their
+          <h4 class="muted-text-pad section-subtext" id="about-text">Welcome to our AI art gallery, where creators showcase their
             AI-generated artwork...</h3>
         </div>
       </div>
@@ -145,7 +99,7 @@
 <!-- This the footer and SM links -->
 <footer class="footer bg-dark d-flex container-fluid justify-content-center">
   <div class="foot-div d-flex justify-content-center align-items-center">
-    <p>Copyright ©2023 | Promptiverse | <a class="footer-modal" data-toggle="modal" data-target="#legalModal">Legal</a> | Socials Coming Soon</p>
+    <p>Copyright ©2023 | Promptiverse | <a class="footer-modal" data-toggle="modal" data-target="#legalModal" aria-label="Learn more about our Legal policies">Legal</a> | Socials Coming Soon</p>
   </div>
 </footer>
 {% endblock index %}

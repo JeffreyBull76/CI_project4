@@ -19,6 +19,52 @@
   <!-- Navbar loads here unsing include -->
 {% include 'nav.html' %}
 
+<!-- This is the modal Privacy section -->
+<div class="modal fade" id="legalModal" tabindex="-1" role="dialog" aria-labelledby="legalModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-padding">
+      <div class="modal-content bg-dark">
+        <h5 class="modal-title2">Legal Policy</h5>
+        <p class="modal-text modal-text2">We take your safety and rights, and that of all users, seriously and are committed to protecting your personal
+          information.
+          This Legal Policy explains how we collect, use, and disclose your personal information. And some general TOS information.</p>
+
+        <p class="modal-text">
+          <ol>
+            <li class="foot-modal-li">Collection of Information: We collect personal information that you voluntarily
+              provide to us, such as your name,
+              email address, and any other information you provide when you use our website.</li>
+            <li class="foot-modal-li">Use of Information: We use your personal information to provide you with the
+              products and services you request,
+              to communicate with you, and to improve our website. All artwork posted is free to use and alter by all
+              community members. By posting
+              your artwork you relinquish all rights to it, and it enters the public domain.</li>
+            <li class="foot-modal-li">Cookies: We use cookies and similar technologies to analyze website traffic and
+              usage, and to provide you with
+              a better website experience.</li>
+            <li class="foot-modal-li">Your Rights: You have the right to access, correct, or delete your personal
+              information. You may also opt-out
+              of receiving marketing communications from us at any time</li>
+            <li class="foot-modal-li">Data Security: We take reasonable measures to protect your personal information
+              from unauthorized access,
+              disclosure, or destruction.</li>
+            <li class="foot-modal-li">Changes to this Privacy Policy: We may update this Privacy Policy from time to
+              time. The updated policy will
+              be posted on our website.</li>
+            <li class="foot-modal-li">Harmful Content: Users found posting harmful content or abuse will be immediately 
+              banned from the site at the admins discretion.</li>
+          </ol>
+          <p class="modal-text2">If you need to contact us regarding this policy, send an email to admin@promptiverse.com.</p>
+        </p>
+        <div class="modal-btn">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- main site content loads here -->
   {% block index %}
   {% endblock index %}
@@ -29,10 +75,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-<script src="https://kit.fontawesome.com/9cb253b564.js" crossorigin="anonymous"></script>
 <!-- Custom script loader for intersection observer & text copy functions -->
 <script src="{% static 'js/script.js' %}"></script>
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/9cb253b564.js" crossorigin="anonymous"></script>
 
 </html>

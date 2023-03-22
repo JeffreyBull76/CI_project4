@@ -238,6 +238,10 @@ section {
 	padding: 40px;
 }
 
+#about-text {
+	font-family: 'Julius Sans One', sans-serif;
+}
+
 .service-pad {
 	margin: 2rem 0 3rem 0;
 }
