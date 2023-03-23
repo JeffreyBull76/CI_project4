@@ -4,7 +4,13 @@
 
   <div class="container-fluid accnt-page-header">
     <h3>Account Name: {{ user.username }}</h3>
-    <p>MORE ACCOUNT INFORMATION COMING SOON!</p>
+    <ul>
+      <li>Account settings: COMING SOON!</li>
+      <li>User Posts: COMING SOON!</li>
+      <li>User Comments: COMING SOON!</li>
+      <li>Likes Collected: COMING SOON!</li>
+      <li>Likes Given: COMING SOON!</li>
+    </ul>    
     <!-- checks for superuser to show button to access admin panel -->
     {% if request.user.is_superuser %}
     <a href="{% url 'admin:index' %}">
