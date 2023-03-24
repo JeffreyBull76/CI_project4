@@ -371,7 +371,6 @@ section {
 .modal-text2 {
 	font-family: 'Poppins',sans-serif;
 	font-size: small;
-	align-content: left;
 }
 
 /* CARDS GALLERY */
@@ -598,35 +597,30 @@ section {
 .masonry-columns {
 	column-gap: var(--column-gap);
 	column-count: var(--column-count-small);
-	column-width: calc(1 / var(--column-count-small) * 100%);
 }
 
 /* MASONRY MEDIA QUERIES */
 @media only screen and (min-width: 640px) {
 	.masonry-columns {
 		column-count: var(--column-count-medium);
-		column-width: calc(1 / var(--column-count-medium) * 100%);
 	}
 }
 
 @media only screen and (min-width: 860px) {
 	.masonry-columns {
 		column-count: var(--column-count-large);
-		column-width: calc(1 / var(--column-count-large) * 100%);
 	}
 }
 
 @media only screen and (min-width: 1200px) {
 	.masonry-columns {
 		column-count: var(--column-count-xlarge);
-		column-width: calc(1 / var(--column-count-xlarge) * 100%);
 	}
 }
 
 @media only screen and (min-width: 1800px) {
 	.masonry-columns {
 		column-count: var(--column-count-xxlarge);
-		column-width: calc(1 / var(--column-count-xlarge) * 100%);
 	}
 }
 
