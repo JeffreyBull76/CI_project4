@@ -19,7 +19,7 @@ Site description
 
 * [**SITE FEATURES**](<#site-features>)
     * [Inherited Code](<#inherited-code>)
-    * [](<#>)
+    * [Depreciated Code](<#depreciated-code>)
     * [](<#>)
     * [](<#>)
     * [](<#>)
@@ -39,11 +39,11 @@ Site description
 
 
 * [**TESTING**](<#testing>)
+    * [Fixed Bugs](<#fixed-bugs>)
     * [](<#>)
     * [](<#>)
     * [](<#>)
-    * [](<#>)
-    * [](<#>)
+    * [Lessons Learned](<#lessons-learned>)
 
 
 * [DEPLOYMENT](<#deployment>)
@@ -65,7 +65,55 @@ Site description
 
 ### SITE FEATURES
 
-content
+### Depreciated Code
+<details><summary>This first version of a post submission function, which worked but did not correctly gather and pre-populate user details. This in practice allowed users to select from a list to designate author as it was just using the admin data for the item. In retrospect a custom built model could have avoided this (see Lessons Learned) but for the scope of the project the solution was to simply rewrite our submission function (see live code). This allowwed me to add other functionality and security. Note the code presented here was done in a test environment on my previous walkthrough project.</summary>
+
+VIEW:
+```class Submission(View):
+        def get(self, request, *args, **kwargs):
+            queryset = Post.objects
+
+            return render(
+                request,
+                'submit_post.html',
+                {
+                    "submit_form": SubmitForm(),
+                }
+            )
+```
+
+FORM:
+```class SubmitForm(forms.ModelForm):
+        class Meta:
+            model = Post
+            fields = ('author', 'title', 'content', 'slug', 'excerpt',)
+```
+</details>
+    
+<details><summary>This Code below presented to show the old SubmitForm function code. Later tidied up and moved into one block (see live code)</summary>
+
+OLD CODE:
+```def clean(self):
+        cleaned_data = super().clean()
+        title = cleaned_data.get('title')
+        if title:
+            slug = slugify(title)
+            if Post.objects.filter(slug=slug).exists():
+                raise forms.ValidationError("This title already exists.")
+            cleaned_data['slug'] = slugify(title)
+        return cleaned_data
+
+      def clean_slug(self):
+        slug = slugify(self.cleaned_data['title'])
+        count = 1
+        while Post.objects.filter(slug=slug).exists():
+            slug = f'{slug}-{count}'
+            count += 1
+        return slug
+```
+</details>
+
+<details><summary></summary></details>
 
 ### [Contents Menu](<#table-of-contents>)
 --------------------------------------------------------
@@ -86,7 +134,8 @@ content
 
 ### TESTING
 
-content
+* BUG NOTES:
+* In the old PostList view we had an issue rendering the list correctly. This was fixed by user the super() function. It now populates our gallery correctly.
 
 ### [Contents Menu](<#table-of-contents>)
 --------------------------------------------------------

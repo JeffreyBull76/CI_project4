@@ -85,7 +85,7 @@ section {
 	color: #000000;
 }
 
-#nav-items {
+#nav-item1, #nav-item2, #nav-item3, #nav-item4, #nav-item5, #nav-item6 {
 	font-family: 'Poppins', sans-serif;
 	margin-right: 10px;
 	font-size: 1rem;

@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html class="h-100">
+<html class="h-100" lang="en">
 
 <head>
   <title>Promptiverse</title>
@@ -9,7 +9,7 @@
   <!-- Stylesheet and precon data -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -33,8 +33,7 @@
   {% include 'nav.html' %}
 
   <!-- This is the modal Privacy section -->
-  <div class="modal fade" id="legalModal" tabindex="-1" role="dialog" aria-labelledby="legalModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="legalModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-padding">
         <div class="modal-content bg-dark">
@@ -73,7 +72,6 @@
             </ol>
             <p class="modal-text2">If you need to contact us regarding this policy, send an email to
               admin@promptiverse.com.</p>
-          </p>
           <div class="modal-btn">
             <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
           </div>
@@ -88,11 +86,11 @@
 
 </body>
 
-<!-- Required scripts load here -->
+<!-- Required JS loads here -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<!-- Custom script loader for intersection observer & text copy functions -->
+<!-- Custom JS loader for intersection observer & text copy functions -->
 <script src="{% static 'js/script.js' %}"></script>
 <!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/9cb253b564.js" crossorigin="anonymous"></script>
