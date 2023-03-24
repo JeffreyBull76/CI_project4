@@ -19,6 +19,19 @@ def toggle_post_status(request, post_id):
 
 
 class PostList(generic.ListView):
+    """
+
+    Extends Django's generic.ListView, defines model as Post
+    and spcifies the template to render the view.
+
+    We use super to customize the behavior of the subclass
+    while still maintaining the original behavior of the parent class
+    (depreciate bug note see readme file)
+
+    Finally we filter the result by published status and when they
+    were created.
+
+    """
     model = Post
     template_name = 'gallery.html'
 
@@ -28,6 +41,19 @@ class PostList(generic.ListView):
 
 
 class AuthorPostList(LoginRequiredMixin, generic.ListView):
+    """
+
+    This is a modified version of PostList using similar syntax
+    it renders to the account page. It serves two purposes.
+
+    It checks first if the user is a superuser or staff, and if so
+    returns objects with a status of zero (denoting draft status)
+    it then returns the admin/staff members actual posts as well.
+
+    Else it returns the current users posts only when not denoted
+    as staff.
+
+    """
     model = Post
     template_name = 'account.html'
 
@@ -46,7 +72,13 @@ class AuthorPostList(LoginRequiredMixin, generic.ListView):
 
 
 class PostDetail(View):
+    """
 
+    This code remains similar to the P4 walkthrough
+    project with minor changes to accomodate the new
+    scope of our project.
+
+    """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -99,7 +131,12 @@ class PostDetail(View):
 
 
 class PostLike(View):
+    """
 
+    Again here the code raims largely unchanged from the walkthrough
+    as this already served its purpose perfectly.
+
+    """
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
@@ -113,6 +150,21 @@ class PostLike(View):
 
 
 class Submission(View):
+    """
+
+    The GET method returns a form rendered by the
+    set template. The form instance "SubmitForm()"
+    is passed as the "submit_form" variable.
+
+    The POST method checks if the form is valid
+    if so it creates a new post entry in the DB
+
+    If it is not valid it returns an error message
+    and sets posted to True preventing the form
+    being returned again as blank.
+
+    """
+    # Creates our form to be rendered
     def get(self, request, *args, **kwargs):
         queryset = Post.objects
         return render(
@@ -123,10 +175,14 @@ class Submission(View):
             }
         )
 
+    # Posts our form data
     def post(self, request, *args, **kwargs):
         queryset = Post.objects
-        submit_form = SubmitForm(request.POST, request.FILES, author=request.user)  # noqa
+        submit_form = SubmitForm(
+            request.POST, request.FILES, author=request.user
+            )
 
+        # Checks for valid form data and redirects
         if submit_form.is_valid():
             new_post = submit_form.save(commit=False)
             new_post.author = request.user
@@ -134,6 +190,7 @@ class Submission(View):
             messages.success(request, 'You have submitted a new post!')
             return redirect('home')
         else:
+            # re-renders the existing form for editing
             return render(
                 request,
                 'create_post.html',
@@ -145,6 +202,26 @@ class Submission(View):
 
 
 class PostDeleteView(LoginRequiredMixin, View):
+    """
+
+    Uses the LoginRequiredMixing for security allows
+    the deletion of posts and their associated images.
+
+    Gets object from DB based on two parameters
+    the slug value and request which gathers the HTTP
+    data of the associate object (in this case our
+    image)
+
+    In our POST method we set the cloudinary_public_id to
+    the value of the associated image on our cloudinary
+    service. We then check for the cloudinary_public_id's
+    existence and if true and valid we delete it from the
+    Cloudinary service using an API call.
+
+    Cascade is already set in our models to remove attached
+    comments.
+
+    """
     def get(self, request, slug):
         post = get_object_or_404(Post, slug=slug, author=request.user)
 
@@ -156,33 +233,68 @@ class PostDeleteView(LoginRequiredMixin, View):
         # Delete the post once image has been deleted
         post.delete()
 
+        # Return a message and redirect
         messages.warning(request, 'Your post has been deleted!')
         return redirect('account_posts')
 
 
 class PostUpdateView(View):
+    """
+
+    Allows for updating of existing posts using
+    GET and POST methods.
+
+    Renders our existing post infomation to the template
+    to allow for updating.
+
+    When the user submits the data it re-submits each
+    field with the new data and saves to the DB.
+
+    """
     template_name = 'post_update.html'
 
     def get(self, request, slug):
+        # Gets the blog post with the specified slug
         post = get_object_or_404(Post, slug=slug)
+        # Return a dictionary based on the values of post above
         context = {
             'post': post
         }
+        # Render the post item to the template
         return render(request, self.template_name, context)
 
     def post(self, request, slug):
+        # Gets the blog post with the specified slug
         post = get_object_or_404(Post, slug=slug)
+        # Updates all the allowed update fields
         post.prompt = request.POST.get('prompt')
         post.negprompt = request.POST.get('negprompt')
         post.method = request.POST.get('method')
+        # Saves the updated blog post and redirects
         post.save()
         messages.success(request, 'Post Updated!')
         return redirect('account_posts')
 
 
 class CommentDeleteView(LoginRequiredMixin, View):
+    """
+
+    As with previous destructive task uses Mixin
+    to check for a logged in user.
+
+    GET method uses the http data and Primary Key
+    of the associated comment.
+
+    It then checks if the current user is the same
+    as the comment author. It then uses the base
+    delete() function to remove the comment from
+    the database.
+
+    """
     def get(self, request, pk):
+        # Two arguments for our Model and PK
         comment = get_object_or_404(Comment, pk=pk)
+        # Validation check for comment Author
         if request.user.username == comment.name:
             comment.delete()
             messages.warning(request, 'Comment deleted!')

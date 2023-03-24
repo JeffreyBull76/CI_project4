@@ -5,7 +5,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 def make_published(modeladmin, request, queryset):
     """
-    This function allows for easy/mass updating of posts in our admin panel.
+    This allows for easy/mass updating of posts in our admin panel.
     It adds an option to our admin dropdown with the following function.
 
     Arguments:
