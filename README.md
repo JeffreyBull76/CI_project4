@@ -18,7 +18,7 @@ Site description
 
 
 * [**SITE FEATURES**](<#site-features>)
-    * [](<#>)
+    * [Inherited Code](<#inherited-code>)
     * [](<#>)
     * [](<#>)
     * [](<#>)
