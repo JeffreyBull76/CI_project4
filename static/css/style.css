@@ -379,17 +379,12 @@ section {
 	width: 100%;
 }
 
-.card-container {
-	width: 20%;
-	height: 100%;
-}
-
 .gallery-pad {
 	padding-top: 5px;
 }
 
-#card-container {
-	padding: 3px;
+.card-container {
+	padding: 0;
 	margin: 0;
 }
 
@@ -409,11 +404,7 @@ section {
 	animation: slide-in-blurred-bottom 0.5s cubic-bezier(0.895, 0.030, 0.685, 0.220) both;
 }
 
-#img-spacer {
-	padding-top: 6px;
-}
-
-#img-spacer:hover {
+.card-img:hover {
 	filter: brightness(120%);
 }
 
@@ -490,7 +481,7 @@ section {
 
 .comment-counter {
 	position: absolute;
-	bottom: -12%;
+	bottom: 7px;
 	right: 5%;
 	display: flex;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.6);
@@ -498,8 +489,8 @@ section {
 
 .like-counter {
 	position: absolute;
-	bottom: -12%;
-	left: 5%;
+	bottom: 7px;
+	left: 2.5%;
 	display: flex;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.6);
 }
@@ -742,19 +733,19 @@ section {
 }
 
 
-#submit-card {
+.submit-card {
 	background-color: #292b2c;
 	border-radius: 0;
 	margin: 10px 0;
 }
 
-#submit-card p,
+.submit-card p,
 li {
 	font-family: 'Poppins', sans-serif;
 	font-size: small;
 }
 
-#submit-card h5 {
+.submit-card h5 {
 	color: #f0ad4e;
 	font-family: 'Julius Sans One', sans-serif;
 }
@@ -777,7 +768,7 @@ li {
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.6);
 }
 
-#acc-pst-det {
+.acc-pst-det {
 	color: #f0ad4e;
 	margin: 0 0 4px 8px;
 	font-size: small;
@@ -789,8 +780,8 @@ li {
 	border-bottom: 1px solid #f0ad4e;
 }
 
-.accnt-page-header a .btn {
-	margin: 10px 0 20px 0;
+.accnt-page-header a {
+	margin: 8px 0 20px 0;
 }
 
 .accnt-page-header h3 {

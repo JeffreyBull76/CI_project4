@@ -13,9 +13,7 @@
     </ul>    
     <!-- checks for superuser to show button to access admin panel -->
     {% if request.user.is_superuser %}
-    <a href="{% url 'admin:index' %}">
-      <button class="btn btn-danger">Admin Panel</button>
-    </a>
+    <a href="{% url 'admin:index' %}" class="btn btn-danger">Admin Panel</a>
   </div>
   <p class="text-uppercase acnt-text" style="margin-left: 15px;">Draft post list:</p>
   {% endif %}
@@ -28,8 +26,8 @@
       <!-- Creates list of all draft posts for admins-->
       {% for post in post_list %}
       {% if post.status == 0 %}
-      <div id="img-spacer">
-        <div id="card-container masonry-brick">
+
+        <div class="card-container masonry-brick">
           <div class="d-flex justify-content-center">
 
             <div class="card img-card-acc h-100">
@@ -49,9 +47,9 @@
               <div class="account-overlay2">
                 {% if post.status == 1 %}
                 <!-- displays current status and allows publishing -->
-                <div id="acc-pst-det">POST STATUS: PUBLISHED</div>
+                <div class="acc-pst-det">POST STATUS: PUBLISHED</div>
                 {% else %}
-                <div id="acc-pst-det">POST STATUS: DRAFT</div>
+                <div class="acc-pst-det">POST STATUS: DRAFT</div>
                 {% endif %}
                 <div class="acc-btn-div">
                   {% if request.user.is_superuser %}
@@ -63,7 +61,7 @@
             </div>
           </div>
         </div>
-      </div>
+
       {% endif %}
       {% endfor %}
     </div>
@@ -78,8 +76,8 @@
       <!-- rCreates list of posts from current user -->
       {% for post in post_list %}
       {% if post.author == request.user %}
-      <div id="img-spacer">
-        <div id="card-container masonry-brick">
+
+        <div class="card-container masonry-brick">
           <div class="d-flex justify-content-center">
 
             <div class="card img-card-acc h-100">
@@ -101,9 +99,9 @@
 
                 {% if post.status == 1 %}
                 <!-- displays current status and allows deletion or updating -->
-                <div id="acc-pst-det">POST STATUS: PUBLISHED</div>
+                <div class="acc-pst-det">POST STATUS: PUBLISHED</div>
                 {% else %}
-                <div id="acc-pst-det">POST STATUS: DRAFT</div>
+                <div class="acc-pst-det">POST STATUS: DRAFT</div>
                 {% endif %}
                 <div class="acc-btn-div">
                   {% if request.user == post.author %}
@@ -119,7 +117,7 @@
 
           </div>
         </div>
-      </div>
+
       {% endif %}
       {% endfor %}
     </div>

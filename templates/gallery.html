@@ -8,8 +8,8 @@
     <div class="masonry-columns">
       <!-- Iteration to create our masonry gallery -->
       {% for post in post_list %}
-      <div id="img-spacer">
-        <div id="card-container masonry-brick">
+
+        <div class="card-container masonry-brick">
           <div class="d-flex justify-content-center">
             <!-- retrieves a post based on the slug data passed to the view -->
             <a href="{% url 'post_detail' post.slug %}" class="title-opacity">
@@ -36,7 +36,7 @@
             </a>
           </div>
         </div>
-      </div>
+
       {% endfor %}
     </div>
   </div>
