@@ -4,9 +4,15 @@ Digital gallery to post, rate and share AI art work.
 
 [View live website here](https://cip4-digigallery.herokuapp.com)
 
+<br />
+
 ![Promptiverse AmIresponsive design](readme/assets/images/AmIresponsive_landing.png)
 
+<br />
+
 ## [**Table of Contents**](<#table-of-contents>)
+
+<br />
 
 * [**OVERVIEW**](<#overview>)
     * [Site Plan](<#site-plan>)
@@ -15,21 +21,27 @@ Digital gallery to post, rate and share AI art work.
     * [Wireframes](<#wireframes>)
     * [Site Structure](<#site-structure>)
     * [User Experience](<#user-experience>)
-
+    
+<br />
 
 * [**SITE FEATURES**](<#site-features>)
     * [Inherited Code](<#inherited-code>)
     * [Depreciated Code](<#depreciated-code>)
-    * [](<#>)
-    * [](<#>)
-    * [](<#>)
-    * [](<#>)
-    * [](<#>)
-    * [](<#>)
+    * [Landing page](<#landing-page>)
+    * [Modals](<#modals>)
+    * [Login / Signup / Logout](<#login>)
+    * [Gallery](<#gallery>)
+    * [Post View](<#post-view>)
+    * [Account Page](<#account-page>)
+    * [Submit Post](<#submit-post>)
+    * [Update Post](<#update-post>)
+    * [Admin Panel](<#admin-panel>)
 
+<br />
 
 * [**ROADMAP**](<#roadmap>)
 
+<br />
 
 * [**TECHNOLOGY USED**](<#technology-used>)
     * [](<#>)
@@ -37,6 +49,7 @@ Digital gallery to post, rate and share AI art work.
     * [](<#>)
     * [](<#>)
 
+<br />
 
 * [**TESTING**](<#testing>)
     * [Fixed Bugs](<#fixed-bugs>)
@@ -45,10 +58,16 @@ Digital gallery to post, rate and share AI art work.
     * [](<#>)
     * [Lessons Learned](<#lessons-learned>)
 
+<br />
 
 * [DEPLOYMENT](<#deployment>)
+<br />
+
 * [CREDITS](<#credits>)
+<br />
+
 * [ACKNOWLEDGEMENTS](<#acknowledgements>)
+<br />
 
 --------------------------------------------------------
 ### **OVERVIEW**
@@ -79,6 +98,8 @@ A comprehensive git project page can be found here with my user stories.
 
 [Project Board](https://github.com/users/JeffreyBull76/projects/5)
 
+<br />
+
 I initially used similar stories to the example project but then added more for my specific site. At all times during production the user and admin roles were kept in mind when it came to implementing new functions and even more asthetic design ideas.
 
 --------------------------------------------------------
@@ -86,13 +107,14 @@ I initially used similar stories to the example project but then added more for 
 ### **Wireframes**
 
 <details>
-<summary>Wireframe</summary>
+<summary>I used an online wireframe tool to create my basic layout idea 
+
+[Fluid UI](https://www.fluidui.com/)
+</summary>
 
 ![Wireframe](readme/assets/images/promptiverse_wireframe.png)
 
 </details>
-
-I used an online wireframe tool to create my basic layout idea [Fluid UI](https://www.fluidui.com/)
 
 This design stayed mostly intact throughout the process. I did in the end decide to leave the login, signup and logout pages seperate because it felt cleaner in production. I left the wireframe as was to show my initial idea of showing them side by side. 
 
@@ -104,10 +126,15 @@ This design stayed mostly intact throughout the process. I did in the end decide
     * Julius Sans One: Was used for our headers and decorative text. 
     * Poppins: Was used for the main body text elements to give a little more weight
 
+<br />
+
 ![Julius Sans One](readme/assets/images/Font1.png)
 
+<br />
 
 ![Poppins](readme/assets/images/Font2.png)
+
+<br />
 
 * Color palette
     * Was done in a muted greyscale with an orange 'pop' color to prevent detracting from the artwork
@@ -127,6 +154,8 @@ The nav bar exists in two versions.
 
 * Logged in
 
+This design choice was taken to differentiate the two states more clearly. I also felt the second bar (in orange) created a nice visual gap between the sites content and our header. As the site mostly just consists of image cards and little to no text. I felt that visual line at the top was important. The orange bar helped frame that visually.
+
 --------------------------------------------------------
 
 ### [Contents Menu](<#table-of-contents>)
@@ -135,8 +164,18 @@ The nav bar exists in two versions.
 
 ### **SITE FEATURES**
 
+### **Inherited Code**
+
+It is worthy of note to point out the shared code from the walkthrough blog project on the CI course. The models and basic project structure were used as the foundation for this project. It was iterated on and extended substantially in the end, but I do want to acknowledge its shared lineage. As detailed later in this readme given the lessonds I learned I would probably deviate away from that code base more if asked to create a new version of this.
+
+<br />
+
 ### **Depreciated Code**
-<details><summary>This first version of a post submission function, which worked but did not correctly gather and pre-populate user details. This in practice allowed users to select from a list to designate author as it was just using the admin data for the item. In retrospect a custom built model could have avoided this (see Lessons Learned) but for the scope of the project the solution was to simply rewrite our submission function (see live code). This allowwed me to add other functionality and security. Note the code presented here was done in a test environment on my previous walkthrough project.</summary>
+Below you will find code blocks for now removed and depreciated code. In each case the code was either later refined or removed. 
+
+<br />
+
+<details><summary>This first version of a post submission function, which worked but did not correctly gather and pre-populate user details. This in practice allowed users to select from a list to designate author (as opposed to detecting the current user) as it was just inheriting from the base post model. In retrospect a custom built model could have avoided this (see Lessons Learned) but for the scope of the project the solution was to simply rewrite our submission function (see live code). This allowwed me to add other functionality and security. Note the code presented here was done in a test environment on my previous walkthrough project.</summary>
 
 VIEW:
 ```class Submission(View):
@@ -159,8 +198,10 @@ FORM:
             fields = ('author', 'title', 'content', 'slug', 'excerpt',)
 ```
 </details>
+
+<br />
     
-<details><summary>This Code below presented to show the old SubmitForm function code. Later tidied up and moved into one block (see live code)</summary>
+<details><summary>This Code below is presented to show the old SubmitForm code. Later tidied up and moved into one block (see live code)</summary>
 
 OLD CODE:
 ```def clean(self):
@@ -183,7 +224,9 @@ OLD CODE:
 ```
 </details>
 
-<details><summary>Code for removed comments section on account page</summary>
+<br />
+
+<details><summary>Old code for now removed comments section on account page</summary>
 
 OLD TEMPLATE CODE:
 ```<!-- shows all comments by current user and allows them to be deleted -->
@@ -223,6 +266,44 @@ OLD VIEW CODE (added under AuthorPostList)
 ```
 
 </details>
+
+<br />
+
+### Landing Page
+
+<br />
+
+### Modals
+
+<br />
+
+### Login
+
+<br />
+
+### Gallery
+
+<br />
+
+### Post View
+
+<br />
+
+### Account Page
+
+<br />
+
+### Submit Post
+
+<br />
+
+### Update Post
+
+<br />
+
+### Admin Panel
+
+<br />
 
 --------------------------------------------------------
 
