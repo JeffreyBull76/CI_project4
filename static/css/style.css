@@ -94,7 +94,7 @@ section {
 /* Nav media queries */
 
 @media only screen and (max-width: 768px) {
-	#nav-items {
+	#nav-item1, #nav-item2, #nav-item3, #nav-item4, #nav-item5, #nav-item6 {
 		font-family: 'Poppins', sans-serif;
 		font-size: 0.8rem;
 	}
@@ -106,9 +106,9 @@ section {
 }
 
 @media only screen and (max-width: 375px) {
-	#nav-items {
+	#nav-item1, #nav-item2, #nav-item3, #nav-item4, #nav-item5, #nav-item6 {
 		font-family: 'Poppins', sans-serif;
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 	}
 	.navbar-brand {
 		color: #f0ad4e;
@@ -119,11 +119,26 @@ section {
 
 /* JUMBOTRON */
 
+.lead {
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	padding-top: 60px;
+	text-shadow: 0px 1px 4px rgba(0,0,0,0.6), 1px 0px 4px rgba(0,0,0,0.6), -1px 0px 4px rgba(0,0,0,0.6), 0px -1px 4px rgba(0,0,0,0.6);
+}
+
 .jumbotron {
-	background-image: url("");
+	background-image: url("https://res.cloudinary.com/dg3v2epqy/image/upload/v1679756689/00060_rrrs1y.webp");
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 700px;
+	background-size: cover;
+	height: 800px;
+}
+
+@media only screen and (max-width: 1024px) {
+	.jumbotron {
+		background-size: cover;
+		height: 600px;
+	}
 }
 
 /* MODAL */
@@ -149,6 +164,7 @@ section {
 /* LANDING SERVICES SECTION */
 
 .landing-button {
+	margin-top: 200px;
 	-webkit-animation: bounce-top 1.2s ease-out 0.4s both;
 	        animation: bounce-top 1.2s ease-out 0.4s both;
 }
