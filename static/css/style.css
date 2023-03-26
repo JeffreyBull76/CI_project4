@@ -706,35 +706,62 @@ section {
 
 /* COMMENTS STYLES */
 
-#comment-card {
-	background-color: #292b2c;
-	border-radius: 0;
-	margin-right: 3%;
+
+.comment-form-row{
+	margin: 0;
+	padding: 0;
 }
 
-#comment-card .card-header,
-#comment-card h3 {
+.comment-card-col {
+	padding-left: 0;
+}
+
+.comment-card, .comment-form {
+	background-color: #292b2c;
+	border-radius: 0;
+}
+
+.comment-card .card-header,
+.comment-card h3, .comment-form h3 {
 	font-family: 'Julius Sans One', sans-serif;
 	color: #f0ad4e;
 }
 
-#comment-card .card-header {
+.comment-card .card-header, .comment-form .card-header {
 	font-size: small;
 	font-family: 'Julius Sans One', sans-serif;
 }
 
-#comment-card .textarea {
+.comment-card .textarea, .comment-form .textarea {
 	border: 0;
 	background-color: #6b6b6b;
 	color: #000;
 	font-size: large;
 }
 
-@media only screen and (max-width: 640px) {
-	#comment-card {
-		margin: 0 1.5rem;
+.comment-form form {
+	margin-top: 1.5em;
+}
+
+@media only screen and (max-width: 767px) {
+	.comment-card-col {
+		padding: 0;
+	}
+	.comment-form {
+		margin-top: 10px;
 	}
 }
+
+@media only screen and (max-width: 1024px) {
+	.comment-card .card-header,
+	.comment-card h3, .comment-form h3 {
+	font-size: medium;
+	}
+	.comment-card .textarea, .comment-form .textarea {
+		font-size: medium;
+	}
+}
+
 
 /* CREATE POST STYLES */
 
