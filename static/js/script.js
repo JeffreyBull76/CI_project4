@@ -26,20 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-function copyToClipboard() {
-    const promptText = document.getElementById("prompt-text").innerText;
-    navigator.clipboard.writeText(promptText);
-    alert("Prompt copied to clipboard!");
-}
-
-function copyToClipboard() {
-    const promptText = document.getElementById("negprompt-text").innerText;
-    navigator.clipboard.writeText(promptText);
-    alert("Negative prompt copied to clipboard!");
-}
-
-function copyToClipboard() {
-    const promptText = document.getElementById("method-text").innerText;
-    navigator.clipboard.writeText(promptText);
-    alert("Method copied to clipboard!");
+function copyToClipboard(id, message) {
+  const promptText = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(promptText);
+  alert(message);
 }

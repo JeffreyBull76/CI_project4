@@ -340,6 +340,8 @@ I note an issue with this page in the 'known issues' section later.
 
 Here we have the post detail page, which shows the image and related prompt information once clicked on from the Gallery page. It allows users to comment underneath their own or other peoples posts. The comment approval process was removed as only registered users can comment, this may have to be revisited in a live version (see roadmap for future ideas regarding this page)
 
+The post information fields is clickable to copy the content to the clipboard for easy replication.
+
 Under known bugs you will see reference to a strange error in rendering that sometimes stop a horizontal scroll bar rendering. This is extremely hard to track down I have tried simplified layouts, of all shapes and sizes but it persists. See bugs section for more detail.
 
 <details><summary>Post View</summary>

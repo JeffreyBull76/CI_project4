@@ -33,21 +33,21 @@
           <div class="promptdiv list-group-item">
             <h5 class="card-title">PROMPT:</h5>
             <div class="card-text card-elements">
-              <p id="prompt-text" onclick="copyToClipboard()">{{ post.prompt | safe }}</p>
+              <p id="prompt-text" onclick="copyToClipboard('prompt-text', 'Prompt copied to clipboard!')">{{ post.prompt }}</p>
             </div>
           </div>
 
           <div class="negpromptdiv list-group-item">
             <h5 class="card-title">NEGATIVE PROMPT:</h5>
             <div class="card-text card-elements">
-              <p id="negprompt-text" onclick="copyToClipboard()">{{ post.negprompt | safe}}</p>
+              <p id="negprompt-text" onclick="copyToClipboard('negprompt-text', 'Negative prompt copied to clipboard!')">{{ post.negprompt }}</p>
             </div>
           </div>
 
           <div class="methoddiv list-group-item">
             <h5 class="card-title">METHOD:</h5>
             <div class="card-text card-elements">
-              <p id="method-text" onclick="copyToClipboard()">{{ post.method | safe }}</p>
+              <p id="method-text" onclick="copyToClipboard('method-text', 'Method copied to clipboard!')">{{ post.method }}</p>
             </div>
           </div>
 
