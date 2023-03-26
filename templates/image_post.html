@@ -4,6 +4,12 @@
 
 {% block main %}
 <!-- main image column -->
+<script>
+  window.addEventListener('load', function() {
+    var scrollbar = document.querySelector('body');
+    scrollbar.style.overflowY = 'scroll';
+  });
+</script>
 <div class="container-fluid">
   <div class="row d-flex">
 
@@ -92,8 +98,10 @@
 
 <div class="container-fluid d-flex justify-content-center">
   <div class="row container-fluid justify-content-center" style="padding: 0;">
+    
     <!-- comments section displays user feedback -->
-    <div class="col-lg-8 col-md-7 col-sm-12 comment-card-col">
+    <div class="col-lg-8 col-md-6 col-sm-12 comment-card-col">
+
       {% for comment in post.comments.all %}
       <div class="card mb-3 comment-card">
         <div class="card-header">
@@ -106,6 +114,7 @@
           {% endif %}
         </div>
       </div>
+
       <!-- displays a message when no comments are present -->
       {% empty %}
       <p>COMMENT ON MY ART...</p>
@@ -113,7 +122,7 @@
 
     </div>
 
-    <div class="col-lg-4 col-md-5 col-sm-12 text-right" style="padding: 0;">
+    <div class="col-lg-4 col-md-6 col-sm-12 text-right" style="padding: 0;">
       <!-- comment section form -->
 
       <div class="row container-fluid comment-form-row">
