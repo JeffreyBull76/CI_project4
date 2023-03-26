@@ -20,7 +20,7 @@ Digital gallery to post, rate and share AI art work.
     * [User Stories](<#user-stories>)
     * [Wireframes](<#wireframes>)
     * [Site Structure](<#site-structure>)
-    * [User Experience](<#user-experience>)
+    * [User Interface](<#user-interface>)
     
 <br />
 
@@ -148,7 +148,7 @@ All pages are fully responsive and work well on high res screens and mobiles.
 
 --------------------------------------------------------
 
-### **User Experience**
+### **User Interface**
 
 The nav bar exists in two versions.
 
@@ -159,11 +159,11 @@ The nav bar exists in two versions.
 
 ![Nav Bar](readme/assets/images/site_Nav.png)
 
-In the logged out version only the top grey bar is visible. This design choice was taken to differentiate the two states more clearly. I also felt the second bar (in orange) created a nice visual gap between the sites content and our header. As the site mostly just consists of image cards and little to no text. I felt that visual line at the top was important. The orange bar helped frame that visually.
+In the logged out version only the top grey bar is visible. This design choice was taken to differentiate the two states more clearly. I also felt the second bar (in orange) created a nice visual gap between the sites content and our header. As the site mostly just consists of image cards and little to no text. I felt that visual line at the top was important. The orange bar helped frame the main content visually.
 
-In terms of structure the site will be designed with one aim in mind. To provide an interactive online gallery for users to share their artwork (and its generation method) with other users and allow for comments and feedback on the posted information. 
+In terms of structure the site will be designed with one aim in mind. To provide an interactive online gallery for users to share their artwork (and its generation method) with other users and allow for comments and feedback on the posted work. 
 
-The nav is kept very simply and a 'hamburger' version was not needed for mobiles.
+The nav is kept very simple, as such a 'hamburger' version was not needed for mobiles. Though one my be needed in future if the nav had more features added to it (see Roadmap)
 
 --------------------------------------------------------
 
@@ -275,6 +275,14 @@ OLD VIEW CODE (added under AuthorPostList)
 ```
 
 </details>
+
+<br />
+
+### **Live Code**
+I have added extensive annotation to all my Python files in the live code which details its function and how it was built. This of course could be edited down in a production version but it is included here to show what was learned.
+
+# Models.py file
+One thing to note here is the Models.py file and how it was altered for my project. I removed the excerpt and updated_on fields. The former was not needed due to the difference in structure of my posts. I decided to remove the latter purely because I wasn't really displaying that information prominently on the site so it seemed pointless to include. It could easily be added back in if required. The 'content' field in the original model is here split into 3 fields, the image prompt information, negative prompt and production method.
 
 <br />
 

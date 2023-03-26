@@ -74,6 +74,16 @@ class SubmitForm(forms.ModelForm):
         # Return the cleaned data and slug
         return cleaned_data
 
+    # File size check
+    def clean_featured_image(self):
+        image = self.cleaned_data.get('featured_image')
+        # Get image from cleaned data
+        if image:
+            # If image exceeds 1MB return error
+            if image.size > 1000000:
+                raise ValidationError('File size exceeds current 1 MB limit.')
+        return image
+
     def save(self, commit=True):
         # Create instance of Post model but don't save yet
         instance = super(SubmitForm, self).save(commit=False)
