@@ -1,5 +1,3 @@
-/** https://www.youtube.com/watch?v=2IbRtjez6ag **/
-
 document.addEventListener("DOMContentLoaded", function() {
 
   const cards = document.querySelectorAll(".img-card");

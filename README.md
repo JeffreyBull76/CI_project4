@@ -53,7 +53,7 @@ Digital gallery to post, rate and share AI art work.
 
 * [**TESTING**](<#testing>)
     * [Fixed Bugs](<#fixed-bugs>)
-    * [](<#>)
+    * [Known Issues](<#known-issues>)
     * [](<#>)
     * [](<#>)
     * [Lessons Learned](<#lessons-learned>)
@@ -70,7 +70,7 @@ Digital gallery to post, rate and share AI art work.
 <br />
 
 --------------------------------------------------------
-### **OVERVIEW**
+## **OVERVIEW**
 
 ### **Site Plan**
 To showcase my learning for Project 4 on my CI course I decided to create a gallery website. This was going to be based on the very basic skeleton of the walkthrough blog project. I have a keen interest in art and creativity and recently have been blown away by advances in AI art generators. So marrying the that interest with a project seemed a good place to start. 
@@ -118,6 +118,8 @@ I initially used similar stories to the example project but then added more for 
 
 This design stayed mostly intact throughout the process. I did in the end decide to leave the login, signup and logout pages seperate because it felt cleaner in production. I left the wireframe as was to show my initial idea of showing them side by side. 
 
+All pages are fully responsive and work well on high res screens and mobiles.
+
 --------------------------------------------------------
 
 ### **Final Design**
@@ -154,7 +156,14 @@ The nav bar exists in two versions.
 
 * Logged in
 
-This design choice was taken to differentiate the two states more clearly. I also felt the second bar (in orange) created a nice visual gap between the sites content and our header. As the site mostly just consists of image cards and little to no text. I felt that visual line at the top was important. The orange bar helped frame that visually.
+
+![Nav Bar](readme/assets/images/site_Nav.png)
+
+In the logged out version only the top grey bar is visible. This design choice was taken to differentiate the two states more clearly. I also felt the second bar (in orange) created a nice visual gap between the sites content and our header. As the site mostly just consists of image cards and little to no text. I felt that visual line at the top was important. The orange bar helped frame that visually.
+
+In terms of structure the site will be designed with one aim in mind. To provide an interactive online gallery for users to share their artwork (and its generation method) with other users and allow for comments and feedback on the posted information. 
+
+The nav is kept very simply and a 'hamburger' version was not needed for mobiles.
 
 --------------------------------------------------------
 
@@ -162,7 +171,7 @@ This design choice was taken to differentiate the two states more clearly. I als
 
 --------------------------------------------------------
 
-### **SITE FEATURES**
+## **SITE FEATURES**
 
 ### **Inherited Code**
 
@@ -269,39 +278,119 @@ OLD VIEW CODE (added under AuthorPostList)
 
 <br />
 
-### Landing Page
+### **Landing Page**
+
+The landing page was left deliberately sparse as the site itself is quite busy with images. The text hopefully conveys the idea behind the site, but it is not a site designed to attract 'wandering' users in the way a shop front might be. A certain level of knowledge of the subject matter (or at least an interest in digital art) is assumed. In a real world setting it would be shared and advertised on social feeds of art creators and linked to posts about AI art. 
+
+<details><summary>Landing Page Image</summary>
+
+![Landing Page1](readme/assets/images/site_pics1.png)
+
+</details>
+
+<details><summary>Landing Page Bottom</summary>
+
+![Landing Page2](readme/assets/images/site_pics2.png)
+</details>
 
 <br />
 
-### Modals
+### **Modals**
+
+Two modals can be found on the base page the 'Hero section' or 'About' modal and the 'Privacy / Legal' modal (the latter being available throughout the site). Both are fairly self explanatory so are not included in great detail here. Built using bootstraps base styles and some custome css.
 
 <br />
 
-### Login
+### **Login**
+
+The login page is shown here (the design is consistent through both other pages, namely signup and logout) it uses the base templates in the same way the walkthrough project did for ease and functionality and avoid rewriting code.
+
+<details><summary>Login</summary>
+
+![Login](readme/assets/images/site_pics3.png)
+</details>
 
 <br />
 
-### Gallery
+### **Login**
+
+The login page is shown here (the design is consistent through both other pages, namely signup and logout) it uses the base templates in the same way the walkthrough project did for ease and functionality and avoid rewriting code.
+
+<details><summary>Nav Bar</summary>
+
+![Login](readme/assets/images/site_pics3.png)
+</details>
 
 <br />
 
-### Post View
+### **Gallery**
+
+Once signed in the user is presented with a gallery, this displays all the images in a responsive column layout. Initially a masonry flex layout was ideated. This proved very difficult to combine with my dynamically built gallery (using jinja syntax) which builds the collection of images. A few versions were attempted but none worked satisfactorily. In the end I found an online resource which had a column based layout [LINK](https://www.w3resource.com/html-css-exercise/html-css-practical-exercises/html-css-practical-exercise-40.php). This was then tweaked to meet the sites needs.
+
+[LINK](https://www.youtube.com/watch?v=2IbRtjez6ag)
+
+See above for a link to the tutorial I used for the gallery page. I used the concept then extended it to create an animation that loads each gallery image in when the user scrolls down (using intersection observer). Each post shows just the image and then a gentle bright flash animation on hover than also fades in the post title and like/comments counters. Clicking the image navigates to the post detail page. 
+
+I note an issue with this page in the 'known issues' section later.
+
+<details><summary>Gallery</summary>
+
+![Gallery](readme/assets/images/site_pics4.png)
+</details>
 
 <br />
 
-### Account Page
+### **Post View**
+
+Here we have the post detail page, which shows the image and related prompt information once clicked on from the Gallery page. It allows users to comment underneath their own or other peoples posts. The comment approval process was removed as only registered users can comment, this may have to be revisited in a live version (see roadmap for future ideas regarding this page)
+
+<details><summary>Post View</summary>
+
+![Post View](readme/assets/images/site_pics5.png)
+</details>
 
 <br />
 
-### Submit Post
+<details><summary>Comments Section</summary>
+
+![Comments Section](readme/assets/images/site_pics6.png)
+</details>
 
 <br />
 
-### Update Post
+### **Account Page**
+
+<details><summary>Account Page</summary>
+
+![Account Page](readme/assets/images/site_pics8.png)
+</details>
 
 <br />
 
-### Admin Panel
+### **Submit Post**
+
+<details><summary>Submit Post</summary>
+
+![Submit Post](readme/assets/images/site_pics7.png)
+</details>
+
+<br />
+
+### **Update Post**
+
+<br />
+
+### **Admin Panel**
+
+<details><summary>Admin Panel Main</summary>
+
+![Admin Panel Main](readme/assets/images/site_pics9.png)
+</details>
+
+<details><summary>Admin Panel Detail</summary>
+
+![Admin Panel Detail](readme/assets/images/site_pics10.png)
+</details>
 
 <br />
 
@@ -310,45 +399,50 @@ OLD VIEW CODE (added under AuthorPostList)
 ### [Contents Menu](<#table-of-contents>)
 --------------------------------------------------------
 
-### **ROADMAP**
+## **ROADMAP**
+
+* Revisit removal of comment approval
 
 --------------------------------------------------------
 
 ### [Contents Menu](<#table-of-contents>)
 --------------------------------------------------------
 
-### **TECHNOLOGY USED**
+## **TECHNOLOGY USED**
 
 --------------------------------------------------------
 
 ### [Contents Menu](<#table-of-contents>)
 --------------------------------------------------------
 
-### **TESTING**
+## **TESTING**
 
 * BUG NOTES:
 * In the old PostList view we had an issue rendering the list correctly. This was fixed by user the super() function. It now populates our gallery correctly.
 
---------------------------------------------------------
-
-### [Contents Menu](<#table-of-contents>)
---------------------------------------------------------
-
-### **DEPLOYMENT**
+* KNOWN ISSUES:
+* Gallery page performance and possible changes to allow better extension in future.
 
 --------------------------------------------------------
 
 ### [Contents Menu](<#table-of-contents>)
 --------------------------------------------------------
 
-### **CREDITS**
+## **DEPLOYMENT**
 
 --------------------------------------------------------
 
 ### [Contents Menu](<#table-of-contents>)
 --------------------------------------------------------
 
-### **ACKNOWLEDGEMENTS**
+## **CREDITS**
+
+--------------------------------------------------------
+
+### [Contents Menu](<#table-of-contents>)
+--------------------------------------------------------
+
+## **ACKNOWLEDGEMENTS**
 
 --------------------------------------------------------
 
