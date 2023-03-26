@@ -863,3 +863,9 @@ li {
 	min-width: 100%;
 	background-color: #ffffff00;
 }
+
+@media only screen and (max-width: 768px) {
+	#update-post-img {
+		text-align: center;
+	}
+}
