@@ -19,7 +19,6 @@ Digital gallery to post, rate and share AI art work.
     * [Design Concept](<#design-concept>)
     * [User Stories](<#user-stories>)
     * [Wireframes](<#wireframes>)
-    * [Site Structure](<#site-structure>)
     * [User Interface](<#user-interface>)
     
 <br />
@@ -279,9 +278,9 @@ OLD VIEW CODE (added under AuthorPostList)
 <br />
 
 ### **Live Code**
-I have added extensive annotation to all my Python files in the live code which details its function and how it was built. This of course could be edited down in a production version but it is included here to show what was learned.
+I have added extensive annotation to all my Python files in the live code which details its function and how it was built. This of course could be edited down in a production version but it is included here to show what was learned. Please refer to forms.py, views.py, urls.py and admin.py.
 
-# Models.py file
+### **Models.py file**
 One thing to note here is the Models.py file and how it was altered for my project. I removed the excerpt and updated_on fields. The former was not needed due to the difference in structure of my posts. I decided to remove the latter purely because I wasn't really displaying that information prominently on the site so it seemed pointless to include. It could easily be added back in if required. The 'content' field in the original model is here split into 3 fields, the image prompt information, negative prompt and production method.
 
 <br />
@@ -320,17 +319,6 @@ The login page is shown here (the design is consistent through both other pages,
 
 <br />
 
-### **Login**
-
-The login page is shown here (the design is consistent through both other pages, namely signup and logout) it uses the base templates in the same way the walkthrough project did for ease and functionality and avoid rewriting code.
-
-<details><summary>Nav Bar</summary>
-
-![Login](readme/assets/images/site_pics3.png)
-</details>
-
-<br />
-
 ### **Gallery**
 
 Once signed in the user is presented with a gallery, this displays all the images in a responsive column layout. Initially a masonry flex layout was ideated. This proved very difficult to combine with my dynamically built gallery (using jinja syntax) which builds the collection of images. A few versions were attempted but none worked satisfactorily. In the end I found an online resource which had a column based layout [LINK](https://www.w3resource.com/html-css-exercise/html-css-practical-exercises/html-css-practical-exercise-40.php). This was then tweaked to meet the sites needs.
@@ -352,6 +340,8 @@ I note an issue with this page in the 'known issues' section later.
 
 Here we have the post detail page, which shows the image and related prompt information once clicked on from the Gallery page. It allows users to comment underneath their own or other peoples posts. The comment approval process was removed as only registered users can comment, this may have to be revisited in a live version (see roadmap for future ideas regarding this page)
 
+Under known bugs you will see reference to a strange error in rendering that sometimes stop a horizontal scroll bar rendering. This is extremely hard to track down I have tried simplified layouts, of all shapes and sizes but it persists. See bugs section for more detail.
+
 <details><summary>Post View</summary>
 
 ![Post View](readme/assets/images/site_pics5.png)
@@ -368,6 +358,12 @@ Here we have the post detail page, which shows the image and related prompt info
 
 ### **Account Page**
 
+  The account page, has a similar layout to the gallery but with extra functionality. Such as Admin publishing with one button for draft posts. It shows all posts by the logged in user and allows for one button updating or deleting of those. An earlier design draft also had all user comments listed here, but following a mentor session it was decided this was a messy layout which served little purpose, so it was removed (see deprecitated code)
+ 
+  With the deletion of posts we also make sure the related cloudinary image is also deleted to prevent the account being clogged with old defunct images.
+  
+  Also included here are 'coming soon' tags to show planned future functionality.
+
 <details><summary>Account Page</summary>
 
 ![Account Page](readme/assets/images/site_pics8.png)
@@ -376,6 +372,8 @@ Here we have the post detail page, which shows the image and related prompt info
 <br />
 
 ### **Submit Post**
+
+  The submit page allows users to submit their own works, with a form built from our model and the image saved to Cloudinary. I would refer to the forms.py and views.py for a detailed description on how this works. Getting cloudinary upload functioning correctly was a fairly complex task but now works correctly.
 
 <details><summary>Submit Post</summary>
 
@@ -386,9 +384,13 @@ Here we have the post detail page, which shows the image and related prompt info
 
 ### **Update Post**
 
+  The update post page is identical to our submit form but with the image displayed next to it. It allows for the prompt information be changed, but does not allow for images to be altered as these are integral to the post itself and removing or changing them would invalidate the comments and feedback.
+
 <br />
 
 ### **Admin Panel**
+
+  The Amdin panel is the same as the walkthrough with one extra piece of functionality added (see admin.py) which allows posts to be published from the drop down in the same way delete works.
 
 <details><summary>Admin Panel Main</summary>
 
@@ -409,7 +411,20 @@ Here we have the post detail page, which shows the image and related prompt info
 
 ## **ROADMAP**
 
-* Revisit removal of comment approval
+  Here I will briefly touch on future features I would implement given more time and if the site were to go live.
+
+* Change like feature to an  up / down vote feature (similar to reddit): Would allow for more accurate tracking of post/image quality.
+* Added Account page functionality: Where needed these would have their own pages that rendered over the main account page.
+  * Account settings: Such as registered date, profile image etc
+  * User Posts: A list of all posts (by name) of the current user to allow easy navigation to them
+  * User Comments: A list of all user comments (by Post name) and their related posts to allow for easy deletion and navigation
+  * Likes Collected: A simple numerical display of likes gained.
+  * Likes Given: A simple numerical display of likes given.
+* Report comment feature: to allow users to report abusive comments which are made (an alternative would be comment approval but that seems cumbersome in a production setting)
+* Gallery page search & filter: A way to refine the posts viewed based on keywords or tags (created on post at submission) This would be required as the site grew, but would require some rebuilding/reworking of our model and views. In theory this would not be to complex to implement but seems to time consuming for the scope of the project.
+* Cloudinary backend transformations: Another major issue would be implementing the cloudinary widget to allow uploading and image transformation on submission. This would require reworking the model to detach the image from the post itself. Again while not to difficult it seemed beyond the scope of the project requirements.
+* Comment approval: As above this seems cumbersome for a site with many users but may need to be revisited if issues arose.
+* Hamburger menu: Not required now but may be needed if nav elements grew larger (as with say filtering and search functions)
 
 --------------------------------------------------------
 
@@ -425,11 +440,14 @@ Here we have the post detail page, which shows the image and related prompt info
 
 ## **TESTING**
 
-* BUG NOTES:
+* **BUG NOTES:**
 * In the old PostList view we had an issue rendering the list correctly. This was fixed by user the super() function. It now populates our gallery correctly.
 
-* KNOWN ISSUES:
+* **KNOWN ISSUES:**
 * Gallery page performance and possible changes to allow better extension in future.
+* Display issue with post detail page, on first load it sometimes prevents the Y scroll bar display until the user enters text into the form. This only occurs on certain images and is difficult to pin down and replicate. I was able to fix it partially for some images but others still display this behaviour. It appears to be related to the form and comments section rendering after the document loads. It extremely hard to figure out, even simplifying the code into very straightforward layouts saw this behaviour appear on some images and not others. I suspect its tied to how django is dynamically loading the content of the image, post details and comments section, and somehow the order this happens with certain image sizes (happens more with smaller images) prevents the correct DOM elements loading in (in this case the vertical scroll bar)
+
+I have left this in for now as its merely a problem with display NOT functionality, you are still able to scroll with mouse wheel and arrow keys. But in a live version I would need to pin this down and fix it, despite it having minimal impact on site use.
 
 --------------------------------------------------------
 

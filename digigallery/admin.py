@@ -3,6 +3,7 @@ from .models import Post, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
+# new function to allow mass publishing of posts in admin panel from dropdown
 def make_published(modeladmin, request, queryset):
     """
     This allows for easy/mass updating of posts in our admin panel.
