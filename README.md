@@ -591,89 +591,90 @@ The results can be seen below.
 | &check; | Using the signup link work correctly and redirects to the gallery page |
 | &check; | Using the login link work correctly and redirects to the gallery page |
 | &check; | All scripts and resources load correctly |
+| &check; | The footer at the bottom shows correcctly and the modal works |
 
+<br />
 
-| Status | **Gallery Page when user logged in**
+| Status | **Gallery Page**
 |:-------:|:--------|
-| &check; | The Gallery page only shows for logged users, it is unreachable otherwise
-| &check; | The Gallery page loads the post cards in a dynamic masonry gallery correctly
-| &check; | On scroll new images become visible correctly using intersection observer API
-| &check; | The Main navigation links change to show account access and logout once signed in
-| &check; | The Gallery navigation bar showing correctly once the user is logged in
-| &check; | Gallery navigation bar links work correctly and redirect to the main gallery and submission form respectively
-| &check; | Clicking the title when logged in correctly redirects to 
-| &check; | Custom 404 page exists and shows when user manually enters incorrect address extension
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
+| &check; | Custom 404 page exists and shows when user manually enters incorrect address extension |
+| &check; | The Gallery page only shows for logged users, it is unreachable otherwise |
+| &check; | The Gallery page loads the post cards in a dynamic masonry gallery correctly |
+| &check; | On scroll new images become visible correctly using intersection observer API |
+| &check; | The Main navigation links change to show account access and logout once signed in |
+| &check; | The Gallery navigation bar showing correctly once the user is logged in |
+| &check; | Gallery navigation bar links work correctly and redirect to the main gallery and submission form respectively |
+| &check; | Clicking the title when logged in correctly redirects to gallery |
+| &check; | On new posts do not show in the gallery until published by superuser/staff |
+| &check; | Hovering over an image on desktop systems correctly fades in the image title, likes and comments counters |
+| &check; | The hover function is correctly disabled on mobile and tablets |
+| &check; | All navigation links work correctly from the gallery page |
+| &check; | Clicking an image card takes you to the correct post details page |
+| &check; | The footer at the bottom shows correctly and the modal works |
 
+<br />
 
 | Status | **Post Detail Page**
 |:-------:|:--------|
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
+| &check; | Custom 404 page exists and shows when user manually enters incorrect address extension |
+| &check; | Post details page only shows for logged users | 
+| &check; | On entering the page our view renders the post details and its relevant parameters to the fields | 
+| &cross; | Post detail page is bug free (see known issues) |
+| &check; | All navigation links work correctly from this page |
+| &check; | Below the image the likes and comments counter appears correctly |
+| &check; | Clicking the like button toggles the like status for the current user |
+| &check; | A comment box form loads at the bottom of the page allowing users to post comments |
+| &check; | Posted comments render to the bottom left and correctly display a 'delete' button to the comment author |
+| &check; | Posting a comment automatically refreshes the page and reverse redirects |
+| &check; | The post text fields correctly allow for one button copying to the clip board via a script |
+| &check; | The footer at the bottom shows correcctly and the modal works |
 
+<br />
 
 | Status | **Submit Post Page**
 |:-------:|:--------|
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
+| &check; | Custom 404 page exists and shows when user manually enters incorrect address extension |
+| &check; | All navigation links work correctly from this page |
+| &check; | Submit post page only shows for logged users | 
+| &check; | On entering the page the instructions panel shows correctly on all screen sizes | 
+| &check; | On entering the page our submission form renders correctly based on our Post model |
+| &check; | All form fields are error checked to prevent empty submissions |
+| &check; | The title field checks for a unique name and correctly slugifies this data |
+| &check; | The form automatically detects the logged user and attaches their details to the submitted data |
+| &check; | The image field has a check in place to prevent data over 1MB being submitted (temporary solution) |
+| &check; | Clicking submit correctly commits the data to the database and sends the image to cloudinary |
+| &check; | Submitting data correctly redirects users back to the gallery page |
+| &check; | The footer at the bottom shows correcctly and the modal works |
 
+<br />
 
 | Status | **Account Page**
 |:-------:|:--------|
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
+| &check; | Custom 404 page exists and shows when user manually enters incorrect address extension |
+| &check; | All navigation links work correctly from this page |
+| &check; | Account page only shows for logged users and shows their name correctly | 
+| &check; | Account page shows admin button for superusers/staff only, allowing for easy navigation to admin panel |
+| &check; | Correctly populates a list of draft posts for superusers/staff and allows for one button publishing |
+| &check; | Correctly populates a list of users own posts and allows for one buton updating and deletion |
+| &check; | All deletion and update actions require confirmation on request and show flash messages |
+| &check; | All redirects work conditionally to redirect to account page |
+| &check; | Post deletion process also removes the image from Cloudinary |
+| &check; | All dynamic load animations for gallery are removed on account page |
+| &check; | The footer at the bottom shows correcctly and the modal works |
+
+<br />
 
 | Status | **Admin Page**
 |:-------:|:--------|
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-| &check; | 
-
+| &check; | All standard admin functionality is available | 
+| &check; | Extra function to allow mass publishing from dropdown present and working |
+| &check; | All form data is admissable from Admin panel in line with the model |
+| &check; | Users are able to navigate back to the site easily |
 
 <br />
 
 ## **Validation**
-  * 
+  * NOTE that cloudinary solution requires different model structure and react environment
 
 <br />
 
