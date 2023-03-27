@@ -266,6 +266,9 @@ class PostUpdateView(View):
     def post(self, request, slug):
         # Gets the blog post with the specified slug
         post = get_object_or_404(Post, slug=slug)
+        if not all(request.POST.values()):
+            messages.error(request, 'All fields are required.')
+            return redirect('post_update', slug=post.slug)
         # Updates all the allowed update fields
         post.prompt = request.POST.get('prompt')
         post.negprompt = request.POST.get('negprompt')

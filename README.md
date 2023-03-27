@@ -648,6 +648,20 @@ The results can be seen below.
 
 <br />
 
+| Status | **Update Post Page**
+|:-------:|:--------|
+| &check; | Custom 404 page exists and shows when user manually enters incorrect address extension |
+| &check; | All navigation links work correctly from this page |
+| &check; | update post page only accessible for logged users | 
+| &check; | On entering the page form renders with same formatting as post view page |
+| &check; | All form fields are Pre-populated with existing post details |
+| &check; | All form fields are error checked to prevent empty submissions |
+
+| &check; | Submitting data correctly redirects users back to the account page |
+| &check; | The footer at the bottom shows correcctly and the modal works |
+
+<br />
+
 | Status | **Account Page**
 |:-------:|:--------|
 | &check; | Custom 404 page exists and shows when user manually enters incorrect address extension |
