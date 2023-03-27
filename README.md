@@ -119,6 +119,16 @@ This design stayed mostly intact throughout the process. I did in the end decide
 
 All pages are fully responsive and work well on high res screens and mobiles.
 
+In terms of how this relates to the templates in Django it is as follows.
+  * Base html: contains most scripts and base template
+  * Index html: where the landing page loads and which then is extended by our app content when the user is logged in
+  * Nav html: uses the 'include' jinja syntax to make sure it is always present on all content
+  * Gallery html: extends index and loads the posts
+  * Account html: extends index and loads user posts and account info
+  * Post html: Loads detailed post info and user comments extends index
+  * Create/Update html: the 2 pages which handle the creation and updating of post extends index
+  * Error pages: Custom error pages with site navigation included
+
 --------------------------------------------------------
 
 ### **Final Design**
@@ -434,6 +444,60 @@ Under known bugs you will see reference to a strange error in rendering that som
 --------------------------------------------------------
 
 ## **TECHNOLOGY USED**
+* **Languages**
+  * [HTML](https://www.w3.org/standards/webdesign/htmlcss) - Base structure
+  * [CSS](https://www.w3.org/standards/webdesign/htmlcss) - Style elements
+  * [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) - Some interactive elements
+  * [Python](https://www.python.org/) - Backend functionality
+
+<br />
+
+* **Installed libraries in Requirements.txt**
+  * [asgiref](https://pypi.org/project/asgiref/)
+  * [cloudinary](https://pypi.org/project/cloudinary/)
+  * [dj-database-url](https://pypi.org/project/dj-database-url/)
+  * [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/)
+  * [Django](https://pypi.org/project/Django/)
+  * [django-allauth](https://pypi.org/project/django-allauth/)
+  * [django-crispy-forms](https://pypi.org/project/django-crispy-forms/)
+  * [django-summernote](https://pypi.org/project/django-summernote/)
+  * [gunicorn](https://pypi.org/project/gunicorn/)
+  * [oauthlib](https://pypi.org/project/oauthlib/)
+  * [Pillow](https://pypi.org/project/Pillow/)
+  * [psycopg2](https://pypi.org/project/psycopg2/)
+  * [PyJWT](https://pypi.org/project/PyJWT/)
+  * [python3-openid](https://pypi.org/project/python3-openid/)
+  * [pytz](https://pypi.org/project/pytz/)
+  * [requests-oauhlib](https://pypi.org/project/requests-oauthlib/)
+  * [sqlparse](https://pypi.org/project/sqlparse/)
+
+<br />
+
+* **Other software, libraries and resources**
+  * [Bootstrap](https://getbootstrap.com/) - used for base style elements and layout
+  * [Font Awesome](https://fontawesome.com/) - used for landing page icons
+  * [Jquery](https://cdnjs.com/libraries/jquery) - used throughout the site
+  * [Popper JS](https://cdnjs.com/libraries/popper.js) - Library used in forms.py
+  * [Django](https://www.djangoproject.com/) - A model-view-template framework used to create the Review | Alliance site
+  * [Fluid UI](https://www.fluidui.com/) - Wireframe resource
+  * [Github](https://github.com/) - Used to host this repository
+  * [Gitpod](https://www.gitpod.io) - Used to edit and push to the repo, the native validator was used to validate all Python code.
+  * [Heroku](https://id.heroku.com/login) - Cloud plaform live site is deployed to
+  * [Favicon](https://favicon.io/) - Used to create favicon
+  * [Cloudinary](https://cloudinary.com/) - Hosts all static files in the project and user images
+
+<br />
+
+* **Testing resources**
+  * [HTML Validation](https://validator.w3.org/) - Used to validate HTML code
+  * [CSS Validation](https://jigsaw.w3.org/css-validator/) - Used to validate CSS code
+  * [JSHint Validation](https://jshint.com/) - Used to validate JavaScript code
+  * [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - Performance testing resource
+  * [Responsive Design Checker](https://www.responsivedesignchecker.com/) - Used for responsiveness check
+  * [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Used throughout project to debug and test
+  * [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/) - Used to validate the sites accessibility
+
+<br />
 
 --------------------------------------------------------
 
@@ -442,14 +506,27 @@ Under known bugs you will see reference to a strange error in rendering that som
 
 ## **TESTING**
 
-* **BUG NOTES:**
+* **FIXED BUGS:**
 * In the old PostList view we had an issue rendering the list correctly. This was fixed by user the super() function. It now populates our gallery correctly.
+* Numerous layout bugs were discovered during testing and fixed (with the exception of that listed in Known Issues)
+* Originally the logout page was incorrectly overwriting the index template.
+* Initially the comments function threw numerous errors as it was not correctly reloading the page, this was fixed fairly early on.
+* Numerous routing errors when redirecting to pages where corrected throughout the project.
+
+<br />
 
 * **KNOWN ISSUES:**
-* Gallery page performance and possible changes to allow better extension in future.
-* Display issue with post detail page, on first load it sometimes prevents the Y scroll bar display until the user enters text into the form. This only occurs on certain images and is difficult to pin down and replicate. I was able to fix it partially for some images but others still display this behaviour. It appears to be related to the form and comments section rendering after the document loads. It extremely hard to figure out, even simplifying the code into very straightforward layouts saw this behaviour appear on some images and not others. I suspect its tied to how django is dynamically loading the content of the image, post details and comments section, and somehow the order this happens with certain image sizes (happens more with smaller images) prevents the correct DOM elements loading in (in this case the vertical scroll bar)
-
+* **Display issue with post detail page:** On first load it sometimes prevents the Y scroll bar displaying until the user enters text into the form. This only occurs on certain images and is difficult to pin down and replicate. I was able to fix it partially for some images but others still display this behaviour. It appears to be related to the form and comments section rendering after the document loads. Even simplifying the code into very straightforward layouts saw this behaviour appear on some images and not others. I suspect its tied to how django is dynamically loading the content of the image, post details and comments section, and somehow the order this happens with certain image sizes (happens more with smaller images) prevents the correct DOM elements loading in (in this case the vertical scroll bar)
 I have left this in for now as its merely a problem with display NOT functionality, you are still able to scroll with mouse wheel and arrow keys. But in a live version I would need to pin this down and fix it, despite it having minimal impact on site use.
+
+* **Scrapped Soltuion to file format on upload** Due to lack of cloudinary widget and how the model works it was extremely diffucult setting up native image transformation when communicating with the cloudinary API. In a live version this could be addressed by redesigning aforementioned model (as detailed previously in roadmap). For sake of record I did ideate a fix that used the following imports (see below) It used a custom function to force new uploads to be tranformed to webp format (reducing file size and accessability) However this then caused our delete image function to cease working (as the file extension did not match) so the code was scrapped and this issue relegated to a roadmap feature as it is not critical.
+  * **Imports used in scrapped solution were as follows:**
+  * from django import forms
+  * from PIL import Image
+  * import io
+  * from cloudinary import uploader
+
+<br />
 
 --------------------------------------------------------
 
