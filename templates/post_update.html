@@ -11,7 +11,7 @@
         {% if "placeholder" in post.featured_image.url %}
         <img src="https://via.placeholder.com/512x512" alt="Post Image" class="img-fluid">
         {% else %}
-        <img src=" {{ post.featured_image.url }}" class="img-fluid">
+        <img src=" {{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid">
         {% endif %}
       </div>
     </div>
@@ -29,23 +29,17 @@
           <div class="card-body">
 
             <div class="promptdiv list-group-item updte-page-form-style update-text">
-              <label>
-                <h5 class="card-title">PROMPT:</h5>
-              </label>
+              <label class="card-title">PROMPT:</label>
               <textarea name="prompt" class="update-textarea">{{ post.prompt }}</textarea>
             </div>
 
             <div class="negpromptdiv list-group-item updte-page-form-style update-text">
-              <label>
-                <h5 class="card-title">NEGATIVE PROMPT:</h5>
-              </label>
+              <label>NEGATIVE PROMPT:</label>
               <textarea name="negprompt" class="update-textarea">{{ post.negprompt }}</textarea>
             </div>
 
             <div class="methoddiv list-group-item updte-page-form-style update-text">
-              <label>
-                <h5 class="card-title">METHOD:</h5>
-              </label>
+              <label>METHOD:</label>
               <textarea name="method" class="update-textarea">{{ post.method }}</textarea>
             </div>
 
@@ -60,5 +54,6 @@
 
     </div>
   </div>
+</div>
 
   {% endblock %}

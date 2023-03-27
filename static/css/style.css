@@ -391,11 +391,6 @@ section {
 
 /* CARDS GALLERY */
 
-.card-img {
-	width: 100%;
-	height: 100%;
-}
-
 .gallery-pad {
 	padding-top: 5px;
 }
@@ -848,6 +843,8 @@ li {
 	border-top: 1px solid #f0ad4e;
 }
 
+/* Update post styles */
+
 .updte-page-form-style label {
 	display: block;
 }
@@ -874,6 +871,12 @@ li {
 
 .update-post-btn {
 	margin: 2% 3%;
+}
+
+.card-body label {
+	text-align: left;
+	font-size: large;
+	color: #f0ad4e;
 }
 
 .acc-btn-div a:nth-child(1) {

@@ -55,6 +55,7 @@ Digital gallery to post, rate and share AI art work.
     * [Fixed Bugs](<#fixed-bugs>)
     * [Known Issues](<#known-issues>)
     * [Manual Testing](<#manual-testing>)
+    * [Validation](<#validation>)
     * [Lessons Learned](<#lessons-learned>)
 
 <br />
@@ -506,6 +507,7 @@ The post information fields is clickable to copy the content to the clipboard fo
   * [HTML Validation](https://validator.w3.org/) - Used to validate HTML code
   * [CSS Validation](https://jigsaw.w3.org/css-validator/) - Used to validate CSS code
   * [JSHint Validation](https://jshint.com/) - Used to validate JavaScript code
+  * [PyCodeStyle](https://pypi.org/project/pycodestyle/) - Used to validate all python code
   * [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - Performance testing resource
   * [Responsive Design Checker](https://www.responsivedesignchecker.com/) - Used for responsiveness check
   * [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Used throughout project to debug and test
@@ -530,10 +532,38 @@ The post information fields is clickable to copy the content to the clipboard fo
 <br />
 
 ## **Known Issues**
-* **Display issue with post detail page:** On first load it sometimes prevents the Y scroll bar displaying until the user enters text into the form. This only occurs on certain images and is difficult to pin down and replicate. I was able to fix it partially for some images but others still display this behaviour. It appears to be related to the form and comments section rendering after the document loads. Even simplifying the code into very straightforward layouts saw this behaviour appear on some images and not others. I suspect its tied to how django is dynamically loading the content of the image, post details and comments section, and somehow the order this happens with certain image sizes (happens more with smaller images) prevents the correct DOM elements loading in (in this case the vertical scroll bar)
-I have left this in for now as its merely a problem with display NOT functionality, you are still able to scroll with mouse wheel and arrow keys. But in a live version I would need to pin this down and fix it, despite it having minimal impact on site use.
 
-* **Scrapped Solution to file format on upload** Due to lack of cloudinary widget and how the model works it was extremely diffucult setting up native image transformation when communicating with the cloudinary API. In a live version this could be addressed by redesigning aforementioned model (as detailed previously in roadmap). For sake of record I did ideate a fix that used the following imports (see below) It used a custom function to force new uploads to be tranformed to webp format (reducing file size and accessability) However this then caused our delete image function to cease working (as the file extension did not match) so the code was scrapped and this issue relegated to a roadmap feature as it is not critical.
+**Display issue with post detail page:** 
+On first load it sometimes prevents the Y scroll bar displaying until the user enters text into the form. This only occurs on certain images and is difficult to pin down and replicate the base cause (See images below for example) NOTE It only prevents the scrollbar displaying scroll functionality is unaffected.
+<details><summary>Vertical Scrollbar Bug</summary>
+
+<br />
+
+Bugged Page issue - No vertical scrollbar showing !
+<br />
+
+![Bugged Page](readme/assets/images/bugpage1.png)
+
+Bugged Page Issue 2 - Now when text is entered scrollbar appears !
+<br />
+
+![Bugged Page](readme/assets/images/bugpage2.png)
+
+Non Bugged Page - Included for reference of correct load
+<br />
+
+![Bugged Page](readme/assets/images/bugpage3.png)
+
+</details>
+
+  * I was able to fix it partially for some images but others still display this behaviour. It appears to be related to the form and comments section rendering after the document loads. Even force rendering a verical scrollbar did not fix this.
+  * I suspect its tied to how django is dynamically loading the content of the image, post details and comments section, and somehow the order this happens with certain image sizes (happens more with smaller images) prevents the correct DOM elements loading in (in this case the vertical scroll bar)
+  * As of final stages of testing I can confirm this is to do with the DOM not recognising elements loaded in below the 'First contentful paint' correctly, simply typing any text in the comment textfield will correctly show a vertical scroll bar (see example images above). While this is clearly the issue I still cannot quite pin down why this happens with some images and not others.
+  * I have left this in for now as its merely a problem with display NOT functionality, you are still able to scroll with mouse wheel and arrow keys. But in a live version I would need to pin this down and fix it, despite it having minimal impact on site use.
+
+<br />
+  
+**Scrapped Solution to file format on upload** Due to lack of cloudinary widget and how the model works it was extremely diffucult setting up native image transformation when communicating with the cloudinary API. In a live version this could be addressed by redesigning aforementioned model (as detailed previously in roadmap). For sake of record I did ideate a fix that used the following imports (see below) It used a custom function to force new uploads to be tranformed to webp format (reducing file size and accessability) However this then caused our delete image function to cease working (as the file extension did not match) so the code was scrapped and this issue relegated to a roadmap feature as it is not critical.
   * **Imports used in scrapped solution were as follows:**
   * from django import forms
   * from PIL import Image
@@ -551,6 +581,99 @@ I did not have time implement automated or unit tests. As the project is relativ
 The results can be seen below.
 
 
+| Status | **Landing Page** |
+|:-------:|:--------|
+| &check; | Custom 404 page exists and shows when user manually enters incorrect address extension |
+| &check; | Clicking the title reloads to index.html landing page when not logged in |
+| &check; | All landing page links navigate to correct pages |
+| &check; | All landing page modals open the correct panels |
+| &check; | The landing page responds to different screen sizes correctly |
+| &check; | Using the signup link work correctly and redirects to the gallery page |
+| &check; | Using the login link work correctly and redirects to the gallery page |
+| &check; | All scripts and resources load correctly |
+
+
+| Status | **Gallery Page when user logged in**
+|:-------:|:--------|
+| &check; | The Gallery page only shows for logged users, it is unreachable otherwise
+| &check; | The Gallery page loads the post cards in a dynamic masonry gallery correctly
+| &check; | On scroll new images become visible correctly using intersection observer API
+| &check; | The Main navigation links change to show account access and logout once signed in
+| &check; | The Gallery navigation bar showing correctly once the user is logged in
+| &check; | Gallery navigation bar links work correctly and redirect to the main gallery and submission form respectively
+| &check; | Clicking the title when logged in correctly redirects to 
+| &check; | Custom 404 page exists and shows when user manually enters incorrect address extension
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+
+
+| Status | **Post Detail Page**
+|:-------:|:--------|
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+
+
+| Status | **Submit Post Page**
+|:-------:|:--------|
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+
+
+| Status | **Account Page**
+|:-------:|:--------|
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+
+| Status | **Admin Page**
+|:-------:|:--------|
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+| &check; | 
+
+
+<br />
+
+## **Validation**
+  * 
 
 <br />
 
