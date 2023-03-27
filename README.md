@@ -35,6 +35,7 @@ Digital gallery to post, rate and share AI art work.
     * [Submit Post](<#submit-post>)
     * [Update Post](<#update-post>)
     * [Admin Panel](<#admin-panel>)
+    * [User Feedback](<#user-feedback>)
 
 <br />
 
@@ -43,18 +44,17 @@ Digital gallery to post, rate and share AI art work.
 <br />
 
 * [**TECHNOLOGY USED**](<#technology-used>)
-    * [](<#>)
-    * [](<#>)
-    * [](<#>)
-    * [](<#>)
+    * [Languages](<#languages>)
+    * [Installed Libraries In Requirements](<#installed-libraries-in-requirements>)
+    * [Other software & resources](<#other-software-libraries-and-resources>)
+    * [Testing resources](<#testing-resources>)
 
 <br />
 
 * [**TESTING**](<#testing>)
     * [Fixed Bugs](<#fixed-bugs>)
     * [Known Issues](<#known-issues>)
-    * [](<#>)
-    * [](<#>)
+    * [Manual Testing](<#manual-testing>)
     * [Lessons Learned](<#lessons-learned>)
 
 <br />
@@ -331,17 +331,23 @@ The login page is shown here (the design is consistent through both other pages,
 
 ### **Gallery**
 
-Once signed in the user is presented with a gallery, this displays all the images in a responsive column layout. Initially a masonry flex layout was ideated. This proved very difficult to combine with my dynamically built gallery (using jinja syntax) which builds the collection of images. A few versions were attempted but none worked satisfactorily. In the end I found an online resource which had a column based layout [LINK](https://www.w3resource.com/html-css-exercise/html-css-practical-exercises/html-css-practical-exercise-40.php). This was then tweaked to meet the sites needs.
+Once signed in the user is presented with a gallery, this displays all the images in a responsive column layout. Initially a masonry flex layout was ideated. This proved very difficult to combine with my dynamically built gallery (using jinja syntax) which builds the collection of images. A few versions were attempted but none worked satisfactorily. In the end I found an online resource which had a column based layout (see tech used section). This was then tweaked to meet the sites needs.
 
-[LINK](https://www.youtube.com/watch?v=2IbRtjez6ag)
-
-See above for a link to the tutorial I used for the gallery page. I used the concept then extended it to create an animation that loads each gallery image in when the user scrolls down (using intersection observer). Each post shows just the image and then a gentle bright flash animation on hover than also fades in the post title and like/comments counters. Clicking the image navigates to the post detail page. 
-
-I note an issue with this page in the 'known issues' section later.
 
 <details><summary>Gallery</summary>
 
 ![Gallery](readme/assets/images/site_pics4.png)
+</details>
+
+<br />
+
+The gallery itself is constructed of bootstrap 'card' elements (with fairly heavy styling applied to remove most text elements) They are fluid image based cards that are fully responsive. They feature a gentle rollover animation (removed for mobiles to avoid issues with touchscreen)
+
+I used a tutorial (see Technology used) then extended it to create an animation that loads each gallery image in when the user scrolls down (using intersection observer) Clicking the image navigates to the post detail page. 
+
+<details><summary>Card Element</summary>
+
+![Card](readme/assets/images/site_pics11.png)
 </details>
 
 <br />
@@ -352,7 +358,7 @@ Here we have the post detail page, which shows the image and related prompt info
 
 The post information fields is clickable to copy the content to the clipboard for easy replication.
 
-Under known bugs you will see reference to a strange error in rendering that sometimes stop a horizontal scroll bar rendering. This is extremely hard to track down I have tried simplified layouts, of all shapes and sizes but it persists. See bugs section for more detail.
+*Under known bugs you will see reference to a strange error in rendering that sometimes prevents the vertical scroll bar rendering. This is extremely hard to track down I have tried simplified layouts, of all shapes and sizes but it persists. See bugs section for more detail.*
 
 <details><summary>Post View</summary>
 
@@ -416,6 +422,12 @@ Under known bugs you will see reference to a strange error in rendering that som
 
 <br />
 
+### **User Feedback**
+
+  Following mentor feedback I added flash messages that confirm user actions. Also a hard stop confirmation which asks users to confirm deletion of or updating of posts / comments with a JS popup.
+
+<br />
+
 --------------------------------------------------------
 
 ### [Contents Menu](<#table-of-contents>)
@@ -444,7 +456,7 @@ Under known bugs you will see reference to a strange error in rendering that som
 --------------------------------------------------------
 
 ## **TECHNOLOGY USED**
-* **Languages**
+## **Languages**
   * [HTML](https://www.w3.org/standards/webdesign/htmlcss) - Base structure
   * [CSS](https://www.w3.org/standards/webdesign/htmlcss) - Style elements
   * [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) - Some interactive elements
@@ -452,7 +464,7 @@ Under known bugs you will see reference to a strange error in rendering that som
 
 <br />
 
-* **Installed libraries in Requirements.txt**
+## **Installed libraries in Requirements**
   * [asgiref](https://pypi.org/project/asgiref/)
   * [cloudinary](https://pypi.org/project/cloudinary/)
   * [dj-database-url](https://pypi.org/project/dj-database-url/)
@@ -473,7 +485,7 @@ Under known bugs you will see reference to a strange error in rendering that som
 
 <br />
 
-* **Other software, libraries and resources**
+## **Other software, libraries and resources**
   * [Bootstrap](https://getbootstrap.com/) - used for base style elements and layout
   * [Font Awesome](https://fontawesome.com/) - used for landing page icons
   * [Jquery](https://cdnjs.com/libraries/jquery) - used throughout the site
@@ -485,10 +497,12 @@ Under known bugs you will see reference to a strange error in rendering that som
   * [Heroku](https://id.heroku.com/login) - Cloud plaform live site is deployed to
   * [Favicon](https://favicon.io/) - Used to create favicon
   * [Cloudinary](https://cloudinary.com/) - Hosts all static files in the project and user images
+  * [LINK](https://www.youtube.com/watch?v=2IbRtjez6ag) - Link to a lesson which showed how to create a simple animate on intersect script which was extended for my project
+  * [LINK](https://www.w3resource.com/html-css-exercise/html-css-practical-exercises/html-css-practical-exercise-40.php) - Gallery code was taken from here then edited for use.
 
 <br />
 
-* **Testing resources**
+## **Testing resources**
   * [HTML Validation](https://validator.w3.org/) - Used to validate HTML code
   * [CSS Validation](https://jigsaw.w3.org/css-validator/) - Used to validate CSS code
   * [JSHint Validation](https://jshint.com/) - Used to validate JavaScript code
@@ -506,7 +520,7 @@ Under known bugs you will see reference to a strange error in rendering that som
 
 ## **TESTING**
 
-* **FIXED BUGS:**
+## **Fixed Bugs**
 * In the old PostList view we had an issue rendering the list correctly. This was fixed by user the super() function. It now populates our gallery correctly.
 * Numerous layout bugs were discovered during testing and fixed (with the exception of that listed in Known Issues)
 * Originally the logout page was incorrectly overwriting the index template.
@@ -515,16 +529,33 @@ Under known bugs you will see reference to a strange error in rendering that som
 
 <br />
 
-* **KNOWN ISSUES:**
+## **Known Issues**
 * **Display issue with post detail page:** On first load it sometimes prevents the Y scroll bar displaying until the user enters text into the form. This only occurs on certain images and is difficult to pin down and replicate. I was able to fix it partially for some images but others still display this behaviour. It appears to be related to the form and comments section rendering after the document loads. Even simplifying the code into very straightforward layouts saw this behaviour appear on some images and not others. I suspect its tied to how django is dynamically loading the content of the image, post details and comments section, and somehow the order this happens with certain image sizes (happens more with smaller images) prevents the correct DOM elements loading in (in this case the vertical scroll bar)
 I have left this in for now as its merely a problem with display NOT functionality, you are still able to scroll with mouse wheel and arrow keys. But in a live version I would need to pin this down and fix it, despite it having minimal impact on site use.
 
-* **Scrapped Soltuion to file format on upload** Due to lack of cloudinary widget and how the model works it was extremely diffucult setting up native image transformation when communicating with the cloudinary API. In a live version this could be addressed by redesigning aforementioned model (as detailed previously in roadmap). For sake of record I did ideate a fix that used the following imports (see below) It used a custom function to force new uploads to be tranformed to webp format (reducing file size and accessability) However this then caused our delete image function to cease working (as the file extension did not match) so the code was scrapped and this issue relegated to a roadmap feature as it is not critical.
+* **Scrapped Solution to file format on upload** Due to lack of cloudinary widget and how the model works it was extremely diffucult setting up native image transformation when communicating with the cloudinary API. In a live version this could be addressed by redesigning aforementioned model (as detailed previously in roadmap). For sake of record I did ideate a fix that used the following imports (see below) It used a custom function to force new uploads to be tranformed to webp format (reducing file size and accessability) However this then caused our delete image function to cease working (as the file extension did not match) so the code was scrapped and this issue relegated to a roadmap feature as it is not critical.
   * **Imports used in scrapped solution were as follows:**
   * from django import forms
   * from PIL import Image
   * import io
   * from cloudinary import uploader
+
+<br />
+
+## **Manual Testing**
+All user stories marked as 'done' on our project board [HERE](https://github.com/users/JeffreyBull76/projects/5) were tested and signed off.
+
+<br />
+
+I did not have time implement automated or unit tests. As the project is relatively straightforward I oped for manual testing. 
+The results can be seen below.
+
+
+
+<br />
+
+## **Lessons Learned**
+  * 
 
 <br />
 
@@ -542,12 +573,17 @@ I have left this in for now as its merely a problem with display NOT functionali
 
 ## **CREDITS**
 
+All images used on the site are created by Jeffrey Bull using Stable Diffusion or related services such [Leonardo AI](https://leonardo.ai/)
+(All work is public domain due to inherited licences)
+
 --------------------------------------------------------
 
 ### [Contents Menu](<#table-of-contents>)
 --------------------------------------------------------
 
 ## **ACKNOWLEDGEMENTS**
+
+Thanks in no particular order to my wife (for putting up with hearing me shout at my laptop at lot) my Mentor who guided me and stopped the project spiralling into oblivion, my fellow CI slackers and CI staff who helped me with issues along the way (they know who they are!)
 
 --------------------------------------------------------
 

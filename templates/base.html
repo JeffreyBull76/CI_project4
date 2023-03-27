@@ -9,26 +9,30 @@
 
   <!-- Stylesheet and precon data -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Jeffrey Bull">
+  <meta name="description"
+    content="Promptiverse - an AI gallery site for sharing and viewing AI generated art.">
+  <meta name="keywords" content="AI, Machine Learning, AI art, digital art, art sharing, user posts, concept art, fantast art, sci-fi art">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 
 <body class="bg-dark">
-    <!-- alert div -->
-    <div class="container-fluid">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-4" style="z-index: 10; position: absolute;">
-          {% for message in messages %}
-          <div class="alert {{ message.tags }} fade show" id="msg" role="alert">
-            {{ message | safe }}
-          </div>
-          {% endfor %}
+  <!-- alert div -->
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-4" style="z-index: 10; position: absolute;">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} fade show" id="msg" role="alert">
+          {{ message | safe }}
         </div>
+        {% endfor %}
       </div>
     </div>
+  </div>
 
   <!-- Navbar loads here using include -->
   {% include 'nav.html' %}
@@ -73,9 +77,9 @@
             </ol>
             <p class="modal-text2">If you need to contact us regarding this policy, send an email to
               admin@promptiverse.com.</p>
-          <div class="modal-btn">
-            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-          </div>
+            <div class="modal-btn">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
         </div>
       </div>
     </div>
@@ -86,19 +90,20 @@
   {% endblock index %}
 
   <!-- Required JS loads here -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<!-- Custom JS loader for intersection observer & text copy functions -->
-<script src="{% static 'js/script.js' %}"></script>
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/9cb253b564.js" crossorigin="anonymous"></script>
-<script>
-  setTimeout(function () {
-    let messages = document.getElementById('msg');
-    let alert = new bootstrap.Alert(messages);
-    alert.close();
-  }, 2500);
-</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <!-- Custom JS loader for intersection observer & text copy functions -->
+  <script src="{% static 'js/script.js' %}"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/9cb253b564.js" crossorigin="anonymous"></script>
+  <script>
+    setTimeout(function () {
+      let messages = document.getElementById('msg');
+      let alert = new bootstrap.Alert(messages);
+      alert.close();
+    }, 2500);
+  </script>
 </body>
+
 </html>
