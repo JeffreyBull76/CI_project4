@@ -639,6 +639,7 @@ The results can be seen below.
 | &check; | On entering the page the instructions panel shows correctly on all screen sizes | 
 | &check; | On entering the page our submission form renders correctly based on our Post model |
 | &check; | All form fields are error checked to prevent empty submissions |
+| &check; | On error correctly flags page as posted to prevent form clearly and redirects to self |
 | &check; | The title field checks for a unique name and correctly slugifies this data |
 | &check; | The form automatically detects the logged user and attaches their details to the submitted data |
 | &check; | The image field has a check in place to prevent data over 1MB being submitted (temporary solution) |
@@ -656,7 +657,7 @@ The results can be seen below.
 | &check; | On entering the page form renders with same formatting as post view page |
 | &check; | All form fields are Pre-populated with existing post details |
 | &check; | All form fields are error checked to prevent empty submissions |
-
+| &check; | When an error is encountered redirects the user to the current page |
 | &check; | Submitting data correctly redirects users back to the account page |
 | &check; | The footer at the bottom shows correcctly and the modal works |
 

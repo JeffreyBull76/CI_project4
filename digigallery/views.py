@@ -266,13 +266,22 @@ class PostUpdateView(View):
     def post(self, request, slug):
         # Gets the blog post with the specified slug
         post = get_object_or_404(Post, slug=slug)
-        if not all(request.POST.values()):
+
+        # Strips whitespace from input fields
+        prompt = request.POST.get('prompt').strip()
+        negprompt = request.POST.get('negprompt').strip()
+        method = request.POST.get('method').strip()
+
+        # Checks if any input field is empty after stripping whitespace
+        if not all([prompt, negprompt, method]):
             messages.error(request, 'All fields are required.')
             return redirect('post_update', slug=post.slug)
+
         # Updates all the allowed update fields
-        post.prompt = request.POST.get('prompt')
-        post.negprompt = request.POST.get('negprompt')
-        post.method = request.POST.get('method')
+        post.prompt = prompt
+        post.negprompt = negprompt
+        post.method = method
+
         # Saves the updated blog post and redirects
         post.save()
         messages.success(request, 'Post Updated!')
