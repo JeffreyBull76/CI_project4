@@ -250,6 +250,9 @@ class PostUpdateView(View):
     When the user submits the data it re-submits each
     field with the new data and saves to the DB.
 
+    Also checks for empty fields and strips trailing
+    whitespaces.
+
     """
     template_name = 'post_update.html'
 

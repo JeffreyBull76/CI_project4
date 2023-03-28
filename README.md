@@ -18,6 +18,7 @@ Digital gallery to post, rate and share AI art work.
     * [Site Plan](<#site-plan>)
     * [Design Concept](<#design-concept>)
     * [User Stories](<#user-stories>)
+    * [Agile](<#agile>)
     * [Wireframes](<#wireframes>)
     * [User Interface](<#user-interface>)
     
@@ -101,6 +102,14 @@ A comprehensive git project page can be found here with my user stories.
 <br />
 
 I initially used similar stories to the example project but then added more for my specific site. At all times during production the user and admin roles were kept in mind when it came to implementing new functions and even more asthetic design ideas.
+
+--------------------------------------------------------
+
+### **Agile**
+
+Following Agile methodology at every step as the project was ideated and grew, all user stories were kept central to everything that was implemented. As you can see from above the user stories were followed and completed and some new ones added for roadmap features. As a new concept to me this was something I was keen to try to keep close by at all times. 
+
+Hopefully I have shown throughout the project were ideas were tried and reverted and were solutions were found which solved critical issues which would effect end users. 
 
 --------------------------------------------------------
 
@@ -332,8 +341,9 @@ The login page is shown here (the design is consistent through both other pages,
 
 ### **Gallery**
 
-Once signed in the user is presented with a gallery, this displays all the images in a responsive column layout. Initially a masonry flex layout was ideated. This proved very difficult to combine with my dynamically built gallery (using jinja syntax) which builds the collection of images. A few versions were attempted but none worked satisfactorily. In the end I found an online resource which had a column based layout (see tech used section). This was then tweaked to meet the sites needs.
-
+Once signed in the user is presented with a gallery, this displays all the images in a responsive column layout. Initially a masonry grid layout was ideated. This proved very difficult to combine with my dynamically built gallery (using jinja syntax) which builds the collection of images, ultimately that solution was abandoned. If a future version was built with different technologies (using react and cloudinarys built in features) this could be reinstated. But ultimately the live version presented was a good compromise that wasn't to complex. 
+A few other versions were tried but none worked satisfactorily. In the end I found an online resource which had a column based layout (see tech used section). This was then tweaked to meet the sites need.
+*I also tested a paginated solution here but it ultimately didn't work well with repsonsive layouts. It would require a lot of callbacks scripting to make it recognise the users device and responsively paginate. So the idea was scrapped. (In an infinite loading layour masonry grid as mentioned above, this could be reinstated)*
 
 <details><summary>Gallery</summary>
 
@@ -500,6 +510,7 @@ The post information fields is clickable to copy the content to the clipboard fo
   * [Cloudinary](https://cloudinary.com/) - Hosts all static files in the project and user images
   * [LINK](https://www.youtube.com/watch?v=2IbRtjez6ag) - Link to a lesson which showed how to create a simple animate on intersect script which was extended for my project
   * [LINK](https://www.w3resource.com/html-css-exercise/html-css-practical-exercises/html-css-practical-exercise-40.php) - Gallery code was taken from here then edited for use.
+  * [LINK](http://animista.net) - Used to create the bounce button effect and slide up image animation
 
 <br />
 
@@ -689,12 +700,147 @@ The results can be seen below.
 <br />
 
 ## **Validation**
-  * NOTE that cloudinary solution requires different model structure and react environment
+  **HTML validation:**
+  All code was manually fed into the validator. Various duplicate ID errors and missing alt tags were fixed. 
+  Now returns no errors on all pages.
+  <details><summary>HTML Validation</summary>
+  
+  <br />
+
+  Landing page:
+
+  ![Landing Page Validation](readme/assets/images/validation_images/html_validate_1.png)
+
+  <br />
+
+  Gallery page:
+
+  ![Gallery Validation](readme/assets/images/validation_images/html_gal_validate_2.png)
+
+  <br />
+
+  Submit post page:
+
+  ![Submission page Validation](readme/assets/images/validation_images/html_sub_validate_3.png)
+
+  <br />
+
+  Login page (all signup and logout pages use same template):
+
+  ![Login Validation](readme/assets/images/validation_images/html_log_validate_4.png)
+
+  <br />
+
+  Post page:
+
+  ![Post Page Validation](readme/assets/images/validation_images/html_post_validate_5.png)
+
+  <br />
+
+  Update post page:
+
+  ![Update Post Validation](readme/assets/images/validation_images/html_update_validate_6.png)
+
+  <br />
+
+  Account page:
+
+  ![Account page](readme/assets/images/validation_images/html_acc_validate_7.png)
+
+  <br />
+
+  </details>
+
+  <br />
+
+  **CSS validation:**
+  All code was manually fed into the validator. Returns no errors.
+  <details><summary>CSS Validation</summary>
+
+  CSS validation:
+
+  ![CSS validation](readme/assets/images/validation_images/css_validate_1.png)
+
+  <br />
+
+  </details>
+  
+  <br />
+
+  **Javascript validation:**
+  All code tested returns no errors.
+  Warnings relate to very old browser compatability, I have left these are the browsers in question see little to no use.
+  <details><summary>JS Validation</summary>
+
+  Account page:
+
+  ![Account page](readme/assets/images/validation_images/JShint_Tests.png)
+
+  <br />
+
+  </details>
+  
+  <br />
+
+  **Lighthouse testing:**
+  Lighthouse tests can be seen below. This score was good for my landing page but subpar score for the gallery page (see images)
+  This was mostly down to the following factors. 
+    * Largest Contentful Paint: This is exacerbated by loading many images lazily. 
+    * Image sizes not specified on load: Due to the images loading full size then being scaled it hurts the score (Potential fix see below)
+    * Sheer amount of posts loading: This is unavoidable but in production a solution would be required (see below)
+    * Cache policy: Beyond the scope of this project
+  With the above in mind, I tried various solutions. At one stage we used cloudinarys 'shrinkwrap' library to dynamically resize images but it did not prevent load times and offered little benefit for lots of extra scripting, I considered this a subpar solution. Removing the column layout improved the score by 5%  but again this was considered a nominal gain for a large loss of functionality.
+  Overall one of the aforementioned Roadmap features (the cloudinary widget) and the redesign of the model and view handling image serving would fix this issue. We could with that specify image sizes on the fly and have cloudinary serve the correct size for the device. However to implement that functionality would require React and/or Angular (See lessons learned)
+
+  <details><summary>Lighthouse testing</summary>
+
+  Landing page:
+
+  ![Landing page](readme/assets/images/validation_images/lighthousetest1.png)
+
+  <br />
+
+  Gallery Page:
+
+  ![Gallery Page](readme/assets/images/validation_images/lighthousetest2.png)
+
+  <br />
+
+  Gallery Page issue view:
+
+  ![Gallery Page 2](readme/assets/images/validation_images/lighthousetest3.png)
+
+  <br />
+
+  </details>
+  
+  <br />
+
+  **Wave web accessability test:**
+  Was tested returning the following feedback:
+    * Contrast error: is related to a decorative text element, not required for site use so is ignored.
+    * Alert: Occurs due to header elements as we skip 1 level of heading (decided this was ok to leave as is).
+
+  <details><summary>Wave web test</summary>
+
+  Wave web test:
+
+  ![Wave web test](readme/assets/images/validation_images/wave_web_validate.png)
+
+  <br />
+
+  </details>
 
 <br />
 
 ## **Lessons Learned**
-  * 
+  * Now at the end of this project it is worth noting, were a live version to be required I would approach the models and DB structure differently, and also the technology used.
+    * I would seperate the images into their own model which would make manipulating and serving them to the site much easier.
+    * I would use react as this would allow for far better communication between cloudinary and the site. It would solve many of the niggles performance issues I encountered. 
+    * I would also seperate the comments into their own model, so the comments sections could be made more like a forum thread under each image.
+
+  * Using Angular and/or react: Seemed beyond the scope of this project. As a proof of concept it remains a solid framework, in production using one of those frameworks would solve many of the issues above.
+  * I feel with the above taken into account and recognised it serves as a good base for a project which could be reworked or ideated on in future versions.
 
 <br />
 
@@ -705,6 +851,51 @@ The results can be seen below.
 
 ## **DEPLOYMENT**
 
+* Code was written in Gitpod by creating a repo from the initial CI full template [HERE](https://github.com/Code-Institute-Org/gitpod-full-template)
+* ### Forking the repository
+  * A copy of the GitHub Repository can be made by forking the GitHub account. This copy can be viewed and changes can be made to the copy without affecting the original repository. Take the following steps to fork the repository;
+  * Log in to GitHub and locate the repository.
+  * On the right hand side of the page inline with the repository name is a button called 'Fork', click on the button to create a copy of the original repository in your GitHub Account.
+
+<br />
+
+* ### Cloning the repository
+  * Under the repo’s name, click on the code tab.
+  * In the Clone with HTTPS section, click on the clipboard icon to copy the given URL.
+  * In your IDE of choice, open Git Bash.
+  * Change the current working directory to the location where you want the cloned directory to be made.
+  * Type git clone, and then paste the URL copied from GitHub.
+  * Press enter and the local clone will be created.
+
+<br />
+
+* ### Deploying to Heroku
+  * Ensure requirements.txt is up to date with pip freeze --local > requirement.txt - Vital so that heroku knows what packages and dependencies are being used.
+  * An ignore file is used with an env.py file to prevent secure data being published to git
+  * Make sure to set debug to "DEBUG = 'DEVELOPMENT' in os.environ" so that heroku will not run in debug mode
+  * Make sure current working branch is up to date and pushed to github correctly
+  * Go to Heroku login using 2 step authentication
+  * Once logged create a new app in heroku.
+  * Set the config vars of the new app in heroku to reflect the dependencies in the app (see below)
+  * Link the app to our github repo (see below)
+  * This was then deployed manually to ensure control over the live version
+  * You do this by navigating to deploy tab and selecting manual or automatic.
+  * Check build log for successful build.
+
+<details><summary>Config Vars redacted</summary>
+
+![Config Vars redacted](readme/assets/images/config_vars.png)
+</details>
+
+<br />
+
+<details><summary>Link repo</summary>
+
+![Repo link](readme/assets/images/heroku_link.png)
+</details>
+
+<br />
+ 
 --------------------------------------------------------
 
 ### [Contents Menu](<#table-of-contents>)
