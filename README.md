@@ -871,15 +871,17 @@ I did not have time to implement automated or unit tests. As the project is rela
 <br />
 
 * ### Deploying to Heroku
+  * Create working Procfile
   * Ensure requirements.txt is up to date with pip freeze --local > requirement.txt - Vital so that Heroku knows what packages and dependencies are being used.
-  * An ignore file is used with an env.py file to prevent secure data from being published to git
-  * Make sure to set debug to "DEBUG = 'DEVELOPMENT' in os.environ" so that Heroku will not run in debug mode
-  * Make sure the current working branch is up to date and pushed to GitHub correctly
-  * Login to Heroku using 2 step authentication
+  * In our env.py files we use 'noqa' to stop error for long line, this was ok to leave as it not deployed to Heroku.
+  * An ignore file is used with an env.py file to prevent secure data from being published to git.
+  * Make sure to set debug to "DEBUG = 'DEVELOPMENT' in os.environ" so that Heroku will not run in debug mode.
+  * Make sure the current working branch is up to date and pushed to GitHub correctly.
+  * Login to Heroku using 2 step authentication.
   * Once logged create a new app in Heroku.
-  * Set the config vars of the new app in heroku to reflect the dependencies in the app (see below)
-  * Link the app to our GitHub repo (see below)
-  * This was then deployed manually to ensure control over the live version
+  * Set the config vars of the new app in heroku to reflect the dependencies in the app (see below).
+  * Link the app to our GitHub repo (see below).
+  * This was then deployed manually to ensure control over the live version.
   * You do this by navigating to the deploy tab and selecting manual or automatic.
   * Check the build log for a successful build.
 

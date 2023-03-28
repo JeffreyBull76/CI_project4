@@ -11,7 +11,7 @@ from django.db.models import Count
 
 def toggle_post_status(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    # toggle the status to publish field between 0 and 1
+    # toggle the status to publish by switching between 0 and 1
     post.status = 1 - post.status
     post.save()
     messages.success(request, 'The post has been published!')
@@ -22,11 +22,11 @@ class PostList(generic.ListView):
     """
 
     Extends Django's generic.ListView, defines model as Post
-    and spcifies the template to render the view.
+    and specifies the template to render the view.
 
     We use super to customize the behavior of the subclass
     while still maintaining the original behavior of the parent class
-    (depreciate bug note see readme file)
+    (depreciated code note see readme file)
 
     Finally we filter the result by published status and when they
     were created.
@@ -134,7 +134,10 @@ class PostLike(View):
     """
 
     Again here the code raims largely unchanged from the walkthrough
-    as this already served its purpose perfectly.
+    as this already served its purpose well.
+
+    May extend in future to accomodate new functionality
+    See roadmap features
 
     """
     def post(self, request, slug):
@@ -152,8 +155,8 @@ class PostLike(View):
 class Submission(View):
     """
 
-    The GET method returns a form rendered by the
-    set template. The form instance "SubmitForm()"
+    The GET method returns a form rendered to the
+    template. The form instance "SubmitForm()"
     is passed as the "submit_form" variable.
 
     The POST method checks if the form is valid
@@ -204,7 +207,7 @@ class Submission(View):
 class PostDeleteView(LoginRequiredMixin, View):
     """
 
-    Uses the LoginRequiredMixing for security allows
+    Uses the LoginRequiredMixin for security. This allows
     the deletion of posts and their associated images.
 
     Gets object from DB based on two parameters

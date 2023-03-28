@@ -35,10 +35,11 @@ class SubmitForm(forms.ModelForm):
     - we use the clean method here to allow checking and
     validation of the form data when it is passed.
 
-    - The form checks for unique slug and to see if.
-    the title is already in use and returns an error if so.
+    - The form checks for unique slug and to see if
+    the title is already in use, returns an error when
+    appropriate.
 
-    - Finally we overrride the defaul save behaviour
+    - Finally we override the default save behaviour
     to run final checks and allow for future additions.
 
     """

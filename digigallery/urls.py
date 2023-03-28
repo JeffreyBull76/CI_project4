@@ -9,12 +9,12 @@ urlpatterns = [
     path('like/<slug:slug>/', views.PostLike.as_view(), name='post_like'),
     path('create_post.html', views.Submission.as_view(), name='create_post'),
     path('account.html', views.AuthorPostList.as_view(), name='account_posts'),
-    # Allows deletion of associated slug
+    # Allows deletion of post associated with slug
     path('delete/<slug:slug>/', PostDeleteView.as_view(), name='delete_post'),
-    # Allows updating of associated slug
+    # Allows updating of post associated with slug
     path('<slug:slug>/update/', views.PostUpdateView.as_view(),
          name='post_update'),
-    # Gets PK of comment converts to integer and allows deletion
+    # Gets primary key of comment converts to integer and allows deletion
     path('comment/<int:pk>/delete/', CommentDeleteView.as_view(),
          name='comment_delete'),
     # Gets post_id converts to integer and allows status toggle
