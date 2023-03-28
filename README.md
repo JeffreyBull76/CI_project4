@@ -336,7 +336,9 @@ The login page is shown here (the design is consistent through both other pages,
 ### **Gallery**
 
 Once signed in the user is presented with a gallery, which displays all the images in a responsive column layout. Initially, a masonry grid layout was ideated. This proved very difficult to combine with my dynamically built gallery (using jinja syntax) which builds the collection of images, ultimately that solution was abandoned. If a future version was built with different technologies (using react and Cloudinary built-in features) this could be reinstated. But ultimately the live version presented was a good compromise that wasn't too complex.
+
 A few other versions were tried but none worked satisfactorily. In the end, I found an online resource that had a column-based layout (see tech used section). This was then tweaked to meet the site's needs.
+
 *I also tested a paginated solution here but it ultimately didn't work well with responsive layouts. It would require a lot of callback scripting to make it recognize the user's device and responsively paginate. So the idea was scrapped. (In an infinite loading layout masonry grid as mentioned above, this could be reinstated)*
 
 <details><summary>Gallery</summary>
@@ -541,7 +543,7 @@ The post information fields are clickable to copy the content to the clipboard f
 **Display issue with post detail page:** 
 On first load, it sometimes prevents the Y scroll bar from displaying until the user enters text into the form. This only occurs on certain images and is difficult to pin down and replicate the base cause (See images below for example) NOTE It only prevents the scrollbar from displaying, scroll functionality is unaffected.
 
-<details><summary>Vertical Scrollbar Bug</summary>
+<details><summary>Vertical Scrollbar Bug Images for reference</summary>
 
 <br />
 
@@ -563,13 +565,13 @@ Non Bugged Page - Included for reference of correct load
 </details>
 
   * I was able to fix it partially for some images but others still display this behavior. It appears to be related to the form and comments section rendering after the document loads. Even force rendering a vertical scrollbar did not fix this.
-  * I suspect it is tied to how Django is dynamically loading the content of the image, post details, and comments section, and somehow the order this happens in with certain image sizes (happens more with smaller images) and prevents the correct DOM elements from loading in (in this case the vertical scroll bar)
+  * I suspect it is tied to how Django is dynamically loading the content of the image, post details, and comments section, and somehow the order this happens in with certain image sizes (happens more with smaller images) prevents the DOM elements loading in correctly (in this case meaning the vertical scroll bar fails to render)
   * As of the final stages of testing, I can confirm this is to do with the DOM not recognizing elements loaded below the 'First contentful paint' correctly, simply typing any text in the comment text field will correctly show a vertical scroll bar (see example images above). While this is the issue I still cannot quite pin down why this happens with some images and not others.
   * I have left this in for now as it's merely a problem with the display NOT functionality, you are still able to scroll with the mouse wheel and arrow keys. But in a live version, I would need to pin this down and fix it, despite it having minimal impact on site use.
 
 <br />
   
-**Scrapped Solution to file format on upload** Due to the lack of a Cloudinary widget and how the model works it was extremely difficult to set up native image transformation when communicating with the Cloudinary API. In a live version, this could be addressed by redesigning the aforementioned model (as detailed previously in roadmap). For sake of record I did ideate a fix that used the following imports (see below) It used a custom function to force new uploads to be transformed to webp format (reducing file size and accessibility) However this then caused our delete image function to cease working (as the file extension did not match) so the code was scrapped and this issue relegated to a roadmap feature as it is not critical.
+**Scrapped Solution to file format on upload** Due to the lack of a Cloudinary widget and how the model works it was extremely difficult to set up native image transformation when communicating with the Cloudinary API. In a live version, this could be addressed by redesigning the aforementioned model (as detailed previously in roadmap). For sake of record I did ideate a fix that used the following imports (see below) It used a custom function to force new uploads to be transformed to webp format (reducing file size and increasing accessibility) However this then caused our delete image function to cease working (as the file extension did not match) so the code was scrapped and this issue relegated to a roadmap feature as it is not critical.
   * **Imports used in scrapped solution were as follows:**
   * from Django import forms
   * from PIL import Image
@@ -783,10 +785,11 @@ I did not have time to implement automated or unit tests. As the project is rela
   Lighthouse tests can be seen below. This score was good for my landing page but shows a subpar score for the gallery page (see images) 
   
   This was mostly down to the following factors
-    * Largest Contentful Paint: This is exacerbated by loading many images lazily. 
-    * Image sizes not specified on load: Due to the images loading full size then being scaled it hurts the score (Potential fix see below)
-    * Sheer amount of posts loading: This is unavoidable but in production a solution would be required (see below)
-    * Cache policy: Beyond the scope of this project
+  * Largest Contentful Paint: This is exacerbated by loading many images lazily. 
+  * Image sizes not specified on load: Due to the images loading full size then being scaled it hurts the score (Potential fix see below)
+  * Sheer amount of posts loading: This is unavoidable but in production a solution would be required (see below)
+  * Cache policy: Beyond the scope of this project
+
   With the above in mind, I tried various solutions. At one stage we used Cloudinarys 'shrinkwrap' library to dynamically resize images but it did not prevent load times and offered little benefit for lots of extra scripting, I considered this a subpar solution. Removing the column layout improved the score by 5%  but again this was considered a nominal gain for a large loss of functionality.
   Overall one of the aforementioned Roadmap features (the Cloudinary widget) and the redesign of the model and view handling image serving would fix this issue. We could with that specify image sizes on the fly and have Cloudinary serve the correct size for the device. However, to implement that functionality would require React and/or Angular (See lessons learned)
 
@@ -816,8 +819,9 @@ I did not have time to implement automated or unit tests. As the project is rela
 
   **Wave web accessibility test:**
   Was tested returning the following feedback:
-    * Contrast error: is related to a decorative text element, not required for site use so is ignored.
-    * Alert: Occurs due to header elements as we skip 1 level of heading (decided this was ok to leave as is).
+
+  * Contrast error: is related to a decorative text element, not required for site use so is ignored.
+  * Alert: Occurs due to header elements as we skip 1 level of heading (decided this was ok to leave as is).
 
   <details><summary>Wave web test</summary>
 
@@ -834,9 +838,9 @@ I did not have time to implement automated or unit tests. As the project is rela
 ## **Lessons Learned**
   * Now at the end of this project, it is worth noting, were a live version to be required I would approach the models and DB structure differently, also the technology used.
     * I would separate the images into their own model which would make manipulating and serving them to the site much easier.
-    * I would use react as this would allow for far better communication between Cloudinary and the site. It would solve many of the niggles performance issues I encountered. 
+    * I would use react as this would allow for far better communication between Cloudinary and the site. It would solve many of the niggles and performance issues I encountered. 
     * I would also separate the comments into their own model, so the comments sections could be made more like a forum thread under each image.
-  * Using Angular and/or react: Seemed beyond the scope of this project. As a proof of concept it remains a solid framework, in production using one of those frameworks would solve many of the issues above.
+  * Using Angular and/or react: Seemed beyond the scope of this project. As a proof of concept it remains a solid starting point, in production using one of those frameworks would solve many of the issues above.
   * I feel with the above taken into account and recognized it serves as a good base for a project which could be reworked or ideated on in future versions.
 
 <br />
